@@ -46,7 +46,8 @@ export default async function RealisationDetailPage({
             {c.serviceTag}
           </span>
           <h1 className="mt-[22px] text-[clamp(30px,4.4vw,52px)] leading-[1.07] text-white max-w-[20ch]">
-            {c.title}
+            {c.headline}
+            <span className="italic text-sand">{c.headlineAccent}</span>
           </h1>
           <div className="mt-[30px] grid [grid-template-columns:repeat(auto-fit,minmax(140px,1fr))] gap-[18px] max-w-[640px]">
             <div>

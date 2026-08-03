@@ -15,6 +15,13 @@ export interface CaseStudy {
   g1: string;
   g2: string;
   title: string;
+  /**
+   * Narrative hero headline, split so the trailing fragment renders in italic
+   * sand like the design ("Rendre 12 heures par semaine a un cabinet d'" +
+   * "architectes."). Distinct from `title`, which labels the card/breadcrumb.
+   */
+  headline: string;
+  headlineAccent: string;
   summary: string;
   stat1: string;
   stat1l: string;
@@ -37,6 +44,8 @@ export const caseStudies: CaseStudy[] = [
     g1: "#233457",
     g2: "#16203a",
     title: "Cabinet d’architectes",
+    headline: "Rendre 12 heures par semaine à un cabinet d’",
+    headlineAccent: "architectes.",
     summary:
       "Gestion d’agenda et coordination des appels d’offres pour une équipe de 6 personnes.",
     stat1: "−12h",
@@ -79,6 +88,8 @@ export const caseStudies: CaseStudy[] = [
     g1: "#2a2c3f",
     g2: "#181a2c",
     title: "Studio de design",
+    headline: "Trente jours de trésorerie regagnés pour un studio de ",
+    headlineAccent: "design.",
     summary:
       "Facturation, relances et préparation des pièces comptables mensuelles.",
     stat1: "−30j",
@@ -121,6 +132,8 @@ export const caseStudies: CaseStudy[] = [
     g1: "#2b3350",
     g2: "#171f38",
     title: "Agence immobilière",
+    headline: "Dix-huit candidats qualifiés en trois semaines pour une ",
+    headlineAccent: "agence.",
     summary:
       "Sourcing et présélection de candidats commerciaux, planification des entretiens.",
     stat1: "18",
@@ -163,6 +176,8 @@ export const caseStudies: CaseStudy[] = [
     g1: "#243b3a",
     g2: "#16211f",
     title: "E-commerce local",
+    headline: "Soixante pour cent de support en moins pour un ",
+    headlineAccent: "e-commerçant.",
     summary:
       "Automatisation du suivi de commandes et des réponses clients récurrentes.",
     stat1: "−60%",
@@ -205,6 +220,8 @@ export const caseStudies: CaseStudy[] = [
     g1: "#3a2f2a",
     g2: "#211a16",
     title: "Restaurant & traiteur",
+    headline: "Quarante pour cent de réservations en plus pour un ",
+    headlineAccent: "traiteur.",
     summary: "Gestion des réseaux sociaux et campagnes locales de saison.",
     stat1: "+40%",
     stat1l: "réservations",
@@ -246,6 +263,8 @@ export const caseStudies: CaseStudy[] = [
     g1: "#2c2540",
     g2: "#181428",
     title: "Coopérative agricole",
+    headline: "Quinze heures par semaine rendues à une ",
+    headlineAccent: "coopérative.",
     summary:
       "Suivi administratif et gestion documentaire multi-sites, bilingue FR/EN.",
     stat1: "−15h",
