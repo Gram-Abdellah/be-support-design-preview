@@ -20,6 +20,7 @@ export default function AProposPage() {
           </>
         }
         titleMaxWidth="18ch"
+        leadMaxWidth="60ch"
         lead="Be-Support est une marque de Bema Consulting, créée en 2024. Nous accompagnons les PME de Belgique et de France depuis Essaouira, au Maroc, avec une équipe bilingue française et anglaise."
       />
 

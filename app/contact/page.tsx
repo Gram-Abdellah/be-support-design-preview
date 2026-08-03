@@ -29,6 +29,7 @@ export default function ContactPage() {
           </>
         }
         titleMaxWidth="18ch"
+        leadMaxWidth="56ch"
         lead="30 minutes, sans engagement, pour cadrer votre besoin. Choisissez un créneau directement, ou écrivez-nous : on vous répond sous 24h ouvrées."
       />
 

@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={`${spectral.variable} ${hanken.variable}`}>
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col" suppressHydrationWarning>
         <LangProvider>
           <SiteHeader />
           <main className="flex-1">{children}</main>

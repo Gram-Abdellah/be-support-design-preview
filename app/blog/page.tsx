@@ -24,6 +24,7 @@ export default function BlogPage() {
           </>
         }
         titleMaxWidth="20ch"
+        leadMaxWidth="56ch"
         lead="Méthodes, outils et retours de terrain pour déléguer, automatiser et mieux organiser votre PME."
       />
 

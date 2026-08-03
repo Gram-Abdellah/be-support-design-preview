@@ -21,6 +21,7 @@ export default function TarifsPage() {
           </>
         }
         titleMaxWidth="20ch"
+        leadMaxWidth="52ch"
         lead="Appel découverte gratuit. Engagement minimum de 3 mois puis mensuel. Remplacement de l'assistant garanti, inclus."
         center
         extraPaddingBottom="clamp(70px,9vw,120px)"
