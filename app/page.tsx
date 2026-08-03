@@ -309,6 +309,7 @@ export default function HomePage() {
         ctaLabel="Réserver mon appel de 30 min"
         ctaHref="/contact"
         variant="centered"
+        preset="home"
       />
     </>
   );

@@ -1,5 +1,91 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
+
+/**
+ * The design uses five distinct centred CTA panels — Home, Be-Stars and the
+ * Service / Realisation / Article templates each have their own padding, type
+ * scale and button metrics. They are transcribed verbatim here rather than
+ * approximated, since the panel height feeds the whole page rhythm.
+ */
+const CENTERED_PRESETS = {
+  home: {
+    panelPadding: "clamp(40px,5vw,66px)",
+    titleSize: "clamp(30px,3.8vw,46px)",
+    titleLeading: "1.08",
+    titleMaxWidth: "20ch",
+    descMarginTop: "18px",
+    descColor: "rgba(255,255,255,.88)",
+    descSize: "var(--fs-body)",
+    descLeading: "1.6",
+    descMaxWidth: "54ch",
+    btnMarginTop: "30px",
+    btnSize: "15.5px",
+    btnPadding: "17px 34px",
+    btnRadius: "11px",
+  },
+  bestars: {
+    panelPadding: "clamp(36px,5vw,64px)",
+    titleSize: "clamp(26px,3.6vw,42px)",
+    titleLeading: "1.08",
+    titleMaxWidth: "26ch",
+    descMarginTop: "18px",
+    descColor: "rgba(255,255,255,.85)",
+    descSize: "16.5px",
+    descLeading: "1.55",
+    descMaxWidth: "48ch",
+    btnMarginTop: "26px",
+    btnSize: "15px",
+    btnPadding: "16px 30px",
+    btnRadius: "10px",
+  },
+  service: {
+    panelPadding: "clamp(32px,5vw,56px)",
+    titleSize: "clamp(26px,3.6vw,40px)",
+    titleLeading: "1.1",
+    titleMaxWidth: "20ch",
+    descMarginTop: "16px",
+    descColor: "rgba(255,255,255,.85)",
+    descSize: "16px",
+    descLeading: "1.55",
+    descMaxWidth: "46ch",
+    btnMarginTop: "26px",
+    btnSize: "15px",
+    btnPadding: "15px 28px",
+    btnRadius: "10px",
+  },
+  realisation: {
+    panelPadding: "clamp(30px,4vw,48px)",
+    titleSize: "clamp(24px,3.2vw,36px)",
+    titleLeading: "1.12",
+    titleMaxWidth: "22ch",
+    descMarginTop: "16px",
+    descColor: "rgba(255,255,255,.85)",
+    descSize: "16px",
+    descLeading: "1.55",
+    descMaxWidth: "46ch",
+    btnMarginTop: "22px",
+    btnSize: "15px",
+    btnPadding: "15px 28px",
+    btnRadius: "10px",
+  },
+  article: {
+    panelPadding: "clamp(32px,5vw,56px)",
+    titleSize: "clamp(24px,3.2vw,36px)",
+    titleLeading: "1.12",
+    titleMaxWidth: "24ch",
+    descMarginTop: "16px",
+    descColor: "rgba(255,255,255,.85)",
+    descSize: "16px",
+    descLeading: "1.55",
+    descMaxWidth: "46ch",
+    btnMarginTop: "22px",
+    btnSize: "15px",
+    btnPadding: "15px 28px",
+    btnRadius: "10px",
+  },
+} as const;
+
+export type CtaPreset = keyof typeof CENTERED_PRESETS;
 
 export default function CtaBanner({
   title,
@@ -7,6 +93,7 @@ export default function CtaBanner({
   ctaLabel,
   ctaHref,
   variant = "centered",
+  preset = "service",
   narrow = false,
 }: {
   title: ReactNode;
@@ -14,24 +101,54 @@ export default function CtaBanner({
   ctaLabel: string;
   ctaHref: string;
   variant?: "centered" | "split";
+  preset?: CtaPreset;
   narrow?: boolean;
 }) {
+  const p = CENTERED_PRESETS[preset];
+
   return (
     <section className="pb-[clamp(56px,6.5vw,96px)]">
       <div className={narrow ? "container-narrow" : "container-page"}>
         {variant === "centered" ? (
-          <div className="bg-rust rounded-[20px] p-[clamp(32px,5vw,56px)] text-center">
-            <h2 className="text-[clamp(26px,3.6vw,40px)] leading-[1.1] text-white max-w-[20ch] mx-auto">
+          <div
+            className="bg-rust rounded-[20px] text-center"
+            style={{ padding: p.panelPadding }}
+          >
+            <h2
+              className="text-white mx-auto"
+              style={{
+                fontSize: p.titleSize,
+                lineHeight: p.titleLeading,
+                maxWidth: p.titleMaxWidth,
+              }}
+            >
               {title}
             </h2>
             {description && (
-              <p className="mt-4 text-white/85 text-base leading-[1.55] max-w-[46ch] mx-auto">
+              <p
+                className="mx-auto"
+                style={{
+                  marginTop: p.descMarginTop,
+                  color: p.descColor,
+                  fontSize: p.descSize,
+                  lineHeight: p.descLeading,
+                  maxWidth: p.descMaxWidth,
+                }}
+              >
                 {description}
               </p>
             )}
             <Link
               href={ctaHref}
-              className="inline-block mt-[26px] bg-white text-navy text-[15px] font-bold px-7 py-[15px] rounded-[10px] hover:bg-cream"
+              className="inline-block bg-white text-navy font-bold hover:bg-cream"
+              style={
+                {
+                  marginTop: p.btnMarginTop,
+                  fontSize: p.btnSize,
+                  padding: p.btnPadding,
+                  borderRadius: p.btnRadius,
+                } as CSSProperties
+              }
             >
               {ctaLabel}
             </Link>
@@ -41,7 +158,7 @@ export default function CtaBanner({
             <div className="max-w-[46ch]">
               <h2 className="text-[clamp(26px,3.4vw,38px)] leading-[1.1] text-white">{title}</h2>
               {description && (
-                <p className="mt-3.5 text-white/85 text-base leading-[1.55]">{description}</p>
+                <p className="mt-3.5 text-white/85 text-[16px] leading-[1.55]">{description}</p>
               )}
             </div>
             <Link

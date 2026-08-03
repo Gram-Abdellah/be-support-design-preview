@@ -110,6 +110,7 @@ export default async function RealisationDetailPage({
 
       <CtaBanner
         variant="centered"
+        preset="realisation"
         title="Un cas proche du vôtre ? Parlons-en."
         ctaLabel="Réserver un appel"
         ctaHref="/contact"

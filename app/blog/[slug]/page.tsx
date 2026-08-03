@@ -138,6 +138,7 @@ export default async function ArticlePage({
 
       <CtaBanner
         variant="centered"
+        preset="article"
         title="Envie de passer de la lecture à l'action ?"
         ctaLabel="Réserver un appel"
         ctaHref="/contact"

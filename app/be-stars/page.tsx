@@ -284,6 +284,7 @@ export default function BeStarsPage() {
 
       <CtaBanner
         variant="centered"
+        preset="bestars"
         title="Un jour pour l'audit. Sept jours pour le rapport. Sans surprise."
         description="L'échéance de mai 2027 approche, et la file d'attente s'allonge chaque mois."
         ctaLabel="Réserver mon audit diagnostic"

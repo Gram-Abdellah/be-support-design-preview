@@ -54,6 +54,28 @@
   --text-card: var(--fs-card);
   --text-body: var(--fs-body);
   --text-label: var(--fs-label);
+
+  /* Tailwind pairs each named text size with a line-height (text-lg also sets
+     28px, text-sm also sets 20px, ...). The design declares font-size alone and
+     leaves line-height at the browser default, adding an explicit line-height
+     only where it wants one. Keeping Tailwind's pairings silently inflated
+     every card and row by a few px, which compounded down long pages. Neutralise
+     them so `text-*` sets size only; `leading-*` still applies where used. */
+  --text-xs--line-height: normal;
+  --text-sm--line-height: normal;
+  --text-base--line-height: normal;
+  --text-lg--line-height: normal;
+  --text-xl--line-height: normal;
+  --text-2xl--line-height: normal;
+  --text-3xl--line-height: normal;
+  --text-4xl--line-height: normal;
+  --text-5xl--line-height: normal;
+  --text-hero--line-height: normal;
+  --text-page--line-height: normal;
+  --text-section--line-height: normal;
+  --text-card--line-height: normal;
+  --text-body--line-height: normal;
+  --text-label--line-height: normal;
 }
 
 /* Base element defaults MUST live inside `@layer base`.
@@ -69,6 +91,9 @@
 
   html {
     scroll-behavior: smooth;
+    /* Tailwind preflight sets line-height:1.5 here; the design leaves it at the
+       browser default and sets line-height per element where it matters. */
+    line-height: normal;
   }
 
   body {

@@ -60,7 +60,7 @@ export default function BlogPage() {
         </section>
       )}
 
-      <section className="pt-9 pb-[clamp(52px,7vw,88px)]">
+      <section className="pt-[clamp(36px,4vw,56px)] pb-[clamp(52px,7vw,88px)]">
         <div className="container-page">
           <BlogGrid />
 
