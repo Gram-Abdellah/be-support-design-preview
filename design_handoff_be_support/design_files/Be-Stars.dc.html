@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<!-- announcement -->
+<div style="background:var(--sand);color:var(--navy);font-size:13.5px;text-align:center;padding:12px 16px;font-weight:600;letter-spacing:.01em">⚠ Échéance : mai 2027 · Sécurisez votre classement avant la fin de la classification officielle.</div>
+
+<!-- HERO -->
+<section style="background:var(--navy);color:#fff;padding:clamp(48px,6vw,84px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 13px;border-radius:999px"><span style="width:7px;height:7px;border-radius:999px;background:var(--green)"></span>Be-Stars · Classement hôtelier au Maroc</span>
+    <h1 style="margin-top:22px;font-size:var(--fs-page);line-height:1.05;color:#fff;max-width:20ch">Votre classement en étoiles, <span style="font-style:italic;color:var(--sand)">sécurisé avant mai 2027.</span></h1>
+    <p style="margin-top:20px;max-width:60ch;font-size:17.5px;line-height:1.6;color:rgba(255,255,255,.72)">La nouvelle loi 80-14 et le décret 985-24 redéfinissent les règles de classement des établissements touristiques au Maroc. Audit de conformité, plan d'action et accompagnement jusqu'au classement officiel : hôtels, riads, maisons d'hôtes, résidences, campings et bivouacs.</p>
+    <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px">
+      <a href="Contact.dc.html" style="background:var(--rust);color:#fff;font-size:15px;font-weight:600;padding:14px 24px;border-radius:9px" style-hover="background:var(--rust-dk)">Réserver mon audit diagnostic</a>
+      <a href="#loi" style="background:transparent;color:#fff;font-size:15px;font-weight:600;padding:13px 22px;border-radius:9px;border:1.5px solid rgba(255,255,255,.3)" style-hover="border-color:#fff">Comprendre la nouvelle loi</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Pourquoi agir</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:24ch">Sans classement, vous disparaissez des canaux de <span style="font-style:italic;color:var(--rust)">réservation.</span></h2>
+    <p style="margin-top:16px;max-width:56ch;color:var(--muted);font-size:var(--fs-body);line-height:1.6">Le classement n'est plus un trophée : c'est un levier commercial mesurable, et désormais une obligation légale avec une échéance.</p>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+      <sc-for list="{{ why }}" as="w" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px">
+          <div style="font-family:var(--serif);font-style:italic;font-size:20px;color:var(--rust)">{{ w.t }}</div>
+          <p style="margin-top:12px;color:var(--muted);font-size:14.5px;line-height:1.6">{{ w.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- LEGAL FRAMEWORK -->
+<section id="loi" style="padding:clamp(56px,6.5vw,96px) 0;background:var(--navy);color:#fff;scroll-margin-top:80px">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">Cadre légal</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;color:#fff;max-width:26ch">Loi 80-14 + décret 985-24 : ce qui change pour <span style="font-style:italic;color:var(--sand)">vous.</span></h2>
+    <p style="margin-top:16px;max-width:60ch;color:rgba(255,255,255,.7);font-size:16px;line-height:1.6">Le décret 985-24 (Bulletin officiel n° 7407 du 27 mai 2025) définit trois familles de normes et un système de points qui détermine le nombre d'étoiles attribuées.</p>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+      <sc-for list="{{ norms }}" as="n" hint-placeholder-count="3">
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:26px">
+          <div style="font-family:var(--serif);font-size:24px;color:var(--sand)">{{ n.code }}</div>
+          <div style="margin-top:6px;font-weight:600;font-size:14.5px;color:#fff">{{ n.t }}</div>
+          <p style="margin-top:10px;color:rgba(255,255,255,.6);font-size:14px;line-height:1.55">{{ n.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ refs }}" as="r" hint-placeholder-count="3">
+        <div style="background:var(--navy-2);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 18px;font-size:14px;color:rgba(255,255,255,.72)">{{ r }}</div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN SERVICE -->
+<section style="padding:clamp(56px,6.5vw,96px) 0;background:#fff;border-bottom:1px solid var(--line)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Service principal</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:26ch">Audit de conformité : en 1 jour, vous savez où vous en <span style="font-style:italic;color:var(--rust)">êtes.</span></h2>
+    <p style="margin-top:16px;max-width:60ch;color:var(--muted);font-size:var(--fs-body);line-height:1.6">Notre équipe visite votre établissement et l'évalue selon les trois familles de normes. Vous repartez avec un rapport chiffré et un plan d'action priorisé.</p>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+      <sc-for list="{{ audit }}" as="a" hint-placeholder-count="3">
+        <div style="background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:26px">
+          <div style="width:36px;height:36px;border-radius:999px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:15px">{{ a.n }}</div>
+          <h3 style="margin-top:16px;font-size:18px">{{ a.t }}</h3>
+          <p style="margin-top:8px;color:var(--muted);font-size:14px;line-height:1.55">{{ a.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:28px;background:var(--navy);border-radius:18px;padding:clamp(28px,3.5vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,4vw,48px);align-items:center">
+      <div style="max-width:34ch">
+        <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:12px">Livrables</div>
+        <h3 style="font-size:clamp(20px,2.4vw,26px);line-height:1.2;color:#fff">Ce que vous recevez à l'issue de l'audit</h3>
+        <p style="margin-top:12px;color:rgba(255,255,255,.62);font-size:14.5px;line-height:1.6">Des documents concrets, exploitables immédiatement pour lancer votre mise en conformité.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <sc-for list="{{ deliverables }}" as="d" hint-placeholder-count="4">
+          <div style="display:flex;gap:14px;align-items:center;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)"><span style="width:26px;height:26px;flex:none;border-radius:999px;background:rgba(187,106,53,.18);color:var(--sand);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">✓</span><span style="font-size:15px;color:rgba(255,255,255,.9);line-height:1.4">{{ d }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING GRID -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Frais d'audit et de diagnostic</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:24ch">Une grille claire, selon la taille de votre <span style="font-style:italic;color:var(--rust)">établissement.</span></h2>
+    <p style="margin-top:16px;color:var(--muted);font-size:16px">Tous les prix sont nets, sans frais cachés.</p>
+    <div style="margin-top:28px;max-width:640px;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff">
+      <table style="width:100%;border-collapse:collapse;font-size:15px">
+        <thead><tr style="background:var(--cream)"><th style="text-align:left;padding:16px 22px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600">Taille de l'établissement</th><th style="text-align:right;padding:16px 22px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600">Prix</th></tr></thead>
+        <tbody>
+          <sc-for list="{{ grid }}" as="g" hint-placeholder-count="5">
+            <tr style="border-top:1px solid var(--line)"><td style="padding:15px 22px;color:var(--ink)">{{ g.size }}</td><td style="padding:15px 22px;text-align:right;font-weight:700;color:var(--rust)">{{ g.price }}</td></tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:16px;color:var(--muted);font-size:13.5px;font-style:italic">Audit complet en 1 jour · rapport livré sous 7 jours · retour téléphonique inclus.</p>
+  </div>
+</section>
+
+<!-- A LA CARTE -->
+<section style="padding:clamp(56px,6.5vw,96px) 0;background:var(--navy);color:#fff">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">Aller plus loin</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;color:#fff;max-width:24ch">Des options disponibles <span style="font-style:italic;color:var(--sand)">à la carte.</span></h2>
+    <p style="margin-top:16px;max-width:56ch;color:rgba(255,255,255,.7);font-size:16px;line-height:1.6">Quatre services conçus pour vous accompagner après l'audit, jusqu'au classement officiel.</p>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+      <sc-for list="{{ carte }}" as="c" hint-placeholder-count="4">
+        <div style="background:#fff;border-radius:16px;padding:24px;color:var(--ink);display:flex;flex-direction:column">
+          <h3 style="font-size:18px;line-height:1.2">{{ c.t }}</h3>
+          <p style="margin-top:8px;color:var(--muted);font-size:14px;line-height:1.55;flex:1">{{ c.d }}</p>
+          <div style="margin-top:16px;font-family:var(--serif);font-size:22px;color:var(--rust)">{{ c.price }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:20px;background:var(--rust);border-radius:16px;padding:26px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+      <div><div style="font-weight:700;font-size:18px;color:#fff">Pack complet</div><div style="color:rgba(255,255,255,.85);font-size:14px;margin-top:4px">Audit diagnostic + relecture du dossier + modèles NPQS + glossaire trilingue</div></div>
+      <div style="text-align:right"><div style="font-family:var(--serif);font-size:30px;color:#fff">8 500 DH</div><div style="color:rgba(255,255,255,.8);font-size:12.5px">économie de 1 200 DH</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MYSTERY VISIT -->
+<section style="padding:clamp(56px,6.5vw,96px) 0;background:#fff;border-bottom:1px solid var(--line)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Classement 5 étoiles et plus</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:24ch">Visite mystère requise : on vous <span style="font-style:italic;color:var(--rust)">y prépare.</span></h2>
+    <p style="margin-top:16px;max-width:60ch;color:var(--muted);font-size:var(--fs-body);line-height:1.6">À partir de 5 étoiles, le décret 985-24 impose une évaluation anonyme par un client mystère. Cette visite pèse lourd dans la décision finale.</p>
+    <div style="margin-top:28px;background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,3vw,36px)">
+      <p style="color:var(--ink);font-size:16px;line-height:1.7;max-width:70ch">Un évaluateur indépendant séjourne dans votre établissement comme un client ordinaire, sans s'identifier, et note l'expérience selon les normes de qualité de service (NPQS). Le rapport est transmis directement au comité de classement.</p>
+      <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+        <sc-for list="{{ mystery }}" as="m" hint-placeholder-count="6">
+          <div style="display:flex;gap:10px;font-size:14.5px;line-height:1.45"><span style="color:var(--rust);font-weight:700">✓</span><span>{{ m }}</span></div>
+        </sc-for>
+      </div>
+      <div style="margin-top:22px;border-left:3px solid var(--rust);background:var(--cream-2);border-radius:0 12px 12px 0;padding:16px 20px;font-size:14.5px;color:var(--ink);line-height:1.6">Le rapport de visite mystère pèse dans la décision finale. Be-Stars réalise une simulation préalable pour identifier les points faibles et vous préparer sereinement.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(860px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px;text-align:center">Questions fréquentes</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;text-align:center">Ce que les exploitants nous demandent le plus <span style="font-style:italic;color:var(--rust)">souvent.</span></h2>
+    <div style="margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+        <button onClick="{{ f.toggle }}" style="width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;font-family:var(--sans);padding:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px"><span style="font-size:16px;font-weight:500;color:var(--ink)">{{ f.q }}</span><span style="color:var(--rust);font-size:22px;flex:none">{{ f.sign }}</span></div>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}"><p style="padding:0 22px 20px;color:var(--muted);font-size:14.5px;line-height:1.6;text-align:left">{{ f.a }}</p></sc-if>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:0 0 clamp(56px,6.5vw,96px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="background:var(--rust);border-radius:20px;padding:clamp(36px,5vw,64px);text-align:center">
+      <h2 style="font-size:clamp(26px,3.6vw,42px);line-height:1.08;color:#fff;max-width:26ch;margin:0 auto">Un jour pour l'audit. Sept jours pour le rapport. Sans surprise.</h2>
+      <p style="margin:18px auto 0;color:rgba(255,255,255,.85);font-size:16.5px;line-height:1.55;max-width:48ch">L'échéance de mai 2027 approche, et la file d'attente s'allonge chaque mois.</p>
+      <a href="Contact.dc.html" style="display:inline-block;margin-top:26px;background:#fff;color:var(--navy);font-size:15px;font-weight:700;padding:16px 30px;border-radius:10px" style-hover="background:var(--cream)">Réserver mon audit diagnostic</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  state = { open:{} };
+  renderVals(){
+    const why=[
+      {t:'Un levier de prix',d:'Sur un segment comparable, une étoile de plus permet un tarif moyen supérieur et attire une clientèle à plus fort pouvoir d\u2019achat.'},
+      {t:'La visibilité OTA',d:'La plupart des voyageurs filtrent par étoiles. Sans classement, votre établissement n\u2019apparaît tout simplement pas.'},
+      {t:'Échéance mai 2027',d:'Le décret 985-24 fixe une date limite. Au-delà, le classement officiel et l\u2019accès aux canaux ne sont plus garantis.'},
+    ];
+    const norms=[
+      {code:'RGC',t:'Règlement général de construction',d:'Normes communes : accessibilité, sécurité, dimensions, hauteurs sous plafond.'},
+      {code:'NEDF',t:'Équipement, décoration & fonctionnement',d:'Mobilier, literie, salles de bain, éclairage, équipements et technologies.'},
+      {code:'NPQS',t:'Normes de qualité de service',d:'Accueil, langues, propreté, service, restauration, ménage, réactivité.'},
+    ];
+    const refs=[
+      'Loi 80-14 relative aux établissements touristiques et autres formes d\u2019hébergement.',
+      'Décret 985-24 (Bulletin officiel n° 7407 du 27 mai 2025) : définit les normes de classement.',
+      'Décret 1799-02 : références techniques antérieures encore applicables sur certains aspects.',
+    ];
+    const audit=[
+      {n:'1',t:'Visite complète sur site',d:'Une journée d\u2019inspection selon les trois familles de normes RGC, NEDF, NPQS.'},
+      {n:'2',t:'Rapport d\u2019écart détaillé',d:'Livré sous 7 jours : conformités, écarts et investissements à prévoir, chiffrés.'},
+      {n:'3',t:'Retour téléphonique',d:'On commente le rapport ensemble, avec un plan d\u2019action priorisé.'},
+    ];
+    const deliverables=[
+      'Rapport chiffré par norme (RGC, NEDF, NPQS)',
+      'Nombre d\u2019étoiles atteignable et écarts majeurs',
+      'Étoile cible et liste d\u2019actions à mener',
+      'Plan d\u2019action priorisé, du simple au structurant',
+    ];
+    const grid=[
+      {size:'1 à 5 chambres',price:'2 500 DH'},
+      {size:'6 à 10 chambres',price:'3 500 DH'},
+      {size:'11 à 20 chambres',price:'5 000 DH'},
+      {size:'21 à 50 chambres',price:'6 500 DH'},
+      {size:'51 chambres et plus',price:'8 000 DH'},
+    ];
+    const carte=[
+      {t:'Relecture du dossier avant dépôt',d:'On vérifie votre dossier et on corrige les points sensibles avant soumission.',price:'2 000 DH'},
+      {t:'Accompagnement à la visite officielle',d:'On vous accompagne le jour de la visite de classement : préparation, présence, débrief.',price:'1 500 DH'},
+      {t:'Modèles de procédures NPQS',d:'Des modèles prêts à l\u2019emploi (accueil, ménage, restauration, sécurité) à adapter.',price:'1 500 DH'},
+      {t:'Glossaire hôtelier trilingue',d:'Un vocabulaire hôtelier FR/EN/AR essentiel, prêt à afficher côté personnel.',price:'1 200 DH'},
+    ];
+    const mystery=[
+      'Check-in anonyme (accueil, courtoisie, langues parlées)',
+      'État du room service (qualité, équipement, literie)',
+      'Restauration (qualité, présentation, service)',
+      'Espaces communs (propreté, signalétique, accessibilité)',
+      'Propreté et entretien des chambres',
+      'Réactivité aux demandes et réclamations',
+    ];
+    const faqData=[
+      {q:'Que se passe-t-il après mai 2027 si je ne suis pas en conformité ?',a:'Au-delà de l\u2019échéance, le classement officiel et l\u2019accès à certains canaux de réservation ne sont plus garantis. Un audit permet d\u2019anticiper.'},
+      {q:'Combien de temps dure une procédure complète ?',a:'L\u2019audit se fait en 1 jour, le rapport est livré sous 7 jours. La mise en conformité dépend ensuite des écarts constatés.'},
+      {q:'Quelle est la différence entre RGC, NEDF et NPQS ?',a:'RGC concerne la construction, NEDF l\u2019équipement et la décoration, NPQS la qualité de service. Les trois familles composent le score final.'},
+      {q:'Mon riad ou ma maison d\u2019hôtes est-il concerné ?',a:'Oui. Le classement couvre hôtels, riads, maisons d\u2019hôtes, résidences, campings et bivouacs.'},
+      {q:'Que se passe-t-il si l\u2019étoile visée n\u2019est pas atteinte au premier dépôt ?',a:'Le rapport d\u2019écart identifie précisément les actions manquantes. Nos options à la carte vous aident à combler l\u2019écart.'},
+      {q:'Faut-il fermer l\u2019établissement pendant l\u2019audit ?',a:'Non. L\u2019audit se déroule en activité et ne perturbe pas l\u2019accueil de vos clients.'},
+    ];
+    const open=this.state.open;
+    const faqs=faqData.map((f,i)=>({...f,open:!!open[i],sign:open[i]?'−':'+',toggle:()=>this.setState(s=>({open:{...s.open,[i]:!s.open[i]}}))}));
+    return { why, norms, refs, audit, deliverables, grid, carte, mystery, faqs };
+  }
+}
+</script>
+</body>
+</html>

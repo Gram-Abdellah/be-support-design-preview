@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="realisations" hint-size="100%,72px"></dc-import>
+
+<section style="background:var(--navy);color:#fff;padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:18px">Réalisations</div>
+    <h1 style="font-size:var(--fs-page);line-height:1.06;color:#fff;max-width:18ch">Des missions concrètes, <span style="font-style:italic;color:var(--sand)">pour de vrai.</span></h1>
+    <p style="margin-top:22px;max-width:58ch;font-size:clamp(17px,1.25vw,20px);line-height:1.6;color:rgba(255,255,255,.72)">Un aperçu de ce que nous mettons en place pour nos clients, et du type de missions que nous couvrons au quotidien.</p>
+  </div>
+</section>
+
+<section style="padding:clamp(40px,5vw,64px) 0 clamp(52px,7vw,88px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+        <button onClick="{{ f.set }}" style="font-family:var(--sans);font-size:13.5px;font-weight:600;padding:9px 16px;border-radius:999px;cursor:pointer;border:1px solid {{ f.bd }};background:{{ f.bg }};color:{{ f.fg }}">{{ f.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="6">
+        <a href="Realisation.dc.html" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden" style-hover="border-color:var(--line-2);box-shadow:0 18px 40px -24px rgba(20,32,58,.28)">
+          <div style="aspect-ratio:16/10;background:linear-gradient(135deg,{{ c.g1 }},{{ c.g2 }});display:flex;align-items:flex-end;padding:18px">
+            <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#fff;background:rgba(0,0,0,.28);padding:6px 12px;border-radius:999px;backdrop-filter:blur(4px)">{{ c.cat }}</span>
+          </div>
+          <div style="padding:24px;display:flex;flex-direction:column;flex:1">
+            <h3 style="font-size:20px;line-height:1.2">{{ c.title }}</h3>
+            <p style="margin-top:8px;color:var(--muted);font-size:14px;line-height:1.5;flex:1">{{ c.summary }}</p>
+            <div style="margin-top:16px;display:flex;gap:16px;flex-wrap:wrap">
+              <div><div style="font-family:var(--serif);font-size:22px;color:var(--rust)">{{ c.stat1 }}</div><div style="font-size:12px;color:var(--muted)">{{ c.stat1l }}</div></div>
+              <div><div style="font-family:var(--serif);font-size:22px;color:var(--rust)">{{ c.stat2 }}</div><div style="font-size:12px;color:var(--muted)">{{ c.stat2l }}</div></div>
+            </div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 clamp(56px,6.5vw,96px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="background:var(--rust);border-radius:20px;padding:clamp(32px,5vw,56px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+      <div style="max-width:46ch"><h2 style="font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#fff">Votre projet, la prochaine réalisation ?</h2><p style="margin-top:14px;color:rgba(255,255,255,.85);font-size:16px;line-height:1.55">Parlons de ce que vous voulez déléguer.</p></div>
+      <a href="Contact.dc.html" style="background:#fff;color:var(--navy);font-size:15px;font-weight:700;padding:15px 26px;border-radius:10px;white-space:nowrap" style-hover="background:var(--cream)">Réserver un appel</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  state = { filter:'Tous' };
+  renderVals(){
+    const cats=['Tous','Secrétariat','Comptabilité','RH','Automatisation','Webmarketing'];
+    const active=this.state.filter;
+    const filters=cats.map(label=>({label,set:()=>this.setState({filter:label}),
+      bg:label===active?'var(--navy)':'#fff',fg:label===active?'#fff':'var(--ink)',bd:label===active?'var(--navy)':'var(--line-2)'}));
+    const all=[
+      {cat:'Secrétariat',g1:'#233457',g2:'#16203a',title:'Cabinet d\u2019architectes',summary:'Gestion d\u2019agenda et coordination des appels d\u2019offres pour une équipe de 6 personnes.',stat1:'−12h',stat1l:'/ semaine',stat2:'100%',stat2l:'RDV suivis'},
+      {cat:'Comptabilité',g1:'#2a2c3f',g2:'#181a2c',title:'Studio de design',summary:'Facturation, relances et préparation des pièces comptables mensuelles.',stat1:'−30j',stat1l:'délai de paiement',stat2:'0',stat2l:'oubli de relance'},
+      {cat:'RH',g1:'#2b3350',g2:'#171f38',title:'Agence immobilière',summary:'Sourcing et présélection de candidats commerciaux, planification des entretiens.',stat1:'18',stat1l:'candidats qualifiés',stat2:'3 sem.',stat2l:'pour recruter'},
+      {cat:'Automatisation',g1:'#243b3a',g2:'#16211f',title:'E-commerce local',summary:'Automatisation du suivi de commandes et des réponses clients récurrentes.',stat1:'−60%',stat1l:'temps support',stat2:'24/7',stat2l:'réponses'},
+      {cat:'Webmarketing',g1:'#3a2f2a',g2:'#211a16',title:'Restaurant & traiteur',summary:'Gestion des réseaux sociaux et campagnes locales de saison.',stat1:'+40%',stat1l:'réservations',stat2:'x3',stat2l:'portée'},
+      {cat:'Secrétariat',g1:'#2c2540',g2:'#181428',title:'Coopérative agricole',summary:'Suivi administratif et gestion documentaire multi-sites, bilingue FR/EN.',stat1:'−15h',stat1l:'/ semaine',stat2:'2',stat2l:'langues'},
+    ];
+    const cases = active==='Tous'?all:all.filter(c=>c.cat===active);
+    return { filters, cases };
+  }
+}
+</script>
+</body>
+</html>

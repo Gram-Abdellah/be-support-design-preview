@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="realisations" hint-size="100%,72px"></dc-import>
+
+<section style="background:var(--navy);color:#fff;padding:clamp(48px,6vw,84px) 0">
+  <div style="width:min(920px,92vw);margin:0 auto">
+    <div style="display:flex;gap:8px;align-items:center;font-size:13px;color:rgba(255,255,255,.55);margin-bottom:22px">
+      <a href="Realisations.dc.html" style="color:rgba(255,255,255,.6)" style-hover="color:#fff">Réalisations</a><span>/</span><span style="color:var(--sand)">Cabinet d'architectes</span>
+    </div>
+    <span style="display:inline-flex;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 13px;border-radius:999px">Secrétariat &amp; assistance</span>
+    <h1 style="margin-top:22px;font-size:clamp(30px,4.4vw,52px);line-height:1.07;color:#fff;max-width:20ch">Rendre 12 heures par semaine à un cabinet d'<span style="font-style:italic;color:var(--sand)">architectes.</span></h1>
+    <div style="margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:18px;max-width:640px">
+      <div><div style="font-size:12px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.1em">Client</div><div style="margin-top:6px;font-size:15px;color:#fff">Cabinet · 6 personnes</div></div>
+      <div><div style="font-size:12px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.1em">Secteur</div><div style="margin-top:6px;font-size:15px;color:#fff">Architecture</div></div>
+      <div><div style="font-size:12px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.1em">Durée</div><div style="margin-top:6px;font-size:15px;color:#fff">Depuis 8 mois</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(48px,6vw,80px) 0">
+  <div style="width:min(920px,92vw);margin:0 auto">
+    <div style="aspect-ratio:16/8;border-radius:18px;background:linear-gradient(135deg,#233457,#16203a);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);margin-bottom:clamp(36px,5vw,56px)">
+      <div style="text-align:center"><div style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600">Visuel de la mission</div><div style="font-size:12.5px;margin-top:6px">emplacement image (à fournir)</div></div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+      <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="3">
+        <div>
+          <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:12px">{{ b.k }}</div>
+          <h2 style="font-size:clamp(22px,2.8vw,30px);line-height:1.15;max-width:24ch">{{ b.t }}</h2>
+          <p style="margin-top:14px;color:var(--ink);font-size:16.5px;line-height:1.7;max-width:64ch">{{ b.d }}</p>
+        </div>
+      </sc-for>
+
+      <div style="background:var(--navy);border-radius:20px;padding:clamp(28px,4vw,44px);color:#fff">
+        <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:20px">Résultats</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px">
+          <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
+            <div><div style="font-family:var(--serif);font-size:clamp(36px,4.5vw,52px);line-height:1;color:var(--sand)">{{ r.v }}</div><div style="margin-top:10px;color:rgba(255,255,255,.72);font-size:14.5px;line-height:1.4">{{ r.l }}</div></div>
+          </sc-for>
+        </div>
+      </div>
+
+      <blockquote style="margin:0;border-left:3px solid var(--rust);padding:6px 0 6px 24px">
+        <p style="font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.6vw,26px);line-height:1.4;color:var(--ink)">« On a récupéré un temps qu'on croyait perdu. L'assistante connaît nos dossiers mieux que nous certains matins. »</p>
+        <footer style="margin-top:16px;font-size:14px;color:var(--muted)">Dirigeante, cabinet d'architectes (Bruxelles)</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 clamp(56px,6.5vw,96px)">
+  <div style="width:min(920px,92vw);margin:0 auto">
+    <div style="background:var(--rust);border-radius:20px;padding:clamp(30px,4vw,48px);text-align:center">
+      <h2 style="font-size:clamp(24px,3.2vw,36px);line-height:1.12;color:#fff;max-width:22ch;margin:0 auto">Un cas proche du vôtre ? Parlons-en.</h2>
+      <a href="Contact.dc.html" style="display:inline-block;margin-top:22px;background:#fff;color:var(--navy);font-size:15px;font-weight:700;padding:15px 28px;border-radius:10px" style-hover="background:var(--cream)">Réserver un appel</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  renderVals(){
+    return {
+      blocks:[
+        {k:'Contexte',t:'Un cabinet qui grandit plus vite que son organisation',d:'Six architectes, des projets en parallèle et une charge administrative qui débordait sur les soirées. Les appels d\u2019offres, l\u2019agenda partagé et la relation clients se géraient au fil de l\u2019eau, sans personne pour en avoir la responsabilité.'},
+        {k:'Le défi',t:'Reprendre la main sans embaucher',d:'Le cabinet ne voulait ni recruter à temps plein, ni multiplier les outils. L\u2019objectif : décharger la coordination et le secrétariat, tout en gardant une trace fiable de chaque décision et de chaque rendez-vous.'},
+        {k:'Ce que Be-Support a fait',t:'Une assistante dédiée, formée aux outils du cabinet',d:'Après un diagnostic d\u2019une journée, une assistante dédiée a pris en charge l\u2019agenda, le suivi des appels d\u2019offres et la boîte e-mail. Deux automatisations ont été mises en place pour les relances et la préparation des réunions. Un point hebdomadaire cadre les priorités.'},
+      ],
+      results:[
+        {v:'−12h',l:'récupérées chaque semaine par la direction'},
+        {v:'100%',l:'des rendez-vous et échéances suivis'},
+        {v:'0',l:'appel d\u2019offres manqué depuis le démarrage'},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

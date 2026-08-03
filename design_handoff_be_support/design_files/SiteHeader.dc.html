@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--terra:#a86a3c;--terra-dk:#8f5729;--cream:#f3ede2;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<header style="position:sticky;top:0;z-index:60;background:var(--terra);border-bottom:1px solid rgba(255,255,255,.14);font-family:var(--sans)">
+  <div style="width:min(1200px,92vw);margin:0 auto;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="Home.dc.html" style="display:flex;align-items:center" aria-label="Be-Support, accueil"><img src="logo-mark-white.png" alt="Be-Support" style="height:34px;width:auto;display:block" /></a>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:4px">
+        <div style="position:relative">
+          <button onClick="{{ toggleServices }}" style="display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:14.5px;font-weight:500;color:{{ servicesColor }};padding:9px 12px;border-radius:7px" style-hover="color:#fff;background:rgba(255,255,255,.06)">{{ t.services }}
+            <span style="display:inline-block;transition:transform .2s;transform:rotate({{ caret }}deg);font-size:9px;opacity:.7">▼</span>
+          </button>
+          <sc-if value="{{ servicesOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:calc(100% + 10px);left:0;width:520px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 60px -20px rgba(20,32,58,.35);padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;animation:rise .18s ease">
+              <div style="grid-column:1 / -1;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);font-weight:700;padding:2px 8px 4px">{{ t.groupA }}</div>
+              <sc-for list="{{ groupA }}" as="s" hint-placeholder-count="4">
+                <a href="{{ s.href }}" style="display:flex;gap:11px;padding:9px 8px;border-radius:9px;align-items:flex-start" style-hover="background:var(--cream)">
+                  <span style="flex:none;width:30px;height:30px;border-radius:8px;background:var(--cream);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:13px;color:var(--rust);font-weight:600">{{ s.n }}</span>
+                  <span style="display:block"><span style="display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.25">{{ s.name }}</span><span style="display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.3">{{ s.tag }}</span></span>
+                </a>
+              </sc-for>
+              <div style="grid-column:1 / -1;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);font-weight:700;padding:12px 8px 4px;border-top:1px solid var(--line);margin-top:6px">{{ t.groupB }}</div>
+              <sc-for list="{{ groupB }}" as="s" hint-placeholder-count="2">
+                <a href="{{ s.href }}" style="display:flex;gap:11px;padding:9px 8px;border-radius:9px;align-items:flex-start" style-hover="background:var(--cream)">
+                  <span style="flex:none;width:30px;height:30px;border-radius:8px;background:var(--cream);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:13px;color:var(--rust);font-weight:600">{{ s.n }}</span>
+                  <span style="display:block"><span style="display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.25">{{ s.name }}</span><span style="display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.3">{{ s.tag }}</span></span>
+                </a>
+              </sc-for>
+              <a href="Be-Stars.dc.html" style="grid-column:1 / -1;margin-top:6px;display:flex;gap:11px;padding:12px;border-radius:9px;align-items:center;background:var(--navy)" style-hover="background:var(--navy-2)">
+                <span style="flex:none;width:30px;height:30px;border-radius:8px;background:rgba(201,183,142,.2);display:flex;align-items:center;justify-content:center;color:var(--sand);font-size:13px">★</span>
+                <span style="display:block"><span style="display:block;font-size:14px;font-weight:600;color:#fff;line-height:1.25">Be-Stars <span style="color:var(--sand)">·</span> Classement hôtelier Maroc</span><span style="display:block;font-size:12px;color:rgba(255,255,255,.6);margin-top:2px">{{ t.bestarsSub }}</span></span>
+              </a>
+              <a href="Services.dc.html" style="grid-column:1 / -1;padding:11px;text-align:center;background:var(--cream);border-radius:9px;font-size:13.5px;font-weight:600;color:var(--ink)" style-hover="background:var(--line)">{{ t.all }}</a>
+            </div>
+          </sc-if>
+        </div>
+        <sc-for list="{{ nav }}" as="i" hint-placeholder-count="5">
+          <a href="{{ i.href }}" style="font-size:14.5px;font-weight:500;color:{{ i.color }};padding:9px 12px;border-radius:7px" style-hover="color:#fff;background:rgba(255,255,255,.06)">{{ i.label }}</a>
+        </sc-for>
+
+        <!-- language switcher -->
+        <span style="width:1px;height:22px;background:rgba(255,255,255,.24);margin:0 10px"></span>
+        <div style="position:relative">
+          <button onClick="{{ toggleLang }}" style="display:flex;align-items:center;gap:7px;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:14px;font-weight:600;color:{{ langBtnColor }};padding:9px 6px;border-radius:7px" style-hover="color:#fff">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" style="opacity:.9"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z"></path></svg>
+            {{ langLabel }}<span style="font-size:8px;opacity:.7;transform:rotate({{ langCaret }}deg);transition:transform .2s">▼</span>
+          </button>
+          <sc-if value="{{ langOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid var(--line);border-radius:11px;box-shadow:0 20px 50px -20px rgba(20,32,58,.35);padding:6px;min-width:150px;animation:rise .16s ease">
+              <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+                <button onClick="{{ l.set }}" style="display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;background:{{ l.bg }};border:0;cursor:pointer;font-family:var(--sans);font-size:14px;font-weight:{{ l.weight }};color:var(--ink);padding:10px 12px;border-radius:8px;text-align:left" style-hover="background:var(--cream)">{{ l.name }}<span style="color:var(--rust);font-size:13px">{{ l.check }}</span></button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </nav>
+    </sc-if>
+
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px">
+        <span style="width:24px;height:2px;background:#fff;border-radius:2px"></span>
+        <span style="width:24px;height:2px;background:#fff;border-radius:2px"></span>
+        <span style="width:24px;height:2px;background:#fff;border-radius:2px"></span>
+      </button>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="background:var(--terra-dk);border-top:1px solid rgba(255,255,255,.14);padding:14px 0 22px;animation:rise .2s ease">
+      <div style="width:min(1200px,92vw);margin:0 auto;display:flex;flex-direction:column">
+        <button onClick="{{ toggleMobServices }}" style="display:flex;align-items:center;justify-content:space-between;background:none;border:0;cursor:pointer;color:#fff;font-family:var(--sans);font-size:16px;font-weight:600;padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.08)">{{ t.services }} <span style="color:var(--rust)">{{ mobServicesSign }}</span></button>
+        <sc-if value="{{ mobServicesOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:6px 4px 12px;display:flex;flex-direction:column;gap:2px">
+            <sc-for list="{{ allServices }}" as="s" hint-placeholder-count="6">
+              <a href="{{ s.href }}" style="color:rgba(255,255,255,.75);font-size:14.5px;padding:9px 10px;border-radius:8px" style-hover="background:rgba(255,255,255,.06);color:#fff">{{ s.name }}</a>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-for list="{{ nav }}" as="i" hint-placeholder-count="5">
+          <a href="{{ i.href }}" style="color:#fff;font-size:16px;font-weight:600;padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.08)">{{ i.label }}</a>
+        </sc-for>
+        <div style="display:flex;gap:8px;padding:16px 0 4px">
+          <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+            <button onClick="{{ l.set }}" style="flex:1;background:{{ l.mbg }};border:1px solid {{ l.mbd }};cursor:pointer;font-family:var(--sans);font-size:14px;font-weight:600;color:{{ l.mfg }};padding:11px;border-radius:9px">{{ l.code }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:72},&quot;active&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { vw:(typeof window!=='undefined'?window.innerWidth:1280), mobileOpen:false, servicesOpen:false, mobServicesOpen:false, langOpen:false, lang:'fr' };
+  componentDidMount(){
+    this._r=()=>this.setState({vw:window.innerWidth});
+    window.addEventListener('resize',this._r);
+    try{ const saved=localStorage.getItem('bs-lang'); if(saved){ this.setState({lang:saved}); document.documentElement.lang=saved; } }catch(e){}
+    this._lang=(e)=>{ if(e&&e.detail&&e.detail!==this.state.lang) this.setState({lang:e.detail}); };
+    window.addEventListener('bs-lang-change',this._lang);
+  }
+  componentWillUnmount(){ window.removeEventListener('resize',this._r); window.removeEventListener('bs-lang-change',this._lang); }
+  setLang(code){
+    this.setState({lang:code,langOpen:false});
+    try{ localStorage.setItem('bs-lang',code); }catch(e){}
+    try{ document.documentElement.lang=code; }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('bs-lang-change',{detail:code})); }catch(e){}
+  }
+  renderVals(){
+    const isMobile=this.state.vw<900;
+    const active=this.props.active||'';
+    const lang=this.state.lang;
+    const DICT={
+      fr:{services:'Services',groupA:'Support & gestion',groupB:'Création & visibilité',all:'Voir tous les services →',cta:'Réserver un appel',bestarsSub:'Audit loi 80-14 / décret 985-24',
+        nav:['Approche','Tarifs','Réalisations','À propos','Blog','Contact'],
+        sA:[['Secrétariat & assistance administrative','Gestion quotidienne'],['Support comptable & facturation','Devis, factures, relances'],['Gestion RH & recrutement','Sourcing & onboarding'],['Automatisation IA','Process & gains de temps']],
+        sB:[['Webdesign & webmarketing','Site, SEO, réseaux'],['Infographie','Identité & supports']],
+        bestarsItem:'★ Be-Stars : Classement hôtelier'},
+      en:{services:'Services',groupA:'Support & management',groupB:'Creative & visibility',all:'See all services →',cta:'Book a call',bestarsSub:'Audit law 80-14 / decree 985-24',
+        nav:['Approach','Pricing','Case studies','About','Blog','Contact'],
+        sA:[['Secretarial & admin support','Day-to-day management'],['Accounting & invoicing','Quotes, invoices, follow-ups'],['HR & recruitment','Sourcing & onboarding'],['AI automation','Processes & time saved']],
+        sB:[['Web design & marketing','Site, SEO, social'],['Graphic design','Identity & assets']],
+        bestarsItem:'★ Be-Stars: Hotel classification'},
+      nl:{services:'Diensten',groupA:'Support & beheer',groupB:'Creatie & zichtbaarheid',all:'Alle diensten →',cta:'Plan een gesprek',bestarsSub:'Audit wet 80-14 / decreet 985-24',
+        nav:['Aanpak','Tarieven','Realisaties','Over ons','Blog','Contact'],
+        sA:[['Secretariaat & administratie','Dagelijks beheer'],['Boekhouding & facturatie','Offertes, facturen, herinneringen'],['HR & werving','Sourcing & onboarding'],['AI-automatisering','Processen & tijdwinst']],
+        sB:[['Webdesign & marketing','Site, SEO, social'],['Grafisch ontwerp','Identiteit & materiaal']],
+        bestarsItem:'★ Be-Stars: Hotelclassificatie'},
+    };
+    const t=DICT[lang]||DICT.fr;
+    const groupA=t.sA.map((s,i)=>({n:'0'+(i+1),name:s[0],tag:s[1],href:'Service.dc.html'}));
+    const groupB=t.sB.map((s,i)=>({n:'0'+(i+5),name:s[0],tag:s[1],href:'Service.dc.html'}));
+    const keys=[{key:'approche',href:'Approche.dc.html'},{key:'tarifs',href:'Tarifs.dc.html'},{key:'realisations',href:'Realisations.dc.html'},{key:'apropos',href:'APropos.dc.html'},{key:'blog',href:'Blog.dc.html'},{key:'contact',href:'Contact.dc.html'}];
+    const nav=keys.map((k,i)=>({...k,label:t.nav[i],color:k.key===active?'#ffffff':'rgba(255,255,255,.82)'}));
+    const langMeta=[{code:'FR',id:'fr',name:'Français'},{code:'EN',id:'en',name:'English'},{code:'NL',id:'nl',name:'Nederlands'}];
+    const langs=langMeta.map(l=>{const on=l.id===lang;return {code:l.code,name:l.name,set:()=>this.setLang(l.id),check:on?'✓':'',weight:on?'700':'500',bg:on?'var(--cream)':'transparent',mbg:on?'var(--rust)':'rgba(255,255,255,.06)',mfg:on?'#fff':'rgba(255,255,255,.8)',mbd:on?'var(--rust)':'rgba(255,255,255,.14)'};});
+    return {
+      isMobile, isDesktop:!isMobile, t,
+      mobileOpen:this.state.mobileOpen&&isMobile,
+      servicesOpen:this.state.servicesOpen,
+      servicesColor:(active==='services'||this.state.servicesOpen)?'#ffffff':'rgba(255,255,255,.82)',
+      mobServicesOpen:this.state.mobServicesOpen,
+      mobServicesSign:this.state.mobServicesOpen?'−':'+',
+      caret:this.state.servicesOpen?180:0,
+      langOpen:this.state.langOpen, langCaret:this.state.langOpen?180:0,
+      langLabel:lang.toUpperCase(), langs, langBtnColor:this.state.langOpen?'#fff':'rgba(255,255,255,.82)',
+      groupA, groupB,
+      allServices:groupA.concat(groupB).concat([{n:'★',name:t.bestarsItem,tag:'',href:'Be-Stars.dc.html'}]),
+      nav,
+      toggleMenu:()=>this.setState(s=>({mobileOpen:!s.mobileOpen})),
+      toggleServices:()=>this.setState(s=>({servicesOpen:!s.servicesOpen,langOpen:false})),
+      toggleMobServices:()=>this.setState(s=>({mobServicesOpen:!s.mobServicesOpen})),
+      toggleLang:()=>this.setState(s=>({langOpen:!s.langOpen,servicesOpen:false})),
+    };
+  }
+}
+</script>
+</body>
+</html>

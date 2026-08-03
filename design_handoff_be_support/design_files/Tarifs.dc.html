@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="tarifs" hint-size="100%,72px"></dc-import>
+
+<section style="background:var(--navy);color:#fff;padding:clamp(56px,6.5vw,96px) 0 clamp(70px,9vw,120px)">
+  <div style="width:min(1200px,92vw);margin:0 auto;text-align:center">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:18px">Tarifs</div>
+    <h1 style="font-size:var(--fs-page);line-height:1.06;color:#fff;max-width:20ch;margin:0 auto">Trois formules. <span style="font-style:italic;color:var(--sand)">Sans coûts cachés.</span></h1>
+    <p style="margin:22px auto 0;max-width:52ch;font-size:clamp(17px,1.25vw,20px);line-height:1.6;color:rgba(255,255,255,.72)">Appel découverte gratuit. Engagement minimum de 3 mois puis mensuel. Remplacement de l'assistant garanti, inclus.</p>
+  </div>
+</section>
+
+<section style="padding:0 0 clamp(56px,6.5vw,96px);margin-top:clamp(-60px,-7vw,-90px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;align-items:start">
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+        <div style="background:#fff;border:{{ p.border }};border-radius:20px;padding:32px;position:relative;box-shadow:0 24px 60px -34px rgba(20,32,58,.35)">
+          <sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}">
+            <span style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--rust);color:#fff;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:999px;white-space:nowrap">Recommandé</span>
+          </sc-if>
+          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:{{ p.accent }};font-weight:700">{{ p.name }}</div>
+          <p style="margin-top:8px;color:var(--muted);font-size:13.5px;line-height:1.45;min-height:38px">{{ p.tagline }}</p>
+          <div style="margin-top:16px;display:flex;align-items:baseline;gap:6px">
+            <span style="font-family:var(--serif);font-size:44px;line-height:1">{{ p.price }}</span>
+            <span style="color:var(--muted);font-size:14px">{{ p.per }}</span>
+          </div>
+          <div style="color:var(--muted);font-size:12.5px;margin-top:4px">{{ p.vat }}</div>
+          <a href="Contact.dc.html" style="display:block;text-align:center;margin-top:22px;background:{{ p.btnBg }};color:{{ p.btnColor }};font-size:15px;font-weight:600;padding:14px;border-radius:10px;border:{{ p.btnBorder }}" style-hover="{{ p.btnHover }}">{{ p.cta }}</a>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ p.features }}" as="f" hint-placeholder-count="5">
+              <div style="display:flex;gap:11px;align-items:flex-start;font-size:14px;line-height:1.45"><span style="flex:none;color:var(--rust);font-weight:700">✓</span><span>{{ f }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="text-align:center;margin-top:26px;color:var(--muted);font-size:13.5px;max-width:70ch;margin-left:auto;margin-right:auto;line-height:1.6">Appel découverte gratuit de 30 min. Les formules mensuelles sont sans engagement au-delà des 3 premiers mois. Une prestation à la carte est aussi possible après un diagnostic.</p>
+  </div>
+</section>
+
+<!-- comparison table -->
+<section style="padding:0 0 clamp(56px,6.5vw,96px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Comparatif</div>
+    <h2 style="font-size:clamp(24px,3vw,34px);line-height:1.12;max-width:22ch">Ce que couvre chaque <span style="font-style:italic;color:var(--rust)">formule.</span></h2>
+    <div style="margin-top:28px;overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:#fff">
+      <table style="width:100%;border-collapse:collapse;min-width:560px;font-size:14.5px">
+        <thead>
+          <tr style="background:var(--cream)">
+            <th style="text-align:left;padding:16px 20px;font-weight:600;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase">Prestation</th>
+            <th style="padding:16px 16px;font-weight:700;color:var(--ink)">Découverte</th>
+            <th style="padding:16px 16px;font-weight:700;color:var(--rust)">Standard</th>
+            <th style="padding:16px 16px;font-weight:700;color:var(--ink)">Sur mesure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="6">
+            <tr style="border-top:1px solid var(--line)">
+              <td style="text-align:left;padding:15px 20px;color:var(--ink)">{{ r.label }}</td>
+              <td style="text-align:center;padding:15px 16px;color:var(--muted)">{{ r.a }}</td>
+              <td style="text-align:center;padding:15px 16px;color:var(--ink);font-weight:600">{{ r.b }}</td>
+              <td style="text-align:center;padding:15px 16px;color:var(--muted)">{{ r.c }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:0 0 clamp(56px,6.5vw,96px)">
+  <div style="width:min(860px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px;text-align:center">Questions fréquentes</div>
+    <h2 style="font-size:clamp(24px,3vw,34px);line-height:1.12;text-align:center">Avant de vous <span style="font-style:italic;color:var(--rust)">lancer.</span></h2>
+    <div style="margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+        <button onClick="{{ f.toggle }}" style="width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;font-family:var(--sans);padding:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px">
+            <span style="font-size:16px;font-weight:500;color:var(--ink)">{{ f.q }}</span>
+            <span style="color:var(--rust);font-size:22px;flex:none">{{ f.sign }}</span>
+          </div>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <p style="padding:0 22px 20px;color:var(--muted);font-size:14.5px;line-height:1.6;text-align:left">{{ f.a }}</p>
+          </sc-if>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  state = { open:{} };
+  renderVals(){
+    const plans=[
+      {name:'Découverte',featured:false,tagline:'Pour tester la délégation sur un périmètre ciblé.',price:'590 €',per:'/ mois',vat:'HT · ~10h / mois',accent:'var(--muted)',border:'1px solid var(--line)',btnBg:'var(--navy)',btnColor:'#fff',btnBorder:'0',btnHover:'background:var(--navy-2)',cta:'Démarrer le diagnostic',features:['Audit de vos process et outils','~10 heures d\u2019assistance / mois','Un canal de communication dédié','Reporting mensuel','Sans engagement au-delà de 3 mois']},
+      {name:'Standard',featured:true,tagline:'Le choix des PME : un assistant présent au quotidien.',price:'1 100 €',per:'/ mois',vat:'HT · ~25h / mois',accent:'var(--rust)',border:'2px solid var(--rust)',btnBg:'var(--rust)',btnColor:'#fff',btnBorder:'0',btnHover:'background:var(--rust-dk)',cta:'Réserver un appel',features:['Tout Découverte, plus :','~25 heures d\u2019assistance / mois','Assistant dédié formé à vos outils','Reporting hebdomadaire','Remplacement garanti, sans interruption','Accès à l\u2019automatisation IA']},
+      {name:'Sur mesure',featured:false,tagline:'Pour un besoin large ou multi-services.',price:'dès 1 900 €',per:'/ mois',vat:'HT · volume défini ensemble',accent:'var(--muted)',border:'1px solid var(--line)',btnBg:'transparent',btnColor:'var(--ink)',btnBorder:'1.5px solid var(--line-2)',btnHover:'border-color:var(--ink)',cta:'Construire mon offre',features:['Tout Standard, plus :','Volume d\u2019heures sur mesure','Plusieurs services combinés','Interlocuteur unique de coordination','Points de suivi rapprochés']},
+    ];
+    const rows=[
+      {label:'Appel découverte',a:'✓',b:'✓',c:'✓'},
+      {label:'Assistant dédié',a:'Non',b:'✓',c:'✓'},
+      {label:'Heures / mois',a:'~10h',b:'~25h',c:'sur mesure'},
+      {label:'Automatisation IA',a:'Non',b:'✓',c:'✓'},
+      {label:'Fréquence de reporting',a:'Mensuel',b:'Hebdo',c:'Hebdo'},
+      {label:'Remplacement garanti',a:'✓',b:'✓',c:'✓'},
+    ];
+    const faqData=[
+      {q:'Y a-t-il un engagement ?',a:'Un minimum de 3 mois pour installer une vraie collaboration, puis c\u2019est mensuel et sans engagement.'},
+      {q:'Que se passe-t-il si l\u2019assistant ne convient pas ?',a:'Le remplacement est garanti et inclus, sans interruption de service, pendant toute la durée du contrat.'},
+      {q:'Les heures non utilisées sont-elles reportées ?',a:'On cadre le volume au diagnostic. Un ajustement de formule est possible d\u2019un mois à l\u2019autre selon vos besoins.'},
+      {q:'Facturez-vous à la tâche ?',a:'Le modèle est mensuel pour la régularité, mais une prestation ponctuelle à la carte reste possible après diagnostic.'},
+    ];
+    const open=this.state.open;
+    const faqs=faqData.map((f,i)=>({...f,open:!!open[i],sign:open[i]?'−':'+',toggle:()=>this.setState(s=>({open:{...s.open,[i]:!s.open[i]}}))}));
+    return { plans, rows, faqs };
+  }
+}
+</script>
+</body>
+</html>

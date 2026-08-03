@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<section style="background:var(--navy);color:#fff;padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:18px">Contact</div>
+    <h1 style="font-size:var(--fs-page);line-height:1.06;color:#fff;max-width:18ch">Réservez votre appel <span style="font-style:italic;color:var(--sand)">découverte.</span></h1>
+    <p style="margin-top:22px;max-width:56ch;font-size:clamp(17px,1.25vw,20px);line-height:1.6;color:rgba(255,255,255,.72)">30 minutes, sans engagement, pour cadrer votre besoin. Choisissez un créneau directement, ou écrivez-nous : on vous répond sous 24h ouvrées.</p>
+  </div>
+</section>
+
+<section style="padding:clamp(48px,6vw,80px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;align-items:start">
+
+      <!-- BOOKING (primary) -->
+      <div style="background:#fff;border:2px solid var(--rust);border-radius:20px;padding:clamp(26px,3vw,36px);position:relative">
+        <span style="position:absolute;top:-13px;left:28px;background:var(--rust);color:#fff;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:999px">Recommandé</span>
+        <h2 style="font-size:clamp(22px,2.6vw,28px);line-height:1.15">Réserver un créneau</h2>
+        <p style="margin-top:10px;color:var(--muted);font-size:15px;line-height:1.55">Le plus rapide : choisissez l'heure qui vous arrange, l'invitation part automatiquement.</p>
+        <!-- booking embed placeholder -->
+        <div style="margin-top:22px;border:1.5px dashed var(--line-2);border-radius:14px;background:var(--cream);padding:28px 20px;text-align:center">
+          <div style="width:52px;height:52px;border-radius:14px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin:0 auto;font-size:24px">📅</div>
+          <div style="margin-top:16px;font-weight:600;font-size:16px">Emplacement agenda</div>
+          <p style="margin-top:6px;color:var(--muted);font-size:13.5px;line-height:1.5;max-width:34ch;margin-left:auto;margin-right:auto">L'embed Calendly / Cal.com viendra ici. En attendant, la maquette du planning ci-dessous.</p>
+          <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:8px;max-width:360px;margin-left:auto;margin-right:auto">
+            <sc-for list="{{ slots }}" as="s" hint-placeholder-count="6">
+              <div style="background:#fff;border:1px solid {{ s.bd }};border-radius:9px;padding:10px 6px"><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em">{{ s.day }}</div><div style="font-size:14px;font-weight:600;color:{{ s.fg }};margin-top:3px">{{ s.time }}</div></div>
+            </sc-for>
+          </div>
+          <a href="#" style="display:inline-block;margin-top:20px;background:var(--rust);color:#fff;font-size:15px;font-weight:600;padding:13px 24px;border-radius:10px" style-hover="background:var(--rust-dk)">Voir tous les créneaux</a>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div style="background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(26px,3vw,36px)">
+        <h2 style="font-size:clamp(22px,2.6vw,28px);line-height:1.15">Ou écrivez-nous</h2>
+        <p style="margin-top:10px;color:var(--muted);font-size:15px;line-height:1.55">On revient vers vous sous 24h ouvrées.</p>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:20px;background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;gap:12px;align-items:center"><span style="width:28px;height:28px;border-radius:999px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;flex:none">✓</span><span style="font-size:14.5px">Merci ! Votre message est bien noté (démo). Nous vous répondons vite.</span></div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div><label style="display:block;font-size:13px;font-weight:600;margin-bottom:7px">Nom</label><input required="true" placeholder="Votre nom" style="width:100%;font-family:var(--sans);font-size:15px;padding:13px 15px;border:1px solid var(--line-2);border-radius:10px;background:#fff;outline:none" style-focus="border-color:var(--rust)" /></div>
+            <div><label style="display:block;font-size:13px;font-weight:600;margin-bottom:7px">Email</label><input required="true" type="email" placeholder="vous@entreprise.be" style="width:100%;font-family:var(--sans);font-size:15px;padding:13px 15px;border:1px solid var(--line-2);border-radius:10px;background:#fff;outline:none" style-focus="border-color:var(--rust)" /></div>
+            <div style="grid-column:1 / -1"><label style="display:block;font-size:13px;font-weight:600;margin-bottom:7px">Entreprise</label><input placeholder="Nom de votre entreprise" style="width:100%;font-family:var(--sans);font-size:15px;padding:13px 15px;border:1px solid var(--line-2);border-radius:10px;background:#fff;outline:none" style-focus="border-color:var(--rust)" /></div>
+            <div style="grid-column:1 / -1"><label style="display:block;font-size:13px;font-weight:600;margin-bottom:7px">Message</label><textarea required="true" rows="4" placeholder="Ce que vous aimeriez déléguer…" style="width:100%;font-family:var(--sans);font-size:15px;padding:13px 15px;border:1px solid var(--line-2);border-radius:10px;background:#fff;outline:none;resize:vertical" style-focus="border-color:var(--rust)"></textarea></div>
+            <button type="submit" style="grid-column:1 / -1;background:var(--navy);color:#fff;font-size:15px;font-weight:600;padding:15px;border-radius:10px;border:0;cursor:pointer;font-family:var(--sans)" style-hover="background:var(--navy-2)">Envoyer le message</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+
+    <!-- direct contacts -->
+    <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
+      <a href="mailto:info@be-support.eu" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;display:block" style-hover="border-color:var(--line-2)">
+        <div style="font-size:22px">✉️</div><div style="margin-top:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600">Email</div><div style="margin-top:4px;font-weight:600;color:var(--ink)">info@be-support.eu</div>
+      </a>
+      <a href="#" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;display:block" style-hover="border-color:var(--line-2)">
+        <div style="font-size:22px">💬</div><div style="margin-top:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600">WhatsApp</div><div style="margin-top:4px;font-weight:600;color:var(--green)">+32 494 91 36 76</div>
+      </a>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px">
+        <div style="font-size:22px">📍</div><div style="margin-top:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600">Adresse</div><div style="margin-top:4px;font-weight:600;color:var(--ink)">Ghazoua, Essaouira, Maroc</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER / GUIDE -->
+<section style="padding:0 0 clamp(52px,7vw,92px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="background:var(--navy);color:#fff;border-radius:22px;padding:clamp(36px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,56px);align-items:center">
+      <div>
+        <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">Guide gratuit</div>
+        <h2 style="font-size:clamp(26px,3.2vw,38px);line-height:1.12;color:#fff;max-width:18ch">Les 10 tâches à déléguer <span style="font-style:italic;color:var(--sand)">en premier.</span></h2>
+        <p style="margin-top:16px;max-width:46ch;color:rgba(255,255,255,.72);font-size:16px;line-height:1.6">Recevez notre guide PDF et, une fois par mois, des méthodes concrètes pour gagner du temps dans votre PME. Sans spam, désabonnement en un clic.</p>
+      </div>
+      <div>
+        <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(201,183,142,.35);border-radius:14px;padding:24px;display:flex;gap:14px;align-items:center"><span style="width:34px;height:34px;border-radius:999px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;flex:none">✓</span><div><div style="font-weight:600;font-size:16px">C'est noté, merci !</div><div style="margin-top:3px;font-size:14px;color:rgba(255,255,255,.7)">Votre guide arrive dans votre boîte mail (démo).</div></div></div>
+        </sc-if>
+        <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubscribe }}">
+            <label style="display:block;font-size:13px;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:9px">Votre adresse email</label>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <input required="true" type="email" placeholder="vous@entreprise.be" style="flex:1;min-width:200px;font-family:var(--sans);font-size:15px;padding:15px 16px;border:1px solid rgba(255,255,255,.2);border-radius:11px;background:rgba(255,255,255,.08);color:#fff;outline:none" style-focus="border-color:var(--sand)" />
+              <button type="submit" style="background:var(--rust);color:#fff;font-size:15px;font-weight:600;padding:15px 26px;border-radius:11px;border:0;cursor:pointer;font-family:var(--sans);white-space:nowrap" style-hover="background:var(--rust-dk)">Recevoir le guide</button>
+            </div>
+            <p style="margin-top:12px;font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.5">En vous inscrivant, vous acceptez de recevoir nos emails. Vos données restent confidentielles.</p>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  state = { sent:false, subscribed:false };
+  renderVals(){
+    const slots=[
+      {day:'Lun',time:'10:00',fg:'var(--ink)',bd:'var(--line)'},
+      {day:'Lun',time:'14:30',fg:'var(--ink)',bd:'var(--line)'},
+      {day:'Mar',time:'09:30',fg:'var(--rust)',bd:'var(--rust)'},
+      {day:'Mer',time:'11:00',fg:'var(--ink)',bd:'var(--line)'},
+      {day:'Jeu',time:'15:00',fg:'var(--ink)',bd:'var(--line)'},
+      {day:'Ven',time:'10:30',fg:'var(--ink)',bd:'var(--line)'},
+    ];
+    return { slots, sent:this.state.sent, notSent:!this.state.sent,
+      subscribed:this.state.subscribed, notSubscribed:!this.state.subscribed,
+      onSubmit:(e)=>{e.preventDefault&&e.preventDefault();this.setState({sent:true});},
+      onSubscribe:(e)=>{e.preventDefault&&e.preventDefault();this.setState({subscribed:true});} };
+  }
+}
+</script>
+</body>
+</html>

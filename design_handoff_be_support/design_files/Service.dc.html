@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="services" hint-size="100%,72px"></dc-import>
+
+<!-- HERO -->
+<section style="background:var(--navy);color:#fff;padding:clamp(48px,6vw,84px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:flex;gap:8px;align-items:center;font-size:13px;color:rgba(255,255,255,.55);margin-bottom:22px">
+      <a href="Services.dc.html" style="color:rgba(255,255,255,.6)" style-hover="color:#fff">Services</a><span>/</span><span style="color:var(--sand)">Secrétariat &amp; assistance</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:center">
+      <div>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 13px;border-radius:999px">Support &amp; gestion · 01</span>
+        <h1 style="margin-top:22px;font-size:clamp(32px,4.6vw,54px);line-height:1.06;color:#fff">Secrétariat &amp; assistance <span style="font-style:italic;color:var(--sand)">administrative.</span></h1>
+        <p style="margin-top:20px;max-width:48ch;font-size:17px;line-height:1.6;color:rgba(255,255,255,.72)">Un assistant dédié gère votre agenda, vos e-mails et vos documents pour que vous restiez sur ce qui compte : votre activité.</p>
+        <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px">
+          <a href="Contact.dc.html" style="background:var(--rust);color:#fff;font-size:15px;font-weight:600;padding:14px 24px;border-radius:9px" style-hover="background:var(--rust-dk)">Réserver un appel</a>
+          <a href="Tarifs.dc.html" style="background:transparent;color:#fff;font-size:15px;font-weight:600;padding:13px 22px;border-radius:9px;border:1.5px solid rgba(255,255,255,.3)" style-hover="border-color:#fff">Voir les tarifs</a>
+        </div>
+      </div>
+      <div style="align-self:stretch;min-height:260px;border-radius:18px;background:linear-gradient(135deg,#233457,#16203a);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center;color:rgba(255,255,255,.4);padding:24px"><div style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600">Visuel du service</div><div style="font-size:12.5px;margin-top:6px">emplacement image (à fournir)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Le problème</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:22ch">L'administratif grignote vos <span style="font-style:italic;color:var(--rust)">journées.</span></h2>
+    <p style="margin-top:16px;max-width:56ch;color:var(--muted);font-size:var(--fs-body);line-height:1.6">Entre les e-mails, les rendez-vous et la paperasse, les tâches à faible valeur s'accumulent. Résultat : moins de temps pour vos clients, votre stratégie et votre croissance.</p>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+      <sc-for list="{{ pains }}" as="p" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px">
+          <div style="font-family:var(--serif);font-size:15px;color:var(--rust);font-weight:600">{{ p.k }}</div>
+          <h3 style="margin-top:10px;font-size:19px">{{ p.t }}</h3>
+          <p style="margin-top:8px;color:var(--muted);font-size:14.5px;line-height:1.55">{{ p.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section style="padding:clamp(56px,6.5vw,96px) 0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px">
+      <div>
+        <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Ce qui est inclus</div>
+        <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:16ch">Tout ce qu'un assistant prend en <span style="font-style:italic;color:var(--rust)">charge.</span></h2>
+        <p style="margin-top:16px;max-width:44ch;color:var(--muted);font-size:var(--fs-body);line-height:1.6">Une liste claire, adaptée à votre activité. Vous déléguez ce que vous voulez, quand vous voulez.</p>
+        <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-size:15px;font-weight:600;color:var(--rust)">Discuter de votre besoin <span>→</span></a>
+      </div>
+      <div style="display:grid;gap:12px">
+        <sc-for list="{{ included }}" as="it" hint-placeholder-count="6">
+          <div style="display:flex;gap:14px;align-items:flex-start;background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:16px 18px">
+            <span style="flex:none;width:24px;height:24px;border-radius:999px;background:var(--rust);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">✓</span>
+            <span style="font-size:15px;line-height:1.45">{{ it }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Comment ça marche</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:20ch">De l'appel à l'exécution, en 4 <span style="font-style:italic;color:var(--rust)">temps.</span></h2>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px">
+          <div style="width:36px;height:36px;border-radius:999px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:15px">{{ st.n }}</div>
+          <h3 style="margin-top:16px;font-size:19px">{{ st.t }}</h3>
+          <p style="margin-top:8px;color:var(--muted);font-size:14.5px;line-height:1.55">{{ st.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS / STATS -->
+<section style="padding:clamp(56px,6.5vw,96px) 0;background:var(--navy);color:#fff">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">Les bénéfices</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;color:#fff;max-width:22ch">Ce que vous y <span style="font-style:italic;color:var(--sand)">gagnez.</span></h2>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:28px">
+          <div style="font-family:var(--serif);font-size:clamp(34px,4vw,48px);line-height:1;color:var(--sand)">{{ s.v }}</div>
+          <div style="margin-top:12px;font-weight:600;font-size:15px">{{ s.t }}</div>
+          <p style="margin-top:6px;color:rgba(255,255,255,.6);font-size:14px;line-height:1.5">{{ s.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="background:var(--rust);border-radius:20px;padding:clamp(32px,5vw,56px);text-align:center">
+      <h2 style="font-size:clamp(26px,3.6vw,40px);line-height:1.1;color:#fff;max-width:20ch;margin:0 auto">Prêt à déléguer votre administratif ?</h2>
+      <p style="margin:16px auto 0;color:rgba(255,255,255,.85);font-size:16px;line-height:1.55;max-width:46ch">30 minutes suffisent pour cadrer votre besoin. Sans engagement, sans jargon.</p>
+      <a href="Contact.dc.html" style="display:inline-block;margin-top:26px;background:#fff;color:var(--navy);font-size:15px;font-weight:700;padding:15px 28px;border-radius:10px" style-hover="background:var(--cream)">Réserver un appel</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  renderVals(){
+    return {
+      pains:[
+        {k:'01',t:'Le temps qui file',d:'Jusqu\u2019à 15 heures par semaine passées sur des tâches sans valeur ajoutée.'},
+        {k:'02',t:'La charge mentale',d:'Rien ne doit passer entre les mailles : rendez-vous, relances, documents.'},
+        {k:'03',t:'Le coût d\u2019un recrutement',d:'Embaucher pour ça coûte cher et prend des mois avant d\u2019être opérationnel.'},
+      ],
+      included:[
+        'Gestion et tri de la boîte e-mail',
+        'Tenue de l\u2019agenda et prise de rendez-vous',
+        'Rédaction et mise en forme de documents',
+        'Suivi administratif et classement',
+        'Préparation de réunions et comptes-rendus',
+        'Accueil téléphonique et filtrage des appels',
+      ],
+      steps:[
+        {n:'1',t:'Appel découverte',d:'On identifie les tâches à déléguer en priorité.'},
+        {n:'2',t:'Assistant dédié',d:'Un profil formé à vos outils vous est présenté.'},
+        {n:'3',t:'Mise en route',d:'Prise en main sous 48h, à votre rythme.'},
+        {n:'4',t:'Suivi continu',d:'Points réguliers et ajustements. Remplacement garanti.'},
+      ],
+      stats:[
+        {v:'−15h',t:'par semaine',d:'de tâches administratives reprises.'},
+        {v:'48h',t:'pour démarrer',d:'entre l\u2019accord et la première mission.'},
+        {v:'FR / EN',t:'bilingue',d:'vos échanges en français comme en anglais.'},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
