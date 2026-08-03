@@ -101,7 +101,7 @@ export default function AProposPage() {
           </h2>
           <div className="mt-9 grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))] gap-5">
             {team.map((m) => (
-              <div key={m.name} className="bg-white border border-line rounded-[18px] overflow-hidden">
+              <div key={m.i} className="bg-white border border-line rounded-[18px] overflow-hidden">
                 <div
                   className="aspect-square flex items-center justify-center font-serif text-4xl text-white/65"
                   style={{ background: `linear-gradient(135deg,${m.g1},${m.g2})` }}
