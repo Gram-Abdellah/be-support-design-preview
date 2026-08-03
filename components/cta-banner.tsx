@@ -95,6 +95,7 @@ export default function CtaBanner({
   variant = "centered",
   preset = "service",
   narrow = false,
+  padTop = false,
 }: {
   title: ReactNode;
   description?: ReactNode;
@@ -103,11 +104,21 @@ export default function CtaBanner({
   variant?: "centered" | "split";
   preset?: CtaPreset;
   narrow?: boolean;
+  /**
+   * Most pages close with `padding: 0 0 clamp(56px,6.5vw,96px)` — the preceding
+   * section supplies the gap above. The Service detail template is the one
+   * exception: its CTA section is padded top *and* bottom.
+   */
+  padTop?: boolean;
 }) {
   const p = CENTERED_PRESETS[preset];
 
   return (
-    <section className="pb-[clamp(56px,6.5vw,96px)]">
+    <section
+      className={
+        padTop ? "py-[clamp(56px,6.5vw,96px)]" : "pb-[clamp(56px,6.5vw,96px)]"
+      }
+    >
       <div className={narrow ? "container-narrow" : "container-page"}>
         {variant === "centered" ? (
           <div
