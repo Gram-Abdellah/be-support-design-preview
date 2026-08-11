@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1e2b48; --navy-2:#16203a; --rust:#bb6a35; --rust-dk:#a2582a;
+    --cream:#f3ede2; --cream-2:#efe7d9; --sand:#c9b78e; --ink:#1e2b48;
+    --muted:#6d7284; --muted-2:#8a8f9e; --line:#e6ded0; --line-2:#d8cfbe;
+    --white:#ffffff; --green:#4a6b52;
+    --serif:'Spectral',Georgia,'Times New Roman',serif;
+    --sans:'Hanken Grotesk',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--rust);text-decoration:none}
+  a:hover{color:var(--rust-dk)}
+  h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+  p{margin:0;text-wrap:pretty}
+  ::selection{background:var(--rust);color:#fff}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+
+<div style="min-height:100vh">
+
+  <!-- ======================= LIVE HEADER (proposal, responsive) ======================= -->
+  <header style="position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08)">
+    <div style="width:min(1180px,92vw);margin:0 auto;height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="#" style="display:flex;align-items:baseline;gap:2px;color:#fff;font-family:var(--serif);font-size:23px;font-weight:600;letter-spacing:-.01em">BE<span style="color:var(--rust);font-weight:600;margin:0 3px">–</span>Support</a>
+
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center;gap:6px">
+          <div style="position:relative">
+            <button onClick="{{ toggleServices }}" style="display:flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:14.5px;font-weight:500;color:rgba(255,255,255,.82);padding:9px 12px;border-radius:7px" style-hover="color:#fff;background:rgba(255,255,255,.06)">Services
+              <span style="display:inline-block;transition:transform .2s;transform:rotate({{ caret }}deg);font-size:10px;opacity:.7">▼</span>
+            </button>
+            <sc-if value="{{ servicesOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;top:calc(100% + 10px);left:0;width:520px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 60px -20px rgba(20,32,58,.35);padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;animation:rise .18s ease">
+                <div style="grid-column:1 / -1;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);font-weight:700;padding:2px 8px 4px">Support &amp; gestion</div>
+                <sc-for list="{{ groupA }}" as="s" hint-placeholder-count="4">
+                  <a href="#" style="display:flex;gap:11px;padding:10px 8px;border-radius:9px;align-items:flex-start" style-hover="background:var(--cream)">
+                    <span style="flex:none;width:30px;height:30px;border-radius:8px;background:var(--cream);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:13px;color:var(--rust);font-weight:600">{{ s.n }}</span>
+                    <span style="display:block"><span style="display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.25">{{ s.name }}</span><span style="display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.3">{{ s.tag }}</span></span>
+                  </a>
+                </sc-for>
+                <div style="grid-column:1 / -1;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);font-weight:700;padding:12px 8px 4px;border-top:1px solid var(--line);margin-top:6px">Création &amp; visibilité</div>
+                <sc-for list="{{ groupB }}" as="s" hint-placeholder-count="2">
+                  <a href="#" style="display:flex;gap:11px;padding:10px 8px;border-radius:9px;align-items:flex-start" style-hover="background:var(--cream)">
+                    <span style="flex:none;width:30px;height:30px;border-radius:8px;background:var(--cream);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:13px;color:var(--rust);font-weight:600">{{ s.n }}</span>
+                    <span style="display:block"><span style="display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.25">{{ s.name }}</span><span style="display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.3">{{ s.tag }}</span></span>
+                  </a>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+          <a href="#" style="font-size:14.5px;font-weight:500;color:rgba(255,255,255,.82);padding:9px 12px;border-radius:7px" style-hover="color:#fff;background:rgba(255,255,255,.06)">Approche</a>
+          <a href="#" style="font-size:14.5px;font-weight:500;color:rgba(255,255,255,.82);padding:9px 12px;border-radius:7px" style-hover="color:#fff;background:rgba(255,255,255,.06)">Tarifs</a>
+          <a href="#" style="font-size:14.5px;font-weight:500;color:rgba(255,255,255,.82);padding:9px 12px;border-radius:7px" style-hover="color:#fff;background:rgba(255,255,255,.06)">Réalisations</a>
+          <a href="#" style="font-size:14.5px;font-weight:500;color:rgba(255,255,255,.82);padding:9px 12px;border-radius:7px" style-hover="color:#fff;background:rgba(255,255,255,.06)">À propos</a>
+          <a href="#" style="font-size:14.5px;font-weight:500;color:rgba(255,255,255,.82);padding:9px 12px;border-radius:7px" style-hover="color:#fff;background:rgba(255,255,255,.06)">Blog</a>
+          <a href="#" style="margin-left:8px;background:var(--rust);color:#fff;font-size:14px;font-weight:600;padding:11px 18px;border-radius:9px" style-hover="background:var(--rust-dk)">{{ ctaLabel }}</a>
+        </nav>
+      </sc-if>
+
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px">
+          <span style="width:24px;height:2px;background:#fff;border-radius:2px"></span>
+          <span style="width:24px;height:2px;background:#fff;border-radius:2px"></span>
+          <span style="width:24px;height:2px;background:#fff;border-radius:2px"></span>
+        </button>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="background:var(--navy-2);border-top:1px solid rgba(255,255,255,.08);padding:14px 0 22px;animation:rise .2s ease">
+        <div style="width:min(1180px,92vw);margin:0 auto;display:flex;flex-direction:column">
+          <button onClick="{{ toggleMobServices }}" style="display:flex;align-items:center;justify-content:space-between;background:none;border:0;cursor:pointer;color:#fff;font-family:var(--sans);font-size:16px;font-weight:600;padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.08)">Services <span style="color:var(--rust)">{{ mobServicesSign }}</span></button>
+          <sc-if value="{{ mobServicesOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:6px 4px 12px;display:flex;flex-direction:column;gap:2px">
+              <sc-for list="{{ allServices }}" as="s" hint-placeholder-count="6">
+                <a href="#" style="color:rgba(255,255,255,.75);font-size:14.5px;padding:9px 10px;border-radius:8px" style-hover="background:rgba(255,255,255,.06);color:#fff">{{ s.name }}</a>
+              </sc-for>
+            </div>
+          </sc-if>
+          <a href="#" style="color:#fff;font-size:16px;font-weight:600;padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.08)">Approche</a>
+          <a href="#" style="color:#fff;font-size:16px;font-weight:600;padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.08)">Tarifs</a>
+          <a href="#" style="color:#fff;font-size:16px;font-weight:600;padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.08)">Réalisations</a>
+          <a href="#" style="color:#fff;font-size:16px;font-weight:600;padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.08)">À propos</a>
+          <a href="#" style="color:#fff;font-size:16px;font-weight:600;padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.08)">Blog</a>
+          <a href="#" style="margin-top:16px;text-align:center;background:var(--rust);color:#fff;font-size:15px;font-weight:600;padding:14px;border-radius:10px">{{ ctaLabel }}</a>
+        </div>
+      </div>
+    </sc-if>
+  </header>
+
+  <!-- ======================= DOC INTRO ======================= -->
+  <section style="background:var(--navy);color:#fff;padding:clamp(48px,7vw,88px) 0">
+    <div style="width:min(1180px,92vw);margin:0 auto">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:22px">Étape 1 · Système de design &amp; propositions</div>
+      <h1 style="font-size:clamp(38px,5.6vw,68px);line-height:1.04;color:#fff;max-width:16ch">La base visuelle de <span style="font-style:italic;color:var(--sand)">Be-Support.</span></h1>
+      <p style="margin-top:24px;max-width:56ch;font-size:clamp(16px,1.7vw,19px);line-height:1.6;color:rgba(255,255,255,.72)">Extrait des pages Accueil et Be-Stars, ce système fige les couleurs, la typographie, l'espacement et les composants réutilisables sur tout le site. Suivent mes propositions pour l'en-tête, le hero et le pied de page dans le passage à un site multi-pages.</p>
+      <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:10px">
+        <span style="font-size:13px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.85)">Palette</span>
+        <span style="font-size:13px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.85)">Typographie</span>
+        <span style="font-size:13px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.85)">Grille &amp; espacement</span>
+        <span style="font-size:13px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.85)">Composants</span>
+        <span style="font-size:13px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.85)">En-tête · Hero · Pied de page</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 01 COLORS ======================= -->
+  <section style="padding:clamp(56px,7vw,96px) 0;background:var(--cream)">
+    <div style="width:min(1180px,92vw);margin:0 auto">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:14px">01 — Palette</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);line-height:1.1;max-width:20ch">Deux couleurs fortes, des neutres <span style="font-style:italic;color:var(--rust)">chauds.</span></h2>
+      <p style="margin-top:16px;max-width:52ch;color:var(--muted);font-size:16.5px;line-height:1.6">Le marine porte l'autorité, le terracotta signale l'action. Le crème et le sable réchauffent les grandes surfaces. Deux fonds sombres maximum par page.</p>
+
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px">
+        <div style="border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff">
+          <div style="height:120px;background:var(--navy)"></div>
+          <div style="padding:14px"><div style="font-weight:600;font-size:14.5px">Marine</div><div style="color:var(--muted);font-size:12.5px;margin-top:3px">#1E2B48 · fonds, texte</div></div>
+        </div>
+        <div style="border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff">
+          <div style="height:120px;background:var(--navy-2)"></div>
+          <div style="padding:14px"><div style="font-weight:600;font-size:14.5px">Marine foncé</div><div style="color:var(--muted);font-size:12.5px;margin-top:3px">#16203A · profondeur</div></div>
+        </div>
+        <div style="border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff">
+          <div style="height:120px;background:var(--rust)"></div>
+          <div style="padding:14px"><div style="font-weight:600;font-size:14.5px">Terracotta</div><div style="color:var(--muted);font-size:12.5px;margin-top:3px">#BB6A35 · CTA, accents</div></div>
+        </div>
+        <div style="border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff">
+          <div style="height:120px;background:var(--sand)"></div>
+          <div style="padding:14px"><div style="font-weight:600;font-size:14.5px">Sable</div><div style="color:var(--muted);font-size:12.5px;margin-top:3px">#C9B78E · bande de confiance</div></div>
+        </div>
+        <div style="border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff">
+          <div style="height:120px;background:var(--cream);border-bottom:1px solid var(--line)"></div>
+          <div style="padding:14px"><div style="font-weight:600;font-size:14.5px">Crème</div><div style="color:var(--muted);font-size:12.5px;margin-top:3px">#F3EDE2 · fond clair</div></div>
+        </div>
+        <div style="border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff">
+          <div style="height:120px;background:#fff;border-bottom:1px solid var(--line)"></div>
+          <div style="padding:14px"><div style="font-weight:600;font-size:14.5px">Blanc</div><div style="color:var(--muted);font-size:12.5px;margin-top:3px">#FFFFFF · cartes</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 02 TYPOGRAPHY ======================= -->
+  <section style="padding:clamp(56px,7vw,96px) 0;background:#fff;border-top:1px solid var(--line)">
+    <div style="width:min(1180px,92vw);margin:0 auto">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:14px">02 — Typographie</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);line-height:1.1;max-width:22ch">Un serif éditorial, un grotesque <span style="font-style:italic;color:var(--rust)">net.</span></h2>
+
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px">
+        <div style="border:1px solid var(--line);border-radius:16px;padding:28px;background:var(--cream)">
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600">Titres — Spectral</div>
+          <div style="font-family:var(--serif);font-size:56px;line-height:1;margin-top:14px">Aa</div>
+          <div style="font-family:var(--serif);font-size:30px;line-height:1.15;margin-top:18px">Votre temps, <span style="font-style:italic;color:var(--rust)">retrouvé.</span></div>
+          <p style="margin-top:14px;color:var(--muted);font-size:13.5px;line-height:1.5">Weights 400–600. L'italique du serif souligne un mot d'accent par titre, jamais plus.</p>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:16px;padding:28px;background:var(--cream)">
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600">Texte — Hanken Grotesk</div>
+          <div style="font-size:52px;line-height:1;margin-top:14px;font-weight:600">Aa</div>
+          <p style="margin-top:18px;font-size:16px;line-height:1.65">Diagnostic, automatisation et exécution opérationnelle par une équipe dédiée, en français comme en anglais.</p>
+          <p style="margin-top:14px;color:var(--muted);font-size:13.5px;line-height:1.5">Weights 400–700. Corps 16–19 px, interligne 1.6.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:28px;border:1px solid var(--line);border-radius:16px;overflow:hidden">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:baseline;padding:22px 26px;border-bottom:1px solid var(--line)"><span style="font-family:var(--serif);font-size:clamp(32px,4vw,52px);line-height:1">Display / H1</span><span style="color:var(--muted);font-size:13px">Spectral 500 · clamp(38–68px) · line-height 1.04</span></div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:baseline;padding:22px 26px;border-bottom:1px solid var(--line)"><span style="font-family:var(--serif);font-size:clamp(26px,3vw,38px);line-height:1">Section / H2</span><span style="color:var(--muted);font-size:13px">Spectral 500 · clamp(28–42px) · line-height 1.1</span></div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:baseline;padding:22px 26px;border-bottom:1px solid var(--line)"><span style="font-family:var(--serif);font-size:22px">Card title / H3</span><span style="color:var(--muted);font-size:13px">Spectral 600 · 20–22px</span></div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:baseline;padding:22px 26px;border-bottom:1px solid var(--line)"><span style="font-size:16px">Corps de texte</span><span style="color:var(--muted);font-size:13px">Hanken 400 · 16–19px · line-height 1.6</span></div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:baseline;padding:22px 26px"><span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700">Surtitre / overline</span><span style="color:var(--muted);font-size:13px">Hanken 700 · 11px · +0.2em · uppercase</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 03 SPACING & GRID ======================= -->
+  <section style="padding:clamp(56px,7vw,96px) 0;background:var(--cream)">
+    <div style="width:min(1180px,92vw);margin:0 auto">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:14px">03 — Grille &amp; espacement</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);line-height:1.1;max-width:22ch">Aéré, régulier, sur une échelle de <span style="font-style:italic;color:var(--rust)">8.</span></h2>
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px">
+          <div style="font-weight:600;font-size:15px">Conteneur</div>
+          <p style="color:var(--muted);font-size:14px;line-height:1.55;margin-top:8px">Largeur max <b style="color:var(--ink)">1180px</b>, marges fluides <b style="color:var(--ink)">min(1180px, 92vw)</b>. Le contenu respire toujours des bords sur mobile.</p>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px">
+          <div style="font-weight:600;font-size:15px">Rythme vertical</div>
+          <p style="color:var(--muted);font-size:14px;line-height:1.55;margin-top:8px">Sections en <b style="color:var(--ink)">clamp(56–96px)</b>. Base d'espacement <b style="color:var(--ink)">8px</b> (8 · 16 · 24 · 32 · 48).</p>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px">
+          <div style="font-weight:600;font-size:15px">Rayons</div>
+          <p style="color:var(--muted);font-size:14px;line-height:1.55;margin-top:8px">Boutons <b style="color:var(--ink)">9px</b>, cartes <b style="color:var(--ink)">14–16px</b>, pastilles <b style="color:var(--ink)">999px</b>.</p>
+        </div>
+      </div>
+      <div style="margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px">
+        <div style="font-weight:600;font-size:15px;margin-bottom:16px">Cartes en grille réactive — <span style="color:var(--muted);font-weight:400">repeat(auto-fit, minmax(…))</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
+          <div style="height:66px;background:var(--cream);border:1px dashed var(--line-2);border-radius:10px"></div>
+          <div style="height:66px;background:var(--cream);border:1px dashed var(--line-2);border-radius:10px"></div>
+          <div style="height:66px;background:var(--cream);border:1px dashed var(--line-2);border-radius:10px"></div>
+          <div style="height:66px;background:var(--cream);border:1px dashed var(--line-2);border-radius:10px"></div>
+        </div>
+        <p style="color:var(--muted);font-size:13px;margin-top:12px">Redimensionnez la fenêtre : les grilles se recomposent seules, sans point de rupture brutal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 04 COMPONENTS ======================= -->
+  <section style="padding:clamp(56px,7vw,96px) 0;background:#fff;border-top:1px solid var(--line)">
+    <div style="width:min(1180px,92vw);margin:0 auto">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:14px">04 — Composants</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);line-height:1.1;max-width:24ch">Les briques réutilisées sur <span style="font-style:italic;color:var(--rust)">chaque page.</span></h2>
+
+      <!-- Buttons -->
+      <div style="margin-top:40px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px">Boutons</div>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+        <a href="#" style="background:var(--rust);color:#fff;font-size:15px;font-weight:600;padding:13px 22px;border-radius:9px" style-hover="background:var(--rust-dk)">Réserver un appel</a>
+        <a href="#" style="background:transparent;color:var(--ink);font-size:15px;font-weight:600;padding:12px 21px;border-radius:9px;border:1.5px solid var(--line-2)" style-hover="border-color:var(--ink)">Voir les tarifs</a>
+        <span style="background:var(--navy);padding:10px 16px;border-radius:9px;display:inline-flex"><a href="#" style="background:#fff;color:var(--navy);font-size:14px;font-weight:600;padding:11px 18px;border-radius:8px">Sur fond marine</a></span>
+        <a href="#" style="color:var(--rust);font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:6px">Lien texte <span>→</span></a>
+      </div>
+
+      <!-- Cards row -->
+      <div style="margin-top:44px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px">Cartes</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px">
+        <!-- service card -->
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px" style-hover="border-color:var(--line-2);box-shadow:0 18px 40px -24px rgba(20,32,58,.28)">
+          <div style="width:44px;height:44px;border-radius:11px;background:var(--cream);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--rust);font-size:19px;font-weight:600">S</div>
+          <h3 style="margin-top:18px;font-size:20px">Carte service</h3>
+          <p style="color:var(--muted);font-size:14.5px;line-height:1.55;margin-top:8px">Icône, titre, courte description et un lien d'action vers la page détail.</p>
+          <a href="#" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:14px;font-weight:600;color:var(--rust)">Découvrir <span>→</span></a>
+        </div>
+        <!-- numbered step -->
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px">
+          <div style="width:36px;height:36px;border-radius:999px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:15px">1</div>
+          <h3 style="margin-top:18px;font-size:20px">Étape numérotée</h3>
+          <p style="color:var(--muted);font-size:14.5px;line-height:1.55;margin-top:8px">Pastille marine, titre, description. Utilisée pour la méthode en 3 temps.</p>
+        </div>
+        <!-- stat card -->
+        <div style="background:var(--navy);border-radius:16px;padding:26px;color:#fff">
+          <div style="font-family:var(--serif);font-size:44px;line-height:1;color:var(--sand)">48h</div>
+          <div style="margin-top:12px;font-weight:600;font-size:15px">Carte statistique</div>
+          <p style="color:rgba(255,255,255,.6);font-size:14px;line-height:1.5;margin-top:6px">Chiffre marquant sur fond marine, légende sobre.</p>
+        </div>
+      </div>
+
+      <!-- pricing + tag + accordion + form -->
+      <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px">
+        <!-- pricing -->
+        <div>
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px">Tarifs (une carte recommandée)</div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap">
+            <div style="flex:1;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px">
+              <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700">Découverte</div>
+              <div style="font-family:var(--serif);font-size:34px;margin-top:10px">590 €</div>
+              <p style="color:var(--muted);font-size:13px;margin-top:4px">/ mois</p>
+            </div>
+            <div style="flex:1;min-width:150px;background:#fff;border:2px solid var(--rust);border-radius:16px;padding:22px;position:relative">
+              <span style="position:absolute;top:-11px;left:22px;background:var(--rust);color:#fff;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px">Recommandé</span>
+              <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);font-weight:700">Standard</div>
+              <div style="font-family:var(--serif);font-size:34px;margin-top:10px">1 100 €</div>
+              <p style="color:var(--muted);font-size:13px;margin-top:4px">/ mois</p>
+            </div>
+          </div>
+        </div>
+        <!-- tags + accordion -->
+        <div>
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px">Badges &amp; surtitres</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px">
+            <span style="display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:999px;background:var(--cream);border:1px solid var(--line)"><span style="width:7px;height:7px;border-radius:999px;background:var(--green)"></span>Nearshore · Essaouira</span>
+            <span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--rust)">Surtitre section</span>
+            <span style="font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:999px;background:var(--navy);color:#fff">FR / EN</span>
+          </div>
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px">Accordéon FAQ</div>
+          <div style="background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line);font-weight:500;font-size:15px">Combien de temps dure la mise en place ?<span style="color:var(--rust);font-size:20px">+</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 18px;font-weight:500;font-size:15px">Mes données sont-elles en sécurité ?<span style="color:var(--rust);font-size:20px">+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- form -->
+      <div style="margin-top:44px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px">Champs de formulaire</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:720px">
+        <div>
+          <label style="display:block;font-size:13px;font-weight:600;margin-bottom:7px">Nom</label>
+          <input placeholder="Votre nom" style="width:100%;font-family:var(--sans);font-size:15px;padding:13px 15px;border:1px solid var(--line-2);border-radius:10px;background:#fff;outline:none" style-focus="border-color:var(--rust)" />
+        </div>
+        <div>
+          <label style="display:block;font-size:13px;font-weight:600;margin-bottom:7px">Email</label>
+          <input placeholder="vous@entreprise.be" style="width:100%;font-family:var(--sans);font-size:15px;padding:13px 15px;border:1px solid var(--line-2);border-radius:10px;background:#fff;outline:none" style-focus="border-color:var(--rust)" />
+        </div>
+        <div style="grid-column:1 / -1">
+          <label style="display:block;font-size:13px;font-weight:600;margin-bottom:7px">Message</label>
+          <textarea placeholder="Comment pouvons-nous aider ?" rows="3" style="width:100%;font-family:var(--sans);font-size:15px;padding:13px 15px;border:1px solid var(--line-2);border-radius:10px;background:#fff;outline:none;resize:vertical" style-focus="border-color:var(--rust)"></textarea>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PROPOSAL: HEADER ======================= -->
+  <section style="padding:clamp(56px,7vw,96px) 0;background:var(--navy);color:#fff">
+    <div style="width:min(1180px,92vw);margin:0 auto">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:14px">Proposition · En-tête</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);line-height:1.1;color:#fff;max-width:24ch">D'une navigation par ancres à un vrai menu <span style="font-style:italic;color:var(--sand)">multi-pages.</span></h2>
+      <p style="margin-top:16px;max-width:60ch;color:rgba(255,255,255,.72);font-size:16.5px;line-height:1.6">L'en-tête tout en haut de cette page est la version proposée, réactive et cliquable. Le menu <b style="color:#fff">Services ▾</b> ouvre les 6 offres, groupées en <i>Support &amp; gestion</i> et <i>Création &amp; visibilité</i>.</p>
+
+      <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px">
+          <div style="color:var(--sand);font-weight:700;font-size:14px">1 · Structure</div>
+          <p style="margin-top:8px;color:rgba(255,255,255,.72);font-size:14.5px;line-height:1.55">Services (menu) · Approche · Tarifs · Réalisations · À propos · Blog. Le logo renvoie à l'accueil. Six entrées : lisible, sans surcharge.</p>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px">
+          <div style="color:var(--sand);font-weight:700;font-size:14px">2 · CTA unique</div>
+          <p style="margin-top:8px;color:rgba(255,255,255,.72);font-size:14.5px;line-height:1.55">Un seul bouton terracotta « Réserver un appel », toujours visible, sticky. L'action principale ne bouge jamais.</p>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px">
+          <div style="color:var(--sand);font-weight:700;font-size:14px">3 · Mobile propre</div>
+          <p style="margin-top:8px;color:rgba(255,255,255,.72);font-size:14.5px;line-height:1.55">Sous 900px : menu burger plein écran, sous-menu Services dépliable, CTA en pleine largeur. Rétrécissez la fenêtre pour tester.</p>
+        </div>
+      </div>
+      <div style="margin-top:22px;background:rgba(201,183,142,.12);border:1px solid rgba(201,183,142,.3);border-left:3px solid var(--sand);border-radius:12px;padding:18px 20px">
+        <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:6px">Ce que je change &amp; pourquoi</div>
+        <p style="color:rgba(255,255,255,.82);font-size:14.5px;line-height:1.6">Les ancres <span style="color:#fff">#approche / #tarifs</span> deviennent des pages réelles. Be-Stars, page à fort trafic, reste accessible en tête du menu Services (avec sa pastille verte) plutôt que noyée. Le CTA « Shall we discuss? » devient un verbe d'action clair : <b style="color:#fff">Réserver un appel</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PROPOSAL: HERO ======================= -->
+  <section style="padding:clamp(56px,7vw,96px) 0;background:var(--cream)">
+    <div style="width:min(1180px,92vw);margin:0 auto">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:14px">Proposition · Hero</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);line-height:1.1;max-width:22ch">Même message, hiérarchie <span style="font-style:italic;color:var(--rust)">renforcée.</span></h2>
+
+      <!-- hero demo -->
+      <div style="margin-top:32px;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--navy)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:center">
+          <div style="padding:clamp(30px,4vw,52px)">
+            <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 13px;border-radius:999px">Équipe externalisée · augmentée par l'IA</span>
+            <h3 style="margin-top:22px;font-size:clamp(30px,3.8vw,46px);line-height:1.06;color:#fff">Votre activité grandit. Votre organisation doit <span style="font-style:italic;color:var(--sand)">suivre.</span></h3>
+            <p style="margin-top:18px;color:rgba(255,255,255,.72);font-size:17px;line-height:1.6;max-width:44ch">Diagnostic, automatisation et exécution opérationnelle par une équipe dédiée — en français comme en anglais.</p>
+            <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:12px">
+              <a href="#" style="background:var(--rust);color:#fff;font-size:15px;font-weight:600;padding:14px 24px;border-radius:9px" style-hover="background:var(--rust-dk)">Réserver un appel</a>
+              <a href="#" style="background:transparent;color:#fff;font-size:15px;font-weight:600;padding:13px 22px;border-radius:9px;border:1.5px solid rgba(255,255,255,.3)" style-hover="border-color:#fff">Voir les tarifs</a>
+            </div>
+          </div>
+          <div style="align-self:stretch;min-height:280px;background:linear-gradient(135deg,#233457,#16203a);display:flex;align-items:center;justify-content:center;border-left:1px solid rgba(255,255,255,.06)">
+            <div style="text-align:center;color:rgba(255,255,255,.4);padding:24px">
+              <div style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600">Visuel / photo équipe</div>
+              <div style="font-size:12.5px;margin-top:6px">emplacement image (à fournir)</div>
+            </div>
+          </div>
+        </div>
+        <!-- trust band -->
+        <div style="background:var(--sand);display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+          <div style="padding:20px 26px;text-align:center;border-right:1px solid rgba(30,43,72,.12)"><div style="font-family:var(--serif);font-size:26px;color:var(--navy)">−60%</div><div style="font-size:12.5px;color:rgba(30,43,72,.7);margin-top:2px">vs. un recrutement</div></div>
+          <div style="padding:20px 26px;text-align:center;border-right:1px solid rgba(30,43,72,.12)"><div style="font-family:var(--serif);font-size:26px;color:var(--navy)">48h</div><div style="font-size:12.5px;color:rgba(30,43,72,.7);margin-top:2px">pour démarrer</div></div>
+          <div style="padding:20px 26px;text-align:center"><div style="font-family:var(--serif);font-size:26px;color:var(--navy)">FR / EN</div><div style="font-size:12.5px;color:rgba(30,43,72,.7);margin-top:2px">bilingue</div></div>
+        </div>
+      </div>
+
+      <div style="margin-top:22px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--rust);border-radius:12px;padding:18px 20px">
+        <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:6px">Ce que je change &amp; pourquoi</div>
+        <p style="color:var(--ink);font-size:14.5px;line-height:1.6">Le message et l'identité sont conservés. J'ajoute une <b>colonne visuelle</b> à droite (le hero actuel est très à gauche et vide à droite) et je remonte la <b>bande de confiance −60% / 48h / FR-EN</b> directement sous le hero pour donner une preuve immédiate. Un seul CTA principal terracotta, le second en secondaire discret.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PROPOSAL: FOOTER ======================= -->
+  <section style="padding:clamp(56px,7vw,80px) 0 0;background:#fff;border-top:1px solid var(--line)">
+    <div style="width:min(1180px,92vw);margin:0 auto">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:14px">Proposition · Pied de page</div>
+      <h2 style="font-size:clamp(28px,3.6vw,42px);line-height:1.1;max-width:24ch">Un pied de page complet, avec le <span style="font-style:italic;color:var(--rust)">cluster légal.</span></h2>
+      <div style="margin-top:20px;background:var(--cream);border:1px solid var(--line);border-left:3px solid var(--rust);border-radius:12px;padding:18px 20px">
+        <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:6px">Ce que je change &amp; pourquoi</div>
+        <p style="color:var(--ink);font-size:14.5px;line-height:1.6">Le pied de page actuel est minimal. Je l'étends en 4 colonnes — <b>navigation</b>, <b>services</b>, <b>légal</b> (Mentions légales · Politique de confidentialité · CGV · CGU) et <b>contact</b> avec bouton WhatsApp — pour porter la conformité RGPD et rendre chaque page atteignable depuis le bas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- live footer -->
+  <footer style="background:var(--navy);color:#fff;padding:clamp(48px,6vw,72px) 0 0;margin-top:clamp(40px,5vw,64px)">
+    <div style="width:min(1180px,92vw);margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px 32px;padding-bottom:48px">
+        <div style="grid-column:span 1;min-width:220px">
+          <div style="display:flex;align-items:baseline;color:#fff;font-family:var(--serif);font-size:22px;font-weight:600">BE<span style="color:var(--rust);margin:0 3px">–</span>Support</div>
+          <p style="margin-top:14px;color:rgba(255,255,255,.62);font-size:14px;line-height:1.6;max-width:34ch">Votre partenaire gain de temps. Support administratif, comptable et créatif à distance pour les PME de Belgique et de France.</p>
+          <div style="margin-top:20px;display:flex;gap:10px">
+            <a href="#" style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600" style-hover="background:var(--rust)">in</a>
+            <a href="#" style="display:inline-flex;align-items:center;gap:9px;background:#25D366;color:#0a2a12;font-size:14px;font-weight:700;padding:0 16px;border-radius:10px">WhatsApp</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">Navigation</div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <a href="#" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">Services</a>
+            <a href="#" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">Approche</a>
+            <a href="#" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">Tarifs</a>
+            <a href="#" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">Réalisations</a>
+            <a href="#" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">À propos</a>
+            <a href="#" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">Blog</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">Services</div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <sc-for list="{{ allServices }}" as="s" hint-placeholder-count="6">
+              <a href="#" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">{{ s.name }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">Légal</div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <a href="#" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">Mentions légales</a>
+            <a href="#" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">Politique de confidentialité</a>
+            <a href="#" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">CGV</a>
+            <a href="#" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">CGU</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">Contact</div>
+          <div style="display:flex;flex-direction:column;gap:11px;color:rgba(255,255,255,.7);font-size:14.5px">
+            <a href="mailto:info@be-support.eu" style="color:rgba(255,255,255,.7)" style-hover="color:#fff">info@be-support.eu</a>
+            <a href="#" style="color:rgba(255,255,255,.7)" style-hover="color:#fff">+32 494 91 36 76</a>
+            <span>Ghazoua, Essaouira<br/>Maroc</span>
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:#25D366;font-weight:600;margin-top:2px">WhatsApp →</a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center">
+        <span style="color:rgba(255,255,255,.5);font-size:13px">© {{ year }} Be-Support — une marque de Bema Consulting. Tous droits réservés.</span>
+        <div style="display:flex;gap:14px;align-items:center">
+          <span style="color:rgba(255,255,255,.5);font-size:13px">FR</span>
+          <span style="color:rgba(255,255,255,.25)">·</span>
+          <span style="color:rgba(255,255,255,.5);font-size:13px">EN</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;},&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Réserver un appel&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Navigation&quot;}}">
+class Component extends DCLogic {
+  state = {
+    vw: (typeof window !== 'undefined' ? window.innerWidth : 1280),
+    mobileOpen: false,
+    servicesOpen: false,
+    mobServicesOpen: false,
+  };
+  componentDidMount() {
+    this._onResize = () => this.setState({ vw: window.innerWidth });
+    window.addEventListener('resize', this._onResize);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+  }
+  renderVals() {
+    const isMobile = this.state.vw < 900;
+    const groupA = [
+      { n: '01', name: 'Secrétariat & assistance administrative', tag: 'Gestion quotidienne' },
+      { n: '02', name: 'Support comptable & facturation', tag: 'Devis, factures, relances' },
+      { n: '03', name: 'Gestion RH & recrutement', tag: 'Sourcing & onboarding' },
+      { n: '04', name: 'Automatisation IA', tag: 'Process & gains de temps' },
+    ];
+    const groupB = [
+      { n: '05', name: 'Webdesign & webmarketing', tag: 'Site, SEO, réseaux' },
+      { n: '06', name: 'Infographie', tag: 'Identité & supports' },
+    ];
+    return {
+      isMobile,
+      isDesktop: !isMobile,
+      mobileOpen: this.state.mobileOpen && isMobile,
+      servicesOpen: this.state.servicesOpen,
+      mobServicesOpen: this.state.mobServicesOpen,
+      mobServicesSign: this.state.mobServicesOpen ? '−' : '+',
+      caret: this.state.servicesOpen ? 180 : 0,
+      groupA, groupB,
+      allServices: groupA.concat(groupB),
+      ctaLabel: this.props.ctaLabel ?? 'Réserver un appel',
+      year: 2026,
+      toggleMenu: () => this.setState(s => ({ mobileOpen: !s.mobileOpen })),
+      toggleServices: () => this.setState(s => ({ servicesOpen: !s.servicesOpen })),
+      toggleMobServices: () => this.setState(s => ({ mobServicesOpen: !s.mobServicesOpen })),
+    };
+  }
+}
+</script>
+</body>
+</html>

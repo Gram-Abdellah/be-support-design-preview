@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--brand:var(--navy);--brand-2:var(--rust);--accent:var(--rust);--accent-hover:var(--rust-dk);--bg:var(--cream);--bg-alt:#fff;--surface:#fff;--surface-2:var(--cream-2);--text:var(--ink);--text-muted:var(--muted);--border:var(--line);--border-strong:var(--line-2);--cta:var(--rust);--cta-hover:var(--rust-dk);--cta-2:var(--navy);--focus:var(--rust);--success:var(--green);--warning:#b07d1e;--error:#a23b2e;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="services" hint-size="100%,72px"></dc-import>
+
+<!-- HERO -->
+<section style="background:var(--navy);color:#fff;padding:clamp(48px,6vw,84px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:flex;gap:8px;align-items:center;font-size:13px;color:rgba(255,255,255,.55);margin-bottom:22px">
+      <a href="Services.dc.html" style="color:rgba(255,255,255,.6)" style-hover="color:#fff">Services</a><span>/</span><span style="color:var(--sand)">Webdesign &amp; webmarketing</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,56px);align-items:center">
+      <div>
+        <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 13px;border-radius:999px">Création &amp; visibilité · 05</span>
+        <h1 style="margin-top:22px;font-size:clamp(32px,4.6vw,54px);line-height:1.06;color:#fff">Webdesign &amp; <span style="font-style:italic;color:var(--sand)">webmarketing.</span></h1>
+        <p style="margin-top:20px;max-width:48ch;font-size:17px;line-height:1.6;color:rgba(255,255,255,.72)">Un site rapide et crédible, trouvé sur Google, pensé pour transformer les visiteurs en clients. De la conception au référencement, une seule équipe s'occupe de votre visibilité.</p>
+        <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px">
+          <a href="Contact.dc.html" style="background:var(--rust);color:#fff;font-size:15px;font-weight:600;padding:14px 24px;border-radius:9px" style-hover="background:var(--rust-dk)">Réserver un appel</a>
+          <a href="Tarifs.dc.html" style="background:transparent;color:#fff;font-size:15px;font-weight:600;padding:13px 22px;border-radius:9px;border:1.5px solid rgba(255,255,255,.3)" style-hover="border-color:#fff">Voir les tarifs</a>
+        </div>
+      </div>
+      <div style="align-self:center;min-width:0">
+        <img src="service-webdesign-cropped.png" alt="De la maquette au site en ligne, jusqu'aux résultats marketing" style="width:100%;height:auto;display:block" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Le problème</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:24ch">Être présent sur le web ne suffit plus. Il faut être <span style="font-style:italic;color:var(--rust)">visible !</span></h2>
+    <p style="margin-top:16px;max-width:56ch;color:var(--muted);font-size:var(--fs-body);line-height:1.6">Chaque jour, des clients cherchent exactement ce que vous proposez. La seule question : est-ce vous qu'ils trouvent, ou vos concurrents ?</p>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+      <sc-for list="{{ pains }}" as="p" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px">
+          <div style="font-family:var(--serif);font-size:15px;color:var(--rust);font-weight:600">{{ p.k }}</div>
+          <h3 style="margin-top:10px;font-size:19px">{{ p.t }}</h3>
+          <p style="margin-top:8px;color:var(--muted);font-size:14.5px;line-height:1.55">{{ p.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section style="padding:clamp(56px,6.5vw,96px) 0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px">
+      <div>
+        <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Ce qui est inclus</div>
+        <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:16ch">Tout ce qui construit votre <span style="font-style:italic;color:var(--rust)">visibilité.</span></h2>
+        <p style="margin-top:16px;max-width:44ch;color:var(--muted);font-size:var(--fs-body);line-height:1.6">Du site au référencement, chaque brique travaille pour le même objectif : que vos clients vous trouvent, vous croient et vous contactent.</p>
+        <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-size:15px;font-weight:600;color:var(--rust)">Discuter de votre besoin <span>→</span></a>
+      </div>
+      <div style="display:grid;gap:12px">
+        <sc-for list="{{ included }}" as="it" hint-placeholder-count="6">
+          <div style="display:flex;gap:14px;align-items:flex-start;background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:16px 18px">
+            <span style="flex:none;width:24px;height:24px;border-radius:999px;background:var(--rust);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">✓</span>
+            <span style="font-size:15px;line-height:1.45">{{ it }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Comment ça marche</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:20ch">De l'appel à l'exécution, en 4 <span style="font-style:italic;color:var(--rust)">temps.</span></h2>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px">
+          <div style="width:36px;height:36px;border-radius:999px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:15px">{{ st.n }}</div>
+          <h3 style="margin-top:16px;font-size:19px">{{ st.t }}</h3>
+          <p style="margin-top:8px;color:var(--muted);font-size:14.5px;line-height:1.55">{{ st.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS / STATS -->
+<section style="padding:clamp(56px,6.5vw,96px) 0;background:var(--navy);color:#fff">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">Les bénéfices</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;color:#fff;max-width:22ch">Ce que vous y <span style="font-style:italic;color:var(--sand)">gagnez.</span></h2>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:28px">
+          <div style="font-family:var(--serif);font-size:clamp(34px,4vw,48px);line-height:1;color:var(--sand)">{{ s.v }}</div>
+          <div style="margin-top:12px;font-weight:600;font-size:15px">{{ s.t }}</div>
+          <p style="margin-top:6px;color:rgba(255,255,255,.6);font-size:14px;line-height:1.5">{{ s.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="background:var(--rust);border-radius:20px;padding:clamp(32px,5vw,56px);text-align:center">
+      <h2 style="font-size:clamp(26px,3.6vw,40px);line-height:1.1;color:#fff;max-width:20ch;margin:0 auto">Prêt à être trouvé par vos clients ?</h2>
+      <p style="margin:16px auto 0;color:rgba(255,255,255,.85);font-size:16px;line-height:1.55;max-width:46ch">30 minutes suffisent pour cadrer votre besoin. Sans engagement, sans jargon.</p>
+      <a href="Contact.dc.html" style="display:inline-block;margin-top:26px;background:#fff;color:var(--navy);font-size:15px;font-weight:700;padding:15px 28px;border-radius:10px" style-hover="background:var(--cream)">Réserver un appel</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  renderVals(){
+    return {
+      pains:[
+        {k:'01',t:'Invisible sur Google',d:'Vos clients cherchent vos services chaque jour. Si vous n\u2019apparaissez pas, ils appellent vos concurrents.'},
+        {k:'02',t:'7 secondes pour convaincre',d:'C\u2019est le temps qu\u2019un visiteur accorde à votre site avant de juger votre sérieux. Un design daté fait fuir.'},
+        {k:'03',t:'Des visites sans lendemain',d:'Un site qui n\u2019appelle pas à l\u2019action reste une vitrine. Le vôtre doit générer des appels et des devis.'},
+      ],
+      included:[
+        'Création ou refonte complète de votre site',
+        'Référencement Google (SEO) et fiche Google Business',
+        'Pages pensées pour convertir : appels, devis, rendez-vous',
+        'Gestion de vos réseaux sociaux',
+        'Campagnes d\u2019acquisition ciblées',
+        'Suivi des performances et rapports clairs',
+      ],
+      steps:[
+        {n:'1',t:'Diagnostic visibilité',d:'Où en êtes-vous sur Google ? Que voient vos prospects ? On fait le point.'},
+        {n:'2',t:'Conception & création',d:'Un site crédible, rapide et à votre image, structuré pour convertir.'},
+        {n:'3',t:'Mise en ligne & référencement',d:'Votre site publié, indexé et positionné sur les recherches qui comptent.'},
+        {n:'4',t:'Optimisation continue',d:'Analyse des visites, ajustements et campagnes pour progresser chaque mois.'},
+      ],
+      stats:[
+        {v:'Visible',t:'là où l\u2019on vous cherche',d:'sur Google, sur les réseaux et sur mobile, devant vos concurrents.'},
+        {v:'Crédible',t:'dès la première visite',d:'un site professionnel qui inspire confiance et donne envie de vous appeler.'},
+        {v:'Rentable',t:'pensé pour convertir',d:'des pages qui transforment les visites en appels, devis et rendez-vous.'},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

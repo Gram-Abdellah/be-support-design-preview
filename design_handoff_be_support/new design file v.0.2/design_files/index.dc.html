@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--brand:var(--navy);--brand-2:var(--rust);--accent:var(--rust);--accent-hover:var(--rust-dk);--bg:var(--cream);--bg-alt:#fff;--surface:#fff;--surface-2:var(--cream-2);--text:var(--ink);--text-muted:var(--muted);--border:var(--line);--border-strong:var(--line-2);--cta:var(--rust);--cta-hover:var(--rust-dk);--cta-2:var(--navy);--focus:var(--rust);--success:var(--green);--warning:#b07d1e;--error:#a23b2e;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<dc-import name="SiteHeader" hint-size="100%,72px"></dc-import>
+
+<section style="background:var(--navy);color:#fff;padding:clamp(56px,8vw,104px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:20px">Site multi-pages · maquette</div>
+    <h1 style="font-size:clamp(38px,5.6vw,66px);line-height:1.05;color:#fff;max-width:15ch">Toutes les pages de <span style="font-style:italic;color:var(--sand)">Be-Support.</span></h1>
+    <p style="margin-top:22px;max-width:56ch;font-size:clamp(17px,1.25vw,20px);line-height:1.6;color:rgba(255,255,255,.72)">Chaque page ci-dessous est réactive et reliée aux autres par l'en-tête et le pied de page partagés. Cliquez pour naviguer, redimensionnez la fenêtre pour voir la version mobile.</p>
+    <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:12px">
+      <a href="Services.dc.html" style="background:var(--rust);color:#fff;font-size:15px;font-weight:600;padding:13px 22px;border-radius:9px" style-hover="background:var(--rust-dk)">Explorer les services</a>
+      <a href="Contact.dc.html" style="background:transparent;color:#fff;font-size:15px;font-weight:600;padding:12px 21px;border-radius:9px;border:1.5px solid rgba(255,255,255,.3)" style-hover="border-color:#fff">Réserver un appel</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(48px,7vw,88px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px">
+      <sc-for list="{{ pages }}" as="p" hint-placeholder-count="11">
+        <a href="{{ p.href }}" style="display:block;background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px" style-hover="border-color:var(--line-2);box-shadow:0 18px 40px -24px rgba(20,32,58,.28);transform:translateY(-2px)">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:var(--serif);font-size:14px;color:var(--rust);font-weight:600">{{ p.num }}</span>
+            <span style="color:var(--rust);font-size:16px">→</span>
+          </div>
+          <h3 style="margin-top:16px;font-size:21px">{{ p.title }}</h3>
+          <p style="margin-top:8px;color:var(--muted);font-size:14px;line-height:1.5">{{ p.desc }}</p>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  renderVals(){
+    return { pages:[
+      {num:'00',title:'Accueil',href:'Home.dc.html',desc:'Page d\u2019accueil : hero, approche, services, tarifs, réalisations et FAQ.'},
+      {num:'★',title:'Be-Stars',href:'Be-Stars.dc.html',desc:'Landing dédiée : classement hôtelier au Maroc, audit loi 80-14 / décret 985-24.'},
+      {num:'01',title:'Services',href:'Services.dc.html',desc:'Hub des six pôles de service, groupés en support & gestion et création & visibilité.'},
+      {num:'02',title:'Service (détail)',href:'Service.dc.html',desc:'Gabarit réutilisable d\u2019un service : problème, inclus, méthode, bénéfices.'},
+      {num:'03',title:'Approche / Méthode',href:'Approche.dc.html',desc:'La méthode de diagnostic en 3 temps, détaillée sur sa propre page.'},
+      {num:'04',title:'Tarifs',href:'Tarifs.dc.html',desc:'Trois formules, sans coûts cachés, avec comparaison claire.'},
+      {num:'05',title:'Réalisations',href:'Realisations.dc.html',desc:'Grille d\u2019études de cas et missions clients.'},
+      {num:'06',title:'Réalisation (cas)',href:'Realisation.dc.html',desc:'Gabarit d\u2019étude de cas : contexte, défi, action, résultats.'},
+      {num:'07',title:'À propos',href:'APropos.dc.html',desc:'La confiance : le modèle nearshore d\u2019Essaouira, l\u2019équipe, bilingue FR/EN.'},
+      {num:'08',title:'Blog / Ressources',href:'Blog.dc.html',desc:'Article à la une, grille de cartes et filtres par catégorie.'},
+      {num:'09',title:'Article',href:'Article.dc.html',desc:'Gabarit long format : méta, image, corps typographié, auteur.'},
+      {num:'10',title:'Contact',href:'Contact.dc.html',desc:'Formulaire, bloc de réservation et contacts directs.'},
+      {num:'11',title:'Page légale',href:'Legal.dc.html',desc:'Gabarit CGV / CGU / mentions avec sommaire ancré.'},
+    ]};
+  }
+}
+</script>
+</body>
+</html>

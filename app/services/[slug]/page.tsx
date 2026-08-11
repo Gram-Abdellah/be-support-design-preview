@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CtaBanner from "@/components/cta-banner";
@@ -66,12 +67,25 @@ export default async function ServiceDetailPage({
                 </Link>
               </div>
             </div>
-            <div className="self-stretch min-h-[260px] rounded-[18px] bg-[linear-gradient(135deg,#233457,#16203a)] border border-white/[.08] flex items-center justify-center">
-              <div className="text-center text-white/40 p-6">
-                <div className="text-[13px] tracking-[.1em] uppercase font-semibold">Visuel du service</div>
-                <div className="text-[12.5px] mt-1.5">emplacement image (à fournir)</div>
+            {service.heroImage ? (
+              <div className="self-center flex items-center justify-center min-w-0">
+                <Image
+                  src={service.heroImage}
+                  alt={service.heroImageAlt ?? ""}
+                  width={service.heroImageWidth ?? 1200}
+                  height={service.heroImageHeight ?? 700}
+                  className="w-full max-w-[560px] h-auto block"
+                  priority
+                />
               </div>
-            </div>
+            ) : (
+              <div className="self-stretch min-h-[260px] rounded-[18px] bg-[linear-gradient(135deg,#233457,#16203a)] border border-white/[.08] flex items-center justify-center">
+                <div className="text-center text-white/40 p-6">
+                  <div className="text-[13px] tracking-[.1em] uppercase font-semibold">Visuel du service</div>
+                  <div className="text-[12.5px] mt-1.5">emplacement image (à fournir)</div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -80,13 +94,13 @@ export default async function ServiceDetailPage({
       <section className="section-pad">
         <div className="container-page">
           <div className="text-label tracking-[.2em] uppercase text-rust font-bold mb-4">Le problème</div>
-          <h2 className="text-section leading-[1.12] max-w-[22ch]">
-            L&apos;administratif grignote vos <span className="italic text-rust">journées.</span>
+          <h2 className="text-section leading-[1.12] max-w-[24ch]">
+            {service.problemTitle ?? "L’administratif grignote vos"}{" "}
+            <span className="italic text-rust">{service.problemEmph ?? "journées."}</span>
           </h2>
           <p className="mt-4 max-w-[56ch] text-muted text-body leading-[1.6]">
-            Entre les e-mails, les rendez-vous et la paperasse, les tâches à faible valeur
-            s&apos;accumulent. Résultat : moins de temps pour vos clients, votre stratégie et votre
-            croissance.
+            {service.problemLead ??
+              "Entre les e-mails, les rendez-vous et la paperasse, les tâches à faible valeur s’accumulent. Résultat : moins de temps pour vos clients, votre stratégie et votre croissance."}
           </p>
           <div className="mt-9 grid [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))] gap-[18px]">
             {service.pains.map((p) => (
@@ -107,11 +121,12 @@ export default async function ServiceDetailPage({
             <div>
               <div className="text-label tracking-[.2em] uppercase text-rust font-bold mb-4">Ce qui est inclus</div>
               <h2 className="text-section leading-[1.12] max-w-[16ch]">
-                Tout ce qu&apos;un assistant prend en <span className="italic text-rust">charge.</span>
+                {service.includedTitle ?? "Tout ce qu’un assistant prend en"}{" "}
+                <span className="italic text-rust">{service.includedEmph ?? "charge."}</span>
               </h2>
               <p className="mt-4 max-w-[44ch] text-muted text-body leading-[1.6]">
-                Une liste claire, adaptée à votre activité. Vous déléguez ce que vous voulez, quand
-                vous voulez.
+                {service.includedLead ??
+                  "Une liste claire, adaptée à votre activité. Vous déléguez ce que vous voulez, quand vous voulez."}
               </p>
               <Link href="/contact" className="inline-flex items-center gap-2 mt-6 text-[15px] font-semibold text-rust">
                 Discuter de votre besoin <span>→</span>
@@ -176,7 +191,7 @@ export default async function ServiceDetailPage({
 
       <CtaBanner
         variant="centered"
-        title="Prêt à déléguer votre administratif ?"
+        title={service.ctaTitle ?? "Prêt à déléguer votre administratif ?"}
         description="30 minutes suffisent pour cadrer votre besoin. Sans engagement, sans jargon."
         ctaLabel="Réserver un appel"
         ctaHref="/contact"

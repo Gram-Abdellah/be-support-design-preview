@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>:root{--navy:#1e2b48;--rust:#bb6a35;--sand:#c9b78e;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}</style>
+</helmet>
+<footer style="background:var(--navy);color:#fff;padding:clamp(48px,6vw,72px) 0 0;font-family:var(--sans)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:40px 32px;padding-bottom:48px">
+      <div style="min-width:220px">
+        <a href="Home.dc.html" style="display:inline-flex" aria-label="Be-Support, accueil"><img src="logo-white-full.png" alt="Be-Support, Your time saving partner" style="height:52px;width:auto;display:block" /></a>
+        <p style="margin:14px 0 0;color:rgba(255,255,255,.62);font-size:14px;line-height:1.6;max-width:34ch">{{ t.blurb }}</p>
+        <div style="margin-top:20px;display:flex;gap:10px">
+          <a href="#" style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600" style-hover="background:var(--rust)">in</a>
+          <a href="#" style="display:inline-flex;align-items:center;gap:9px;background:#25D366;color:#0a2a12;font-size:14px;font-weight:700;padding:0 16px;border-radius:10px">WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">{{ t.nav }}</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="7">
+            <a href="{{ l.href }}" style="color:{{ l.color }};font-size:14.5px;font-weight:{{ l.weight }}" style-hover="color:#fff">{{ l.label }}</a>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">{{ t.services }}</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+            <a href="{{ s.href }}" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">{{ s.label }}</a>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">{{ t.legal }}</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <sc-for list="{{ legal }}" as="l" hint-placeholder-count="4">
+            <a href="Legal.dc.html" style="color:rgba(255,255,255,.7);font-size:14.5px" style-hover="color:#fff">{{ l }}</a>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">Contact</div>
+        <div style="display:flex;flex-direction:column;gap:11px;color:rgba(255,255,255,.7);font-size:14.5px">
+          <a href="mailto:info@be-support.eu" style="color:rgba(255,255,255,.7)" style-hover="color:#fff">info@be-support.eu</a>
+          <a href="tel:+32494913676" style="color:rgba(255,255,255,.7)" style-hover="color:#fff">+32 494 91 36 76</a>
+          <span>Ghazoua, Essaouira<br/>{{ t.country }}</span>
+          <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:#25D366;font-weight:600;margin-top:2px">WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center">
+      <span style="color:rgba(255,255,255,.5);font-size:13px">© {{ year }} Be-Support, {{ t.rights }}</span>
+      <div style="display:flex;gap:8px;align-items:center">
+        <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+          <button onClick="{{ l.set }}" style="background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:13px;font-weight:{{ l.weight }};color:{{ l.color }};padding:4px 6px">{{ l.code }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  state = { lang:'fr' };
+  componentDidMount(){
+    try{ const saved=localStorage.getItem('bs-lang'); if(saved) this.setState({lang:saved}); }catch(e){}
+    this._lang=(e)=>{ if(e&&e.detail&&e.detail!==this.state.lang) this.setState({lang:e.detail}); };
+    window.addEventListener('bs-lang-change',this._lang);
+  }
+  componentWillUnmount(){ window.removeEventListener('bs-lang-change',this._lang); }
+  setLang(code){
+    this.setState({lang:code});
+    try{ localStorage.setItem('bs-lang',code); }catch(e){}
+    try{ document.documentElement.lang=code; }catch(e){}
+    try{ window.dispatchEvent(new CustomEvent('bs-lang-change',{detail:code})); }catch(e){}
+  }
+  renderVals(){
+    const lang=this.state.lang;
+    const DICT={
+      fr:{nav:'Navigation',services:'Services',legal:'Légal',country:'Maroc',rights:'une marque de Bema Consulting. Tous droits réservés.',
+        blurb:'Votre partenaire gain de temps. Support administratif, comptable et créatif à distance pour les PME de Belgique et de France.',
+        navLabels:['Accueil','Services','Approche','Tarifs','Réalisations','À propos','Blog','★ Be-Stars'],
+        servicesList:['Secrétariat & assistance','Support comptable & facturation','Gestion RH & recrutement','Automatisation IA','Webdesign & webmarketing','Infographie'],
+        legalList:['Mentions légales','Politique de confidentialité','CGV','CGU']},
+      en:{nav:'Navigation',services:'Services',legal:'Legal',country:'Morocco',rights:'a Bema Consulting brand. All rights reserved.',
+        blurb:'Your time-saving partner. Remote administrative, accounting and creative support for SMEs in Belgium and France.',
+        navLabels:['Home','Services','Approach','Pricing','Case studies','About','Blog','★ Be-Stars'],
+        servicesList:['Secretarial & admin support','Accounting & invoicing','HR & recruitment','AI automation','Web design & marketing','Graphic design'],
+        legalList:['Legal notice','Privacy policy','Terms of sale','Terms of use']},
+      nl:{nav:'Navigatie',services:'Diensten',legal:'Juridisch',country:'Marokko',rights:'een merk van Bema Consulting. Alle rechten voorbehouden.',
+        blurb:'Uw partner voor tijdwinst. Administratieve, boekhoudkundige en creatieve support op afstand voor kmo\u2019s in België en Frankrijk.',
+        navLabels:['Home','Diensten','Aanpak','Tarieven','Realisaties','Over ons','Blog','★ Be-Stars'],
+        servicesList:['Secretariaat & administratie','Boekhouding & facturatie','HR & werving','AI-automatisering','Webdesign & marketing','Grafisch ontwerp'],
+        legalList:['Wettelijke vermeldingen','Privacybeleid','Verkoopvoorwaarden','Gebruiksvoorwaarden']},
+    };
+    const t=DICT[lang]||DICT.fr;
+    const hrefs=['Home.dc.html','Services.dc.html','Approche.dc.html','Tarifs.dc.html','Realisations.dc.html','APropos.dc.html','Blog.dc.html','Be-Stars.dc.html'];
+    const navLinks=t.navLabels.map((label,i)=>({label,href:hrefs[i],color:i===7?'var(--sand)':'rgba(255,255,255,.7)',weight:i===7?'600':'400'}));
+    const langMeta=[['FR','fr'],['EN','en'],['NL','nl']];
+    const langs=langMeta.map(([code,id])=>({code,set:()=>this.setLang(id),weight:id===lang?'700':'400',color:id===lang?'#fff':'rgba(255,255,255,.5)'}));
+    const svcHrefs=['Service.dc.html','Service-Comptable.dc.html','Service.dc.html','Service.dc.html','Service-Webdesign.dc.html','Service.dc.html'];
+    const services=t.servicesList.map((label,i)=>({label,href:svcHrefs[i]||'Service.dc.html'}));
+    return { t, year:2026, navLinks, services, legal:t.legalList, langs };
+  }
+}
+</script>
+</body>
+</html>

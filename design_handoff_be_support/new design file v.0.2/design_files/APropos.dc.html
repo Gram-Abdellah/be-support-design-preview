@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--brand:var(--navy);--brand-2:var(--rust);--accent:var(--rust);--accent-hover:var(--rust-dk);--bg:var(--cream);--bg-alt:#fff;--surface:#fff;--surface-2:var(--cream-2);--text:var(--ink);--text-muted:var(--muted);--border:var(--line);--border-strong:var(--line-2);--cta:var(--rust);--cta-hover:var(--rust-dk);--cta-2:var(--navy);--focus:var(--rust);--success:var(--green);--warning:#b07d1e;--error:#a23b2e;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="apropos" hint-size="100%,72px"></dc-import>
+
+<section style="background:var(--navy);color:#fff;padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:18px">À propos</div>
+    <h1 style="font-size:var(--fs-page);line-height:1.06;color:#fff;max-width:18ch">Une équipe humaine, un modèle <span style="font-style:italic;color:var(--sand)">nearshore.</span></h1>
+    <p style="margin-top:22px;max-width:60ch;font-size:clamp(17px,1.25vw,20px);line-height:1.6;color:rgba(255,255,255,.72)">Be-Support est une marque de Bema Consulting, créée en 2024. Nous accompagnons les PME de Belgique et de France depuis Essaouira, au Maroc, avec une équipe bilingue française et anglaise.</p>
+  </div>
+</section>
+
+<!-- trust stats -->
+<section style="padding:clamp(40px,5vw,64px) 0 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px">
+          <div style="font-family:var(--serif);font-size:clamp(30px,3.6vw,42px);line-height:1;color:var(--rust)">{{ s.v }}</div>
+          <div style="margin-top:10px;font-size:14px;color:var(--muted);line-height:1.4">{{ s.l }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- story -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:44px;align-items:start">
+      <div>
+        <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Notre histoire</div>
+        <h2 style="font-size:clamp(26px,3.4vw,38px);line-height:1.12;max-width:18ch">Pourquoi Essaouira, et pourquoi <span style="font-style:italic;color:var(--rust)">maintenant.</span></h2>
+        <div style="margin-top:20px;display:flex;flex-direction:column;gap:16px;color:var(--ink);font-size:16.5px;line-height:1.7">
+          <p>Nous avons créé Be-Support en 2024 avec une conviction simple : les PME perdent un temps précieux sur des tâches qui n'ont pas besoin d'elles. Un support fiable, à distance, change tout.</p>
+          <p>Le modèle nearshore d'Essaouira nous permet d'offrir une équipe qualifiée, bilingue et sur un fuseau horaire compatible avec l'Europe. Pas de décalage qui freine, pas de barrière de langue.</p>
+          <p>Nous restons une équipe à taille humaine : chaque client a un interlocuteur qui connaît ses dossiers, pas un centre d'appels anonyme.</p>
+        </div>
+      </div>
+      <div style="aspect-ratio:4/5;border-radius:18px;background:linear-gradient(135deg,#233457,#16203a);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4)">
+        <div style="text-align:center;padding:24px"><div style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600">Photo équipe / bureau</div><div style="font-size:12.5px;margin-top:6px">Essaouira (à fournir)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- reassurance grid -->
+<section style="padding:clamp(56px,6.5vw,96px) 0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Ce qui vous rassure</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:22ch">Travailler à distance, en toute <span style="font-style:italic;color:var(--rust)">confiance.</span></h2>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px">
+      <sc-for list="{{ reassure }}" as="r" hint-placeholder-count="4">
+        <div style="background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:26px">
+          <div style="font-family:var(--serif);font-size:15px;color:var(--rust);font-weight:600">{{ r.k }}</div>
+          <h3 style="margin-top:10px;font-size:19px">{{ r.t }}</h3>
+          <p style="margin-top:8px;color:var(--muted);font-size:14.5px;line-height:1.55">{{ r.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- team -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">L'équipe</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:20ch">Des visages, pas un <span style="font-style:italic;color:var(--rust)">standard.</span></h2>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
+      <sc-for list="{{ team }}" as="m" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden">
+          <div style="aspect-ratio:1/1;background:linear-gradient(135deg,{{ m.g1 }},{{ m.g2 }});display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:40px;color:rgba(255,255,255,.65)">{{ m.i }}</div>
+          <div style="padding:18px"><div style="font-weight:600;font-size:16px">{{ m.name }}</div><div style="color:var(--muted);font-size:13.5px;margin-top:3px">{{ m.role }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 clamp(56px,6.5vw,96px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="background:var(--rust);border-radius:20px;padding:clamp(32px,5vw,56px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+      <div style="max-width:46ch"><h2 style="font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#fff">Faisons connaissance.</h2><p style="margin-top:14px;color:rgba(255,255,255,.85);font-size:16px;line-height:1.55">Un appel de 30 minutes pour voir si nous sommes le bon partenaire.</p></div>
+      <a href="Contact.dc.html" style="background:#fff;color:var(--navy);font-size:15px;font-weight:700;padding:15px 26px;border-radius:10px;white-space:nowrap" style-hover="background:var(--cream)">Réserver un appel</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  renderVals(){
+    return {
+      stats:[
+        {v:'2024',l:'année de création'},
+        {v:'FR / EN',l:'équipe bilingue'},
+        {v:'Essaouira',l:'base nearshore, Maroc'},
+        {v:'BE · FR',l:'clients accompagnés'},
+      ],
+      reassure:[
+        {k:'01',t:'Confidentialité',d:'Chaque assistant est tenu au secret professionnel. Vos données restent les vôtres.'},
+        {k:'02',t:'RGPD',d:'Traitement des données conforme au RGPD, avec des garanties contractuelles claires.'},
+        {k:'03',t:'Interlocuteur unique',d:'Une personne dédiée qui connaît vos dossiers, joignable et responsable.'},
+        {k:'04',t:'Continuité garantie',d:'Absence ou départ : le remplacement est assuré sans interruption de service.'},
+      ],
+      team:[
+        {i:'YZ',name:'Yasmina Z.',role:'Fondatrice & référente RGPD',g1:'#233457',g2:'#16203a'},
+        {i:'AM',name:'Assistant·e dédié·e',role:'Secrétariat & administratif',g1:'#2b3350',g2:'#171f38'},
+        {i:'RC',name:'Assistant·e dédié·e',role:'Comptabilité & facturation',g1:'#243b3a',g2:'#16211f'},
+        {i:'CW',name:'Assistant·e dédié·e',role:'Web & création',g1:'#3a2f2a',g2:'#211a16'},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

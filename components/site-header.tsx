@@ -27,6 +27,8 @@ function activeKeyFromPath(pathname: string): string {
 
 export default function SiteHeader() {
   const pathname = usePathname() || "/";
+  const light = pathname === "/be-stars-pro";
+  const documentPage = pathname === "/cgv-cgu-be-stars";
   const { lang, setLang } = useLang();
   const [servicesOpen, setServicesOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -77,19 +79,23 @@ export default function SiteHeader() {
     return () => document.removeEventListener("click", onClick);
   }, []);
 
+  if (documentPage) return null;
+
   return (
     <header
       ref={rootRef}
-      className="sticky top-0 z-[60] bg-terra border-b border-white/[.14] font-sans"
+      className={`sticky top-0 z-[60] border-b font-sans ${
+        light ? "bg-white border-line" : "bg-terra border-white/[.14]"
+      }`}
     >
       <div className="container-page flex h-[72px] items-center justify-between gap-6">
         <Link href="/" aria-label="Be-Support, accueil" className="flex items-center">
           <Image
-            src="/logo-mark-white.png"
-            alt="Be-Support"
-            height={34}
-            width={114}
-            className="h-[34px] w-auto block"
+            src={light ? "/logo-color.png" : "/logo-color-full.png"}
+            alt={light ? "Be-Support" : "Be-Support — Your time saving partner"}
+            height={light ? 32 : 44}
+            width={light ? 85 : 123}
+            className={`${light ? "h-8" : "h-11"} w-auto block`}
             priority
           />
         </Link>
@@ -102,8 +108,16 @@ export default function SiteHeader() {
                 setServicesOpen((v) => !v);
                 setLangOpen(false);
               }}
-              className={`flex items-center gap-1.5 bg-transparent border-0 cursor-pointer font-sans text-[14.5px] font-medium rounded-[7px] px-3 py-2.5 hover:text-white hover:bg-white/[.06] ${
-                active === "services" || servicesOpen ? "text-white" : "text-white/[.82]"
+              className={`flex items-center gap-1.5 bg-transparent border-0 cursor-pointer font-sans text-[14.5px] font-medium rounded-[7px] px-3 py-2.5 ${
+                light ? "hover:text-rust hover:bg-cream" : "hover:text-white hover:bg-white/[.06]"
+              } ${
+                active === "services" || servicesOpen
+                  ? light
+                    ? "text-rust"
+                    : "text-white"
+                  : light
+                    ? "text-ink"
+                    : "text-white/[.82]"
               }`}
             >
               {t.services}
@@ -153,7 +167,7 @@ export default function SiteHeader() {
                   </Link>
                 ))}
                 <Link
-                  href="/be-stars"
+                  href={light ? "/be-stars-pro" : "/be-stars"}
                   className="col-span-2 mt-1.5 flex gap-[11px] p-3 rounded-[9px] items-center bg-navy hover:bg-navy-2"
                 >
                   <span className="flex-none w-[30px] h-[30px] rounded-[8px] bg-[rgba(201,183,142,.2)] flex items-center justify-center text-sand text-[13px]">
@@ -180,15 +194,23 @@ export default function SiteHeader() {
             <Link
               key={item.key}
               href={item.href}
-              className={`text-[14.5px] font-medium rounded-[7px] px-3 py-2.5 hover:text-white hover:bg-white/[.06] ${
-                active === item.key ? "text-white" : "text-white/[.82]"
+              className={`text-[14.5px] font-medium rounded-[7px] px-3 py-2.5 ${
+                light ? "hover:text-rust hover:bg-cream" : "hover:text-white hover:bg-white/[.06]"
+              } ${
+                active === item.key
+                  ? light
+                    ? "text-rust"
+                    : "text-white"
+                  : light
+                    ? "text-ink"
+                    : "text-white/[.82]"
               }`}
             >
               {t.nav[i]}
             </Link>
           ))}
 
-          <span className="w-px h-[22px] bg-white/25 mx-2.5" />
+          <span className={`w-px h-[22px] mx-2.5 ${light ? "bg-line-2" : "bg-white/25"}`} />
 
           <div className="relative">
             <button
@@ -196,8 +218,10 @@ export default function SiteHeader() {
                 setLangOpen((v) => !v);
                 setServicesOpen(false);
               }}
-              className={`flex items-center gap-[7px] bg-transparent border-0 cursor-pointer font-sans text-sm font-semibold rounded-[7px] px-1.5 py-2.5 hover:text-white ${
-                langOpen ? "text-white" : "text-white/[.82]"
+              className={`flex items-center gap-[7px] bg-transparent border-0 cursor-pointer font-sans text-sm font-semibold rounded-[7px] px-1.5 py-2.5 ${
+                light ? "hover:text-rust" : "hover:text-white"
+              } ${
+                langOpen ? (light ? "text-rust" : "text-white") : light ? "text-ink" : "text-white/[.82]"
               }`}
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="opacity-90">
@@ -241,18 +265,24 @@ export default function SiteHeader() {
           aria-label="Menu"
           className="min-[900px]:hidden flex flex-col gap-[5px] bg-transparent border-0 cursor-pointer p-2"
         >
-          <span className="w-6 h-0.5 bg-white rounded-sm" />
-          <span className="w-6 h-0.5 bg-white rounded-sm" />
-          <span className="w-6 h-0.5 bg-white rounded-sm" />
+          <span className={`w-6 h-0.5 rounded-sm ${light ? "bg-navy" : "bg-white"}`} />
+          <span className={`w-6 h-0.5 rounded-sm ${light ? "bg-navy" : "bg-white"}`} />
+          <span className={`w-6 h-0.5 rounded-sm ${light ? "bg-navy" : "bg-white"}`} />
         </button>
       </div>
 
       {mobileOpen && (
-        <div className="anim-rise min-[900px]:hidden bg-terra-dk border-t border-white/[.14] pt-3.5 pb-[22px]">
+        <div
+          className={`anim-rise min-[900px]:hidden border-t pt-3.5 pb-[22px] ${
+            light ? "bg-white border-line" : "bg-terra-dk border-white/[.14]"
+          }`}
+        >
           <div className="container-page flex flex-col">
             <button
               onClick={() => setMobServicesOpen((v) => !v)}
-              className="flex items-center justify-between bg-transparent border-0 cursor-pointer text-white font-sans text-base font-semibold py-[13px] px-1 border-b border-white/[.08]"
+              className={`flex items-center justify-between bg-transparent border-0 cursor-pointer font-sans text-base font-semibold py-[13px] px-1 border-b ${
+                light ? "text-ink border-line" : "text-white border-white/[.08]"
+              }`}
             >
               {t.services} <span className="text-rust">{mobServicesOpen ? "−" : "+"}</span>
             </button>
@@ -262,14 +292,18 @@ export default function SiteHeader() {
                   <Link
                     key={s.href}
                     href={s.href}
-                    className="text-white/75 text-[14.5px] px-2.5 py-2.5 rounded-lg hover:bg-white/[.06] hover:text-white"
+                    className={`text-[14.5px] px-2.5 py-2.5 rounded-lg ${
+                      light ? "text-muted hover:bg-cream hover:text-navy" : "text-white/75 hover:bg-white/[.06] hover:text-white"
+                    }`}
                   >
                     {s.name}
                   </Link>
                 ))}
                 <Link
-                  href="/be-stars"
-                  className="text-white/75 text-[14.5px] px-2.5 py-2.5 rounded-lg hover:bg-white/[.06] hover:text-white"
+                  href={light ? "/be-stars-pro" : "/be-stars"}
+                  className={`text-[14.5px] px-2.5 py-2.5 rounded-lg ${
+                    light ? "text-muted hover:bg-cream hover:text-navy" : "text-white/75 hover:bg-white/[.06] hover:text-white"
+                  }`}
                 >
                   ★ {t.bestarsItem}
                 </Link>
@@ -279,7 +313,9 @@ export default function SiteHeader() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-white text-base font-semibold py-[13px] px-1 border-b border-white/[.08]"
+                className={`text-base font-semibold py-[13px] px-1 border-b ${
+                  light ? "text-ink border-line" : "text-white border-white/[.08]"
+                }`}
               >
                 {t.nav[i]}
               </Link>
@@ -294,7 +330,9 @@ export default function SiteHeader() {
                     className={`flex-1 cursor-pointer font-sans text-sm font-semibold py-[11px] rounded-[9px] border ${
                       on
                         ? "bg-rust border-rust text-white"
-                        : "bg-white/[.06] border-white/[.14] text-white/80"
+                        : light
+                          ? "bg-cream border-line-2 text-ink"
+                          : "bg-white/[.06] border-white/[.14] text-white/80"
                     }`}
                   >
                     {l.code}

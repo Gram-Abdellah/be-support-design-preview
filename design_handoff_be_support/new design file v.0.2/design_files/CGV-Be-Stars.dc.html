@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--rust:#bb6a35;--cream:#f3ede2;--cream-2:#efe7d9;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+body{margin:0;font-family:var(--sans);color:var(--ink)}
+h1,h2{font-family:var(--serif);font-weight:600;margin:0}
+a{color:var(--rust);text-decoration:none}
+a:hover{color:#a2582a}
+p{margin:0}
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+doc-page:not(:defined){visibility:hidden}
+</style>
+<script src="./doc-page.js"></script>
+</helmet>
+<doc-page>
+<div style="font-family:var(--sans)">
+  <div style="border-bottom:3px solid var(--navy);padding-bottom:22px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+    <div>
+      <div style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);font-weight:700">Be-Stars · Document contractuel</div>
+      <h1 style="margin-top:10px;font-size:30px;line-height:1.15;color:var(--navy)">Conditions Générales de Vente et d'Utilisation — Be-Stars</h1>
+      <p style="margin-top:8px;font-size:13px;color:var(--muted)">Bema Consulting / Be-Support · Dernière mise à jour : janvier 2026</p>
+    </div>
+    <img src="logo-mark-color.png" alt="Be-Support" style="height:44px;width:auto" />
+  </div>
+  <div style="margin-top:20px;background:var(--cream-2);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:12.5px;line-height:1.55;color:var(--muted)">Gabarit destiné à recevoir le texte juridique définitif validé par votre conseil. Les sections ci-dessous couvrent le périmètre spécifique des prestations Be-Stars (audit de conformité et accompagnement au classement des hébergements touristiques).</div>
+  <div style="margin-top:26px;display:flex;flex-direction:column;gap:22px">
+    <sc-for list="{{ sections }}" as="s" hint-placeholder-count="10">
+      <div>
+        <h2 style="font-size:17px;color:var(--navy);display:flex;gap:10px;align-items:baseline"><span style="color:var(--rust);font-family:var(--sans);font-size:12px;font-weight:700">{{ s.num }}.</span>{{ s.title }}</h2>
+        <sc-for list="{{ s.paras }}" as="p" hint-placeholder-count="2">
+          <p style="margin-top:8px;font-size:13.5px;line-height:1.65;color:#3a4258">{{ p }}</p>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+  <div style="margin-top:32px;border-top:1px solid var(--line);padding-top:14px;font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <span>Be-Stars — marque de Bema Consulting / Be-Support</span>
+    <span>www.be-support.eu · contact@be-support.eu</span>
+  </div>
+</div>
+</doc-page>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    const raw=[
+      {title:"Champ d'application",paras:["Les présentes conditions s'appliquent à l'ensemble des prestations Be-Stars fournies par Bema Consulting (marque Be-Support) : audit de conformité, rapport de classement, simulation de visite mystère et accompagnement des hébergements touristiques.","Toute commande implique l'acceptation sans réserve des présentes conditions, qui prévalent sur tout autre document du client."]},
+      {title:"Description des prestations",paras:["Be-Stars réalise un audit de conformité sur site au regard du référentiel de classement en vigueur (loi 80-14 et arrêté conjoint n° 985-24), suivi d'un rapport écrit remis dans le délai convenu.","Les prestations complémentaires (plan d'action, simulation de visite mystère, accompagnement jusqu'au classement) font l'objet d'un devis distinct."]},
+      {title:"Commande et devis",paras:["La commande est formalisée par l'acceptation écrite d'un devis, par courrier électronique ou tout moyen équivalent assurant la preuve de l'accord.","Toute modification du périmètre demandée par le client peut donner lieu à un ajustement du prix et des délais."]},
+      {title:"Exécution de la prestation",paras:["L'audit est réalisé sur site, à la date convenue avec l'exploitant. Le client garantit l'accès à l'établissement, aux locaux et aux documents nécessaires.","Le rapport d'audit est remis dans le délai indiqué au devis, accompagné d'un retour téléphonique de restitution."]},
+      {title:"Obligations du client",paras:["Le client s'engage à fournir des informations exactes et complètes sur son établissement et à faciliter le déroulement de l'audit.","Toute réclamation doit être notifiée par écrit dans un délai de quinze jours suivant la remise du rapport."]},
+      {title:"Conditions financières",paras:["Sauf mention contraire, les prix applicables sont ceux figurant sur le devis accepté. Les frais de déplacement éventuels sont précisés au devis.","Un acompte peut être demandé à la commande ; le solde est payable à la remise du rapport, par virement bancaire."]},
+      {title:"Portée du rapport",paras:["Le rapport d'audit constitue un avis professionnel indépendant. La décision de classement relève exclusivement des autorités compétentes.","Be-Stars ne garantit pas l'obtention d'un niveau de classement déterminé, mais met en œuvre tous les moyens pour préparer l'établissement dans les meilleures conditions."]},
+      {title:"Confidentialité et données",paras:["Les constats, notes et rapports sont strictement confidentiels et réservés au client.","Les données personnelles sont traitées conformément à la réglementation applicable, notamment le RGPD pour les clients établis dans l'Union européenne."]},
+      {title:"Durée et résiliation",paras:["La prestation d'audit est ponctuelle ; les accompagnements s'inscrivent dans la durée convenue au devis.","En cas de manquement grave de l'une des parties, la mission peut être résiliée après mise en demeure restée sans effet."]},
+      {title:"Droit applicable",paras:["Les présentes conditions sont soumises au droit belge.","Tout litige relève, à défaut d'accord amiable, du Tribunal de commerce de Bruxelles."]},
+    ];
+    const romans=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+    return { sections: raw.map((s,i)=>({num:romans[i],title:s.title,paras:s.paras})) };
+  }
+}
+</script>
+</body>
+</html>

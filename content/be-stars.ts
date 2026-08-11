@@ -9,7 +9,7 @@ export const why = [
   },
   {
     t: "Échéance mai 2027",
-    d: "Le décret 985-24 fixe une date limite. Au-delà, le classement officiel et l’accès aux canaux ne sont plus garantis.",
+    d: "L’arrêté 985-24 accorde 24 mois pour se mettre en conformité. Plus vous attendez, plus la file s’allonge.",
   },
 ];
 
@@ -33,8 +33,8 @@ export const norms = [
 
 export const refs = [
   "Loi 80-14 relative aux établissements touristiques et autres formes d’hébergement.",
-  "Décret 985-24 (Bulletin officiel n° 7407 du 27 mai 2025) : définit les normes de classement.",
-  "Décret 1799-02 : références techniques antérieures encore applicables sur certains aspects.",
+  "Arrêté conjoint n° 985-24 (Bulletin officiel n° 7407 du 27 mai 2025), fixant les normes de classement.",
+  "Décret n° 2-23-441 (13 juillet 2023), pris pour l’application de la loi 80-14.",
 ];
 
 export const audit = [
@@ -127,4 +127,12 @@ export const beStarsFaq = [
     q: "Faut-il fermer l’établissement pendant l’audit ?",
     a: "Non. L’audit se déroule en activité et ne perturbe pas l’accueil de vos clients.",
   },
+];
+
+export const beStarsProFaq = [
+  {
+    q: "Que se passe-t-il après mai 2027 si je ne suis pas en conformité ?",
+    a: "Le délai de mise en conformité prévu par la réglementation arrive à son terme. Un audit permet d’anticiper plutôt que de subir.",
+  },
+  ...beStarsFaq.slice(1),
 ];

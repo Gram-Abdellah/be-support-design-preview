@@ -75,7 +75,9 @@ export default function ContactPage() {
                   ))}
                 </div>
                 <a
-                  href="#"
+                  href="https://calendly.com/be-support"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block mt-5 bg-rust text-white text-[15px] font-semibold px-6 py-[13px] rounded-[10px] hover:bg-rust-dk"
                 >
                   Voir tous les créneaux

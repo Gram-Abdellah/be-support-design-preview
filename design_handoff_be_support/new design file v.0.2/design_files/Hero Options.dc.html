@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--cream:#f3ede2;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--green:#4a6b52;--serif:'Spectral',serif;--sans:'Hanken Grotesk',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:#e9e2d3;font-family:var(--sans);color:var(--ink)}
+a{color:var(--rust);text-decoration:none}a:hover{color:#a2582a}
+h1,h2{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
+</style>
+</helmet>
+<section style="padding:40px;display:flex;flex-direction:column;gap:36px">
+  <div style="font-family:var(--serif);font-size:22px;color:var(--ink)">Hero — droite : 4 directions. Répondez avec l'identifiant (1a, 1b, 1c, 1d).</div>
+
+  <!-- 1a Editorial numeral -->
+  <div id="1a" style="position:relative">
+    <span style="position:absolute;top:14px;left:14px;z-index:5;background:var(--rust);color:#fff;font-weight:700;font-size:13px;padding:4px 12px;border-radius:999px">1a · Typographie éditoriale</span>
+    <div style="width:1180px;background:var(--navy);border-radius:16px;overflow:hidden;position:relative">
+      <div aria-hidden="true" style="position:absolute;top:-160px;right:8%;width:560px;height:560px;border-radius:999px;background:radial-gradient(circle,rgba(201,183,142,.16),transparent 65%);filter:blur(50px);pointer-events:none"></div>
+      <div style="position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:72px 64px">
+        <div>
+          <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 14px;border-radius:999px">Nearshore · francophone</span>
+          <h1 style="margin-top:22px;font-size:46px;line-height:1.06;color:#fff">Votre activité grandit. Votre organisation doit <span style="font-style:italic;color:var(--sand)">suivre</span>.</h1>
+          <p style="margin-top:18px;max-width:44ch;font-size:16px;line-height:1.6;color:rgba(255,255,255,.72)">Diagnostic, automatisation et exécution opérationnelle par une équipe dédiée — en français.</p>
+          <div style="margin-top:26px;display:flex;gap:12px"><span style="background:var(--rust);color:#fff;font-weight:700;font-size:14.5px;padding:13px 24px;border-radius:10px">Réserver un appel</span><span style="border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:600;font-size:14.5px;padding:13px 24px;border-radius:10px">Nos services</span></div>
+        </div>
+        <div style="position:relative">
+          <div aria-hidden="true" style="font-family:var(--serif);font-size:210px;line-height:.85;color:transparent;-webkit-text-stroke:1px rgba(201,183,142,.4);letter-spacing:-.02em">15h</div>
+          <div style="margin-top:-30px;position:relative">
+            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--sand)">Rendues à votre semaine — chaque semaine</div>
+            <div style="margin-top:18px;display:flex;flex-direction:column;gap:13px">
+              <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;color:rgba(255,255,255,.8);white-space:nowrap">Administratif &amp; mails</span><span aria-hidden="true" style="flex:1;border-bottom:1px dotted rgba(255,255,255,.25)"></span><span style="font-family:var(--serif);font-size:21px;color:var(--sand)">6h</span></div>
+              <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;color:rgba(255,255,255,.8);white-space:nowrap">Facturation &amp; relances</span><span aria-hidden="true" style="flex:1;border-bottom:1px dotted rgba(255,255,255,.25)"></span><span style="font-family:var(--serif);font-size:21px;color:var(--sand)">5h</span></div>
+              <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;color:rgba(255,255,255,.8);white-space:nowrap">Agenda &amp; coordination</span><span aria-hidden="true" style="flex:1;border-bottom:1px dotted rgba(255,255,255,.25)"></span><span style="font-family:var(--serif);font-size:21px;color:var(--sand)">4h</span></div>
+            </div>
+            <div style="margin-top:22px;display:flex;align-items:center;gap:10px;border-top:1px solid rgba(201,183,142,.25);padding-top:16px"><span style="width:7px;height:7px;border-radius:999px;background:#7fbf8e;animation:pulseDot 1.8s ease-in-out infinite"></span><span style="font-size:13px;color:rgba(255,255,255,.65)">Assistante dédiée disponible · répond en moins de 2h</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1b Arches -->
+  <div id="1b" style="position:relative">
+    <span style="position:absolute;top:14px;left:14px;z-index:5;background:var(--rust);color:#fff;font-weight:700;font-size:13px;padding:4px 12px;border-radius:999px">1b · Arches architecturales</span>
+    <div style="width:1180px;background:var(--navy);border-radius:16px;overflow:hidden;position:relative">
+      <div style="position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:72px 64px">
+        <div>
+          <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 14px;border-radius:999px">Nearshore · francophone</span>
+          <h1 style="margin-top:22px;font-size:46px;line-height:1.06;color:#fff">Votre activité grandit. Votre organisation doit <span style="font-style:italic;color:var(--sand)">suivre</span>.</h1>
+          <p style="margin-top:18px;max-width:44ch;font-size:16px;line-height:1.6;color:rgba(255,255,255,.72)">Diagnostic, automatisation et exécution opérationnelle par une équipe dédiée — en français.</p>
+          <div style="margin-top:26px;display:flex;gap:12px"><span style="background:var(--rust);color:#fff;font-weight:700;font-size:14.5px;padding:13px 24px;border-radius:10px">Réserver un appel</span><span style="border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:600;font-size:14.5px;padding:13px 24px;border-radius:10px">Nos services</span></div>
+        </div>
+        <div style="position:relative;display:flex;flex-direction:column;align-items:center">
+          <div style="position:relative;width:100%;max-width:420px;height:300px;display:flex;justify-content:center;align-items:flex-end">
+            <div aria-hidden="true" style="position:absolute;bottom:0;width:100%;height:210px;border:1px solid rgba(201,183,142,.25);border-bottom:none;border-radius:210px 210px 0 0"></div>
+            <div aria-hidden="true" style="position:absolute;bottom:0;width:74%;height:155px;border:1px solid rgba(201,183,142,.45);border-bottom:none;border-radius:160px 160px 0 0"></div>
+            <div aria-hidden="true" style="position:absolute;bottom:0;width:48%;height:100px;background:linear-gradient(180deg,rgba(187,106,53,.9),rgba(187,106,53,.55));border-radius:110px 110px 0 0"></div>
+            <div style="position:relative;padding-bottom:24px;text-align:center;z-index:2"><div style="font-family:var(--serif);font-size:40px;color:#fff;line-height:1">15h</div><div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.85);margin-top:4px">par semaine</div></div>
+          </div>
+          <div aria-hidden="true" style="width:100%;max-width:420px;height:1px;background:rgba(201,183,142,.45)"></div>
+          <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+            <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 14px;border-radius:999px">Démarrage 48h</span>
+            <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 14px;border-radius:999px">Réponse &lt; 2h</span>
+            <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 14px;border-radius:999px">FR · EN · NL</span>
+          </div>
+          <div style="margin-top:16px;font-family:var(--serif);font-style:italic;font-size:15px;color:rgba(255,255,255,.6)">Une structure qui porte votre croissance.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1c Bento -->
+  <div id="1c" style="position:relative">
+    <span style="position:absolute;top:14px;left:14px;z-index:5;background:var(--rust);color:#fff;font-weight:700;font-size:13px;padding:4px 12px;border-radius:999px">1c · Mosaïque de marque</span>
+    <div style="width:1180px;background:var(--navy);border-radius:16px;overflow:hidden;position:relative">
+      <div style="position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:72px 64px">
+        <div>
+          <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 14px;border-radius:999px">Nearshore · francophone</span>
+          <h1 style="margin-top:22px;font-size:46px;line-height:1.06;color:#fff">Votre activité grandit. Votre organisation doit <span style="font-style:italic;color:var(--sand)">suivre</span>.</h1>
+          <p style="margin-top:18px;max-width:44ch;font-size:16px;line-height:1.6;color:rgba(255,255,255,.72)">Diagnostic, automatisation et exécution opérationnelle par une équipe dédiée — en français.</p>
+          <div style="margin-top:26px;display:flex;gap:12px"><span style="background:var(--rust);color:#fff;font-weight:700;font-size:14.5px;padding:13px 24px;border-radius:10px">Réserver un appel</span><span style="border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:600;font-size:14.5px;padding:13px 24px;border-radius:10px">Nos services</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div style="grid-column:1/-1;background:var(--cream);border-radius:18px;padding:24px 26px"><div style="font-family:var(--serif);font-size:23px;line-height:1.3;color:var(--ink)">« Votre bras droit, <span style="font-style:italic;color:var(--rust)">à distance</span>. »</div><div style="font-size:12.5px;color:var(--muted);margin-top:8px">Assistance opérationnelle pour dirigeants de PME</div></div>
+          <div style="background:var(--rust);border-radius:18px;padding:22px 24px"><div style="font-family:var(--serif);font-size:42px;color:#fff;line-height:1">15h</div><div style="font-size:12.5px;color:rgba(255,255,255,.85);margin-top:6px">rendues à votre semaine</div></div>
+          <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;gap:9px">
+            <span style="font-size:12px;font-weight:700;color:#fff;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:9px">Administratif</span>
+            <span style="font-size:12px;font-weight:700;color:#fff;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:9px">Facturation</span>
+            <span style="font-size:12px;font-weight:700;color:#fff;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:9px">Agenda &amp; mails</span>
+            <span style="font-size:12px;font-weight:700;color:#fff">Support client</span>
+          </div>
+          <div style="grid-column:1/-1;background:var(--sand);border-radius:18px;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px"><span style="display:inline-flex;align-items:center;gap:8px"><span style="width:7px;height:7px;border-radius:999px;background:var(--green);animation:pulseDot 1.8s ease-in-out infinite"></span><span style="font-size:13px;font-weight:700;color:var(--navy)">Assistante dédiée · disponible</span></span><span style="font-size:12px;font-weight:700;color:var(--navy);opacity:.7">Répond &lt; 2h</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1d Ledger -->
+  <div id="1d" style="position:relative">
+    <span style="position:absolute;top:14px;left:14px;z-index:5;background:var(--rust);color:#fff;font-weight:700;font-size:13px;padding:4px 12px;border-radius:999px">1d · Restitution hebdo (papier)</span>
+    <div style="width:1180px;background:var(--navy);border-radius:16px;overflow:hidden;position:relative">
+      <div style="position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:72px 64px">
+        <div>
+          <span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sand);border:1px solid rgba(201,183,142,.4);padding:7px 14px;border-radius:999px">Nearshore · francophone</span>
+          <h1 style="margin-top:22px;font-size:46px;line-height:1.06;color:#fff">Votre activité grandit. Votre organisation doit <span style="font-style:italic;color:var(--sand)">suivre</span>.</h1>
+          <p style="margin-top:18px;max-width:44ch;font-size:16px;line-height:1.6;color:rgba(255,255,255,.72)">Diagnostic, automatisation et exécution opérationnelle par une équipe dédiée — en français.</p>
+          <div style="margin-top:26px;display:flex;gap:12px"><span style="background:var(--rust);color:#fff;font-weight:700;font-size:14.5px;padding:13px 24px;border-radius:10px">Réserver un appel</span><span style="border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:600;font-size:14.5px;padding:13px 24px;border-radius:10px">Nos services</span></div>
+        </div>
+        <div style="display:flex;justify-content:center">
+          <div style="position:relative;width:min(400px,100%);background:var(--cream);border-radius:14px;padding:28px 30px;box-shadow:0 40px 80px -28px rgba(0,0,0,.6)">
+            <div aria-hidden="true" style="position:absolute;top:-18px;right:-18px;width:92px;height:92px;border:2px solid var(--rust);border-radius:999px;transform:rotate(-9deg);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--rust);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;line-height:1.5;background:var(--cream);box-shadow:0 16px 36px -16px rgba(0,0,0,.4)">Fait ·<br>Be-Support</div>
+            <div style="font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--rust)">Be-Support · restitution hebdo</div>
+            <div style="font-family:var(--serif);font-size:22px;color:var(--ink);margin-top:6px">Semaine du 20 juillet</div>
+            <div style="margin-top:18px;display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px dashed #d8cfbe"><span style="font-size:13.5px;color:var(--ink)">Relances factures — 6 envoyées</span><span style="color:var(--green);font-weight:700;font-size:13px">✓</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px dashed #d8cfbe"><span style="font-size:13.5px;color:var(--ink)">Boîte mail triée &amp; priorisée</span><span style="color:var(--green);font-weight:700;font-size:13px">✓</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px dashed #d8cfbe"><span style="font-size:13.5px;color:var(--ink)">Dossier réunion préparé</span><span style="color:var(--green);font-weight:700;font-size:13px">✓</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0"><span style="font-size:13.5px;color:var(--ink)">Devis clients mis à jour</span><span style="color:var(--green);font-weight:700;font-size:13px">✓</span></div>
+            </div>
+            <div style="margin-top:14px;border-top:1.5px solid var(--navy);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)">Temps rendu</span><span style="font-family:var(--serif);font-size:30px;color:var(--rust)">15h</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</x-dc>
+</body>
+</html>

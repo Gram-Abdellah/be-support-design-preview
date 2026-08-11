@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--brand:var(--navy);--brand-2:var(--rust);--accent:var(--rust);--accent-hover:var(--rust-dk);--bg:var(--cream);--bg-alt:#fff;--surface:#fff;--surface-2:var(--cream-2);--text:var(--ink);--text-muted:var(--muted);--border:var(--line);--border-strong:var(--line-2);--cta:var(--rust);--cta-hover:var(--rust-dk);--cta-2:var(--navy);--focus:var(--rust);--success:var(--green);--warning:#b07d1e;--error:#a23b2e;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="services" hint-size="100%,72px"></dc-import>
+
+<section style="background:var(--navy);color:#fff;padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:18px">Nos services</div>
+    <h1 style="font-size:var(--fs-page);line-height:1.06;color:#fff;max-width:18ch">Un pôle complet, du secrétariat à la <span style="font-style:italic;color:var(--sand)">création.</span></h1>
+    <p style="margin-top:22px;max-width:58ch;font-size:clamp(17px,1.25vw,20px);line-height:1.6;color:rgba(255,255,255,.72)">Six expertises, une seule équipe dédiée. Déléguez l'administratif et le créatif à des assistants formés à vos outils et augmentés par l'IA, et reprenez 10 à 15 heures par semaine.</p>
+    <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:12px">
+      <a href="Contact.dc.html" style="background:var(--rust);color:#fff;font-size:15px;font-weight:600;padding:13px 22px;border-radius:9px" style-hover="background:var(--rust-dk)">Réserver un appel</a>
+      <a href="Tarifs.dc.html" style="background:transparent;color:#fff;font-size:15px;font-weight:600;padding:12px 21px;border-radius:9px;border:1.5px solid rgba(255,255,255,.3)" style-hover="border-color:#fff">Voir les tarifs</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(56px,6.5vw,96px) 0 clamp(20px,3vw,32px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:28px">
+      <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700">Support &amp; gestion</div>
+      <div style="flex:1;height:1px;background:var(--line-2);min-width:40px"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px">
+      <sc-for list="{{ groupA }}" as="s" hint-placeholder-count="4">
+        <a href="{{ s.href }}" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px" style-hover="border-color:var(--line-2);box-shadow:0 18px 40px -24px rgba(20,32,58,.28)">
+          <div style="width:46px;height:46px;border-radius:12px;background:var(--cream);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--rust);font-size:19px;font-weight:600">{{ s.n }}</div>
+          <h3 style="margin-top:20px;font-size:21px;line-height:1.2">{{ s.name }}</h3>
+          <p style="margin-top:10px;color:var(--muted);font-size:14.5px;line-height:1.55;flex:1">{{ s.desc }}</p>
+          <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:7px">
+            <sc-for list="{{ s.chips }}" as="c" hint-placeholder-count="3">
+              <span style="font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--line);padding:5px 10px;border-radius:999px">{{ c }}</span>
+            </sc-for>
+          </div>
+          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--rust)">Découvrir <span>→</span></span>
+        </a>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin:44px 0 28px">
+      <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700">Création &amp; visibilité</div>
+      <div style="flex:1;height:1px;background:var(--line-2);min-width:40px"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px">
+      <sc-for list="{{ groupB }}" as="s" hint-placeholder-count="2">
+        <a href="{{ s.href }}" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px" style-hover="border-color:var(--line-2);box-shadow:0 18px 40px -24px rgba(20,32,58,.28)">
+          <div style="width:46px;height:46px;border-radius:12px;background:var(--cream);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--rust);font-size:19px;font-weight:600">{{ s.n }}</div>
+          <h3 style="margin-top:20px;font-size:21px;line-height:1.2">{{ s.name }}</h3>
+          <p style="margin-top:10px;color:var(--muted);font-size:14.5px;line-height:1.55;flex:1">{{ s.desc }}</p>
+          <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:7px">
+            <sc-for list="{{ s.chips }}" as="c" hint-placeholder-count="3">
+              <span style="font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--line);padding:5px 10px;border-radius:999px">{{ c }}</span>
+            </sc-for>
+          </div>
+          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--rust)">Découvrir <span>→</span></span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(20px,3vw,32px) 0 clamp(52px,7vw,88px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(28px,4vw,48px)">
+      <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Comment ça marche</div>
+      <h2 style="font-size:clamp(24px,3vw,34px);line-height:1.12;max-width:24ch">Quel que soit le service, la même <span style="font-style:italic;color:var(--rust)">mécanique.</span></h2>
+      <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px">
+        <sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+          <div>
+            <div style="width:36px;height:36px;border-radius:999px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:15px">{{ st.n }}</div>
+            <h3 style="margin-top:16px;font-size:19px">{{ st.t }}</h3>
+            <p style="margin-top:8px;color:var(--muted);font-size:14.5px;line-height:1.55">{{ st.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 clamp(56px,6.5vw,96px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="background:var(--rust);border-radius:20px;padding:clamp(32px,5vw,56px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+      <div style="max-width:46ch">
+        <h2 style="font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#fff">Un doute sur le bon service ? On en parle en 30 minutes.</h2>
+        <p style="margin-top:14px;color:rgba(255,255,255,.85);font-size:16px;line-height:1.55">Un appel découverte pour cadrer votre besoin, sans engagement.</p>
+      </div>
+      <a href="Contact.dc.html" style="background:#fff;color:var(--navy);font-size:15px;font-weight:700;padding:15px 26px;border-radius:10px;white-space:nowrap" style-hover="background:var(--cream)">Réserver un appel</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  renderVals(){
+    return {
+      groupA:[
+        {n:'01',name:'Secrétariat & assistance administrative',desc:'Agenda, e-mails, prise de rendez-vous, traitement des documents et suivi administratif au quotidien.',chips:['Agenda','E-mails','Documents'],href:'Service.dc.html'},
+        {n:'02',name:'Support comptable & facturation',desc:'Devis, factures, relances clients et préparation des pièces pour votre comptable, sans retard.',chips:['Devis','Factures','Relances'],href:'Service-Comptable.dc.html'},
+        {n:'03',name:'Gestion RH & recrutement',desc:'Sourcing de candidats, tri des CV, planification des entretiens et onboarding administratif.',chips:['Sourcing','Entretiens','Onboarding'],href:'Service.dc.html'},
+        {n:'04',name:'Automatisation IA',desc:'Cartographie de vos process répétitifs et mise en place d\u2019automatisations qui vous rendent des heures.',chips:['Process','Workflows','Gain de temps'],href:'Service.dc.html'},
+      ],
+      groupB:[
+        {n:'05',name:'Webdesign & webmarketing',desc:'Création et refonte de site, SEO, gestion des réseaux sociaux et campagnes qui font venir des clients.',chips:['Site web','SEO','Réseaux'],href:'Service-Webdesign.dc.html'},
+        {n:'06',name:'Infographie',desc:'Identité visuelle, supports print et digitaux, présentations soignées et cohérentes avec votre marque.',chips:['Identité','Print','Supports'],href:'Service.dc.html'},
+      ],
+      steps:[
+        {n:'1',t:'Diagnostic',d:'Un appel de 30 min pour comprendre votre besoin et cibler les tâches à déléguer en priorité.'},
+        {n:'2',t:'Plan & assistant dédié',d:'Nous vous présentons un assistant formé à vos outils et un plan clair, à votre rythme.'},
+        {n:'3',t:'Exécution & suivi',d:'La mission tourne, avec un point régulier et des ajustements. Remplacement garanti si besoin.'},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

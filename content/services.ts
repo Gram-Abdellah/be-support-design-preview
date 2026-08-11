@@ -27,6 +27,17 @@ export interface Service {
   heroTitle: string;
   heroEmph: string;
   heroLead: string;
+  heroImage?: string;
+  heroImageAlt?: string;
+  heroImageWidth?: number;
+  heroImageHeight?: number;
+  problemTitle?: string;
+  problemEmph?: string;
+  problemLead?: string;
+  includedTitle?: string;
+  includedEmph?: string;
+  includedLead?: string;
+  ctaTitle?: string;
   pains: ServicePain[];
   included: string[];
   steps: ServiceStep[];
@@ -46,6 +57,14 @@ export const services: Service[] = [
     heroEmph: "administrative.",
     heroLead:
       "Un assistant dédié gère votre agenda, vos e-mails et vos documents pour que vous restiez sur ce qui compte : votre activité.",
+    heroImage: "/images/services/admin.png",
+    heroImageAlt: "Agenda, e-mails, checklist et appels pris en charge",
+    heroImageWidth: 1536,
+    heroImageHeight: 1024,
+    problemTitle: "Vous perdez du temps avec votre",
+    problemEmph: "administratif ?",
+    problemLead:
+      "E-mails, rendez-vous, documents : ces tâches sont indispensables, mais rien n'oblige que ce soit vous qui les fassiez. Chaque heure passée dessus est une heure prise sur vos clients et votre croissance.",
     pains: [
       {
         k: "01",
@@ -74,12 +93,20 @@ export const services: Service[] = [
     steps: [
       { n: "1", t: "Appel découverte", d: "On identifie les tâches à déléguer en priorité." },
       { n: "2", t: "Assistant dédié", d: "Un profil formé à vos outils vous est présenté." },
-      { n: "3", t: "Mise en route", d: "Prise en main sous 48h, à votre rythme." },
+      { n: "3", t: "Mise en route", d: "Démarrage rapide, à votre rythme et sur vos outils." },
       { n: "4", t: "Suivi continu", d: "Points réguliers et ajustements. Remplacement garanti." },
     ],
     stats: [
-      { v: "−15h", t: "par semaine", d: "de tâches administratives reprises." },
-      { v: "48h", t: "pour démarrer", d: "entre l’accord et la première mission." },
+      {
+        v: "100%",
+        t: "dédié à vous",
+        d: "un assistant attitré qui connaît votre activité, vos outils et vos priorités.",
+      },
+      {
+        v: "Flexible",
+        t: "sans engagement lourd",
+        d: "vous ajustez le volume d’heures selon vos besoins, mois après mois.",
+      },
       { v: "FR / EN", t: "bilingue", d: "vos échanges en français comme en anglais." },
     ],
   },
@@ -94,42 +121,69 @@ export const services: Service[] = [
     heroTitle: "Support comptable &",
     heroEmph: "facturation.",
     heroLead:
-      "Un assistant dédié rédige vos devis, émet vos factures et relance vos impayés, pour que votre trésorerie ne dépende plus de votre agenda.",
+      "Devis, factures, relances et pièces comptables : nous tenons votre facturation à jour pour que votre trésorerie ne dépende plus de votre disponibilité.",
+    heroImage: "/images/services/compta.png",
+    heroImageAlt: "Facture, paiement et suivi comptable pris en charge",
+    heroImageWidth: 1333,
+    heroImageHeight: 555,
+    problemTitle: "Vos factures partent-elles toujours",
+    problemEmph: "à temps ?",
+    problemLead:
+      "Une facture émise en retard, c'est un paiement encaissé en retard. Et quand les relances passent après le reste, la trésorerie subit avant même que le chiffre d'affaires ne bouge.",
+    includedTitle: "Tout ce que nous prenons en",
+    includedEmph: "charge.",
+    ctaTitle: "Prêt à confier votre facturation ?",
     pains: [
       {
         k: "01",
-        t: "Les factures qui traînent",
-        d: "Chaque jour de retard sur une facture, c’est un jour de trésorerie en moins.",
+        t: "Les retards d’émission",
+        d: "Une facture oubliée en fin de mois décale tout l’encaissement du trimestre.",
       },
       {
         k: "02",
-        t: "Les relances qu’on repousse",
-        d: "Relancer un client gêne, alors on repousse, et les impayés s’accumulent.",
+        t: "Les relances qu’on n’ose pas faire",
+        d: "Relancer un client prend du temps et de l’énergie. Nous le faisons pour vous, avec tact.",
       },
       {
         k: "03",
-        t: "Le désordre avant le comptable",
-        d: "Pièces éparpillées, justificatifs manquants : chaque clôture devient une corvée.",
+        t: "Les pièces éparpillées",
+        d: "Votre comptable réclame les justificatifs. Les rassembler chaque mois est un travail à part entière.",
       },
     ],
     included: [
-      "Rédaction et envoi des devis",
-      "Émission et suivi des factures",
-      "Relances clients graduées et cadrées",
-      "Préparation des pièces pour le comptable",
-      "Suivi de trésorerie de premier niveau",
-      "Archivage numérique organisé",
+      "Établissement des devis et des factures",
+      "Envoi et suivi des règlements clients",
+      "Relances amiables des impayés",
+      "Rapprochement des paiements reçus",
+      "Collecte et classement des justificatifs",
+      "Préparation des pièces pour votre comptable",
     ],
     steps: [
-      { n: "1", t: "Appel découverte", d: "On cartographie votre cycle devis-facture-relance." },
-      { n: "2", t: "Assistant dédié", d: "Un profil formé à vos outils de facturation vous est présenté." },
-      { n: "3", t: "Mise en route", d: "Prise en main sous 48h, avec vos modèles existants." },
-      { n: "4", t: "Suivi continu", d: "Reporting régulier et ajustements. Remplacement garanti." },
+      { n: "1", t: "Appel découverte", d: "On passe en revue votre cycle de facturation actuel." },
+      {
+        n: "2",
+        t: "Prise en main des outils",
+        d: "Nous nous connectons à votre logiciel de facturation existant.",
+      },
+      { n: "3", t: "Mise en route", d: "Démarrage rapide, à votre rythme et sur vos outils." },
+      {
+        n: "4",
+        t: "Suivi mensuel",
+        d: "Un point sur les encours, les relances et les pièces transmises.",
+      },
     ],
     stats: [
-      { v: "−30j", t: "délai de paiement", d: "grâce à des relances systématiques." },
-      { v: "0", t: "oubli de relance", d: "un suivi cadré, sans rien laisser filer." },
-      { v: "48h", t: "pour démarrer", d: "entre l’accord et la première mission." },
+      {
+        v: "100%",
+        t: "dédié à vous",
+        d: "un assistant attitré qui connaît vos clients, vos échéances et vos outils.",
+      },
+      {
+        v: "Mensuel",
+        t: "rythme régulier",
+        d: "un cycle de facturation et de relances tenu chaque mois, sans oubli.",
+      },
+      { v: "FR / EN", t: "bilingue", d: "vos échanges clients en français comme en anglais." },
     ],
   },
   {
@@ -241,42 +295,83 @@ export const services: Service[] = [
     heroTitle: "Webdesign &",
     heroEmph: "webmarketing.",
     heroLead:
-      "Un site qui convertit, un référencement qui vous trouve de nouveaux clients, et des réseaux sociaux animés sans y penser tous les jours.",
+      "Un site rapide et crédible, trouvé sur Google, pensé pour transformer les visiteurs en clients. De la conception au référencement, une seule équipe s'occupe de votre visibilité.",
+    heroImage: "/images/services/webdesign.png",
+    heroImageAlt: "De la maquette au site en ligne, jusqu'aux résultats marketing",
+    heroImageWidth: 1461,
+    heroImageHeight: 366,
+    problemTitle: "Être présent sur le web ne suffit plus. Il faut être",
+    problemEmph: "visible !",
+    problemLead:
+      "Chaque jour, des clients cherchent exactement ce que vous proposez. La seule question : est-ce vous qu'ils trouvent, ou vos concurrents ?",
+    includedTitle: "Tout ce qui construit votre",
+    includedEmph: "visibilité.",
+    includedLead:
+      "Du site au référencement, chaque brique travaille pour le même objectif : que vos clients vous trouvent, vous croient et vous contactent.",
+    ctaTitle: "Prêt à être trouvé par vos clients ?",
     pains: [
       {
         k: "01",
-        t: "Un site à l’abandon",
-        d: "Un site vieillissant ou introuvable sur Google, c’est des clients qui ne vous trouvent jamais.",
+        t: "Invisible sur Google",
+        d: "Vos clients cherchent vos services chaque jour. Si vous n’apparaissez pas, ils appellent vos concurrents.",
       },
       {
         k: "02",
-        t: "Les réseaux sociaux irréguliers",
-        d: "Publier sans rythme, c’est perdre en visibilité et en crédibilité auprès de votre audience.",
+        t: "7 secondes pour convaincre",
+        d: "C’est le temps qu’un visiteur accorde à votre site avant de juger votre sérieux. Un design daté fait fuir.",
       },
       {
         k: "03",
-        t: "Le manque de temps créatif",
-        d: "Entre gérer l’activité et créer du contenu, le contenu passe toujours en dernier.",
+        t: "Des visites sans lendemain",
+        d: "Un site qui n’appelle pas à l’action reste une vitrine. Le vôtre doit générer des appels et des devis.",
       },
     ],
     included: [
-      "Création ou refonte de site web",
-      "Optimisation SEO on-page et technique",
-      "Gestion et calendrier éditorial des réseaux sociaux",
-      "Campagnes publicitaires ciblées",
-      "Suivi des statistiques et ajustements",
-      "Rédaction de contenus optimisés",
+      "Création ou refonte complète de votre site",
+      "Référencement Google (SEO) et fiche Google Business",
+      "Pages pensées pour convertir : appels, devis, rendez-vous",
+      "Gestion de vos réseaux sociaux",
+      "Campagnes d’acquisition ciblées",
+      "Suivi des performances et rapports clairs",
     ],
     steps: [
-      { n: "1", t: "Appel découverte", d: "On cadre vos objectifs digitaux et votre présence actuelle." },
-      { n: "2", t: "Plan & assistant dédié", d: "Un profil formé à votre secteur vous est présenté." },
-      { n: "3", t: "Mise en route", d: "Lancement du chantier prioritaire sous 48h." },
-      { n: "4", t: "Suivi continu", d: "Reporting régulier sur trafic et conversions. Remplacement garanti." },
+      {
+        n: "1",
+        t: "Diagnostic visibilité",
+        d: "Où en êtes-vous sur Google ? Que voient vos prospects ? On fait le point.",
+      },
+      {
+        n: "2",
+        t: "Conception & création",
+        d: "Un site crédible, rapide et à votre image, structuré pour convertir.",
+      },
+      {
+        n: "3",
+        t: "Mise en ligne & référencement",
+        d: "Votre site publié, indexé et positionné sur les recherches qui comptent.",
+      },
+      {
+        n: "4",
+        t: "Optimisation continue",
+        d: "Analyse des visites, ajustements et campagnes pour progresser chaque mois.",
+      },
     ],
     stats: [
-      { v: "+40%", t: "de réservations", d: "grâce à une présence en ligne cohérente." },
-      { v: "x3", t: "de portée", d: "sur les réseaux sociaux animés régulièrement." },
-      { v: "48h", t: "pour démarrer", d: "entre l’accord et la première mission." },
+      {
+        v: "Visible",
+        t: "là où l’on vous cherche",
+        d: "sur Google, sur les réseaux et sur mobile, devant vos concurrents.",
+      },
+      {
+        v: "Crédible",
+        t: "dès la première visite",
+        d: "un site professionnel qui inspire confiance et donne envie de vous appeler.",
+      },
+      {
+        v: "Rentable",
+        t: "pensé pour convertir",
+        d: "des pages qui transforment les visites en appels, devis et rendez-vous.",
+      },
     ],
   },
   {

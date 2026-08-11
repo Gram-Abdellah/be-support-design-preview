@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/lang-provider";
 import { FOOTER_DICT, FOOTER_HREFS, LEGAL_HREFS, type Lang } from "@/lib/i18n";
+import { services } from "@/content/services";
 
 const LANG_META: { code: string; id: Lang }[] = [
   { code: "FR", id: "fr" },
@@ -12,6 +14,7 @@ const LANG_META: { code: string; id: Lang }[] = [
 ];
 
 export default function SiteFooter() {
+  const pathname = usePathname() || "/";
   const { lang, setLang } = useLang();
   const t = FOOTER_DICT[lang];
   const navLinks = t.navLabels.map((label, i) => ({
@@ -19,6 +22,12 @@ export default function SiteFooter() {
     href: FOOTER_HREFS[i],
     sand: i === 7,
   }));
+  const serviceLinks = t.servicesList.map((label, i) => ({
+    label,
+    href: `/services/${services[i]?.slug ?? ""}`,
+  }));
+
+  if (pathname === "/cgv-cgu-be-stars") return null;
 
   return (
     <footer className="bg-navy text-white pt-[clamp(48px,6vw,72px)] pb-0 font-sans">
@@ -27,11 +36,11 @@ export default function SiteFooter() {
           <div className="min-w-[220px]">
             <Link href="/" aria-label="Be-Support, accueil" className="inline-flex">
               <Image
-                src="/logo-white.png"
+                src="/logo-white-full.png"
                 alt="Be-Support, Your time saving partner"
-                height={56}
-                width={148}
-                className="h-14 w-auto block"
+                height={52}
+                width={145}
+                className="h-[52px] w-auto block"
               />
             </Link>
             <p className="mt-3.5 text-white/[.62] text-sm leading-[1.6] max-w-[34ch]">{t.blurb}</p>
@@ -71,9 +80,9 @@ export default function SiteFooter() {
           <div>
             <div className="text-xs tracking-[.14em] uppercase text-sand font-bold mb-4">{t.services}</div>
             <div className="flex flex-col gap-[11px]">
-              {t.servicesList.map((s) => (
-                <Link key={s} href="/services" className="text-white/70 text-[14.5px] hover:text-white">
-                  {s}
+              {serviceLinks.map((s) => (
+                <Link key={s.href} href={s.href} className="text-white/70 text-[14.5px] hover:text-white">
+                  {s.label}
                 </Link>
               ))}
             </div>

@@ -250,14 +250,7 @@ export default function HomePage() {
                   <span className="font-serif text-[40px] leading-none text-ink">{p.price}</span>
                   <span className="text-muted text-sm">{p.per}</span>
                 </div>
-                <Link
-                  href="/tarifs"
-                  className="block text-center mt-5 text-base font-semibold py-[15px] rounded-[11px]"
-                  style={{ background: p.btnBg, color: p.btnColor, border: p.btnBorder }}
-                >
-                  {p.cta}
-                </Link>
-                <div className="mt-5 flex flex-col gap-2.5">
+                <div className="mt-5 pt-5 border-t border-line flex flex-col gap-2.5">
                   {p.features.map((f) => (
                     <div key={f} className="flex gap-[11px] text-[15px] leading-[1.45]">
                       <span className="text-rust font-bold">✓</span>
@@ -268,6 +261,27 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+          <div className="mt-9 flex flex-wrap gap-3 justify-center">
+            <a
+              href="https://calendly.com/be-support"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 bg-rust text-white text-[15.5px] font-semibold min-h-[50px] px-[30px] rounded-[11px] hover:bg-rust-dk"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <path d="M16 2v4M8 2v4M3 10h18" />
+              </svg>
+              Nous contacter
+            </a>
+          </div>
+          <p className="mt-3.5 text-center text-muted text-sm">
+            Ou écrivez-nous directement sur{" "}
+            <a href="https://wa.me/32494913676" target="_blank" rel="noopener noreferrer">
+              WhatsApp
+            </a>
+            .
+          </p>
         </div>
       </section>
 

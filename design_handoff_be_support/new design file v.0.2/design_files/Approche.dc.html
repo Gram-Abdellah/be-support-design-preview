@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--brand:var(--navy);--brand-2:var(--rust);--accent:var(--rust);--accent-hover:var(--rust-dk);--bg:var(--cream);--bg-alt:#fff;--surface:#fff;--surface-2:var(--cream-2);--text:var(--ink);--text-muted:var(--muted);--border:var(--line);--border-strong:var(--line-2);--cta:var(--rust);--cta-hover:var(--rust-dk);--cta-2:var(--navy);--focus:var(--rust);--success:var(--green);--warning:#b07d1e;--error:#a23b2e;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="approche" hint-size="100%,72px"></dc-import>
+
+<section style="background:var(--navy);color:#fff;padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:18px">Notre approche</div>
+    <h1 style="font-size:var(--fs-page);line-height:1.06;color:#fff;max-width:16ch">Analyser. Décider. <span style="font-style:italic;color:var(--sand)">Agir.</span></h1>
+    <p style="margin-top:22px;max-width:58ch;font-size:clamp(17px,1.25vw,20px);line-height:1.6;color:rgba(255,255,255,.72)">On ne délègue pas au hasard. On part de là où votre temps se perd, on décide ensemble de ce qui peut être automatisé et de ce qui doit être pris en charge, puis on exécute.</p>
+  </div>
+</section>
+
+<!-- 3 steps -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">La méthode en 3 temps</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:24ch">Un diagnostic clair avant la moindre <span style="font-style:italic;color:var(--rust)">action.</span></h2>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px">
+      <sc-for list="{{ phases }}" as="p" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="width:44px;height:44px;border-radius:999px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:17px">{{ p.n }}</div>
+            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);font-weight:700">{{ p.tag }}</div>
+          </div>
+          <h3 style="margin-top:20px;font-size:22px;line-height:1.2">{{ p.t }}</h3>
+          <p style="margin-top:10px;color:var(--muted);font-size:14.5px;line-height:1.55">{{ p.d }}</p>
+          <div style="margin-top:18px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ p.items }}" as="it" hint-placeholder-count="3">
+              <div style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink);line-height:1.4"><span style="color:var(--rust);font-weight:700">✓</span><span>{{ it }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- principles band -->
+<section style="padding:clamp(56px,6.5vw,96px) 0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-bottom:16px">Nos principes</div>
+    <h2 style="font-size:var(--fs-section);line-height:1.12;max-width:22ch">Ce qui rend la méthode <span style="font-style:italic;color:var(--rust)">fiable.</span></h2>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+      <sc-for list="{{ principles }}" as="pr" hint-placeholder-count="4">
+        <div style="background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:24px">
+          <div style="font-family:var(--serif);font-size:14px;color:var(--rust);font-weight:600">{{ pr.k }}</div>
+          <h3 style="margin-top:10px;font-size:18px">{{ pr.t }}</h3>
+          <p style="margin-top:8px;color:var(--muted);font-size:14px;line-height:1.55">{{ pr.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- timeline mini -->
+<section style="padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="background:var(--navy);border-radius:20px;padding:clamp(30px,4vw,52px);color:#fff">
+      <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:16px">Les délais</div>
+      <h2 style="font-size:clamp(24px,3vw,34px);line-height:1.12;color:#fff;max-width:24ch">Un cadre <span style="font-style:italic;color:var(--sand)">rapide,</span> annoncé dès le départ.</h2>
+      <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px">
+        <div style="border-left:2px solid var(--sand);padding-left:18px"><div style="font-family:var(--serif);font-size:30px;color:var(--sand)">J0</div><div style="margin-top:6px;color:rgba(255,255,255,.7);font-size:14px">Appel découverte, 30 min</div></div>
+        <div style="border-left:2px solid var(--sand);padding-left:18px"><div style="font-family:var(--serif);font-size:30px;color:var(--sand)">J+2</div><div style="margin-top:6px;color:rgba(255,255,255,.7);font-size:14px">Plan et assistant dédié</div></div>
+        <div style="border-left:2px solid var(--sand);padding-left:18px"><div style="font-family:var(--serif);font-size:30px;color:var(--sand)">48h</div><div style="margin-top:6px;color:rgba(255,255,255,.7);font-size:14px">Première mission lancée</div></div>
+        <div style="border-left:2px solid var(--sand);padding-left:18px"><div style="font-family:var(--serif);font-size:30px;color:var(--sand)">Hebdo</div><div style="margin-top:6px;color:rgba(255,255,255,.7);font-size:14px">Point de suivi régulier</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 0 clamp(56px,6.5vw,96px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="background:var(--rust);border-radius:20px;padding:clamp(32px,5vw,56px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+      <div style="max-width:46ch">
+        <h2 style="font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#fff">Commençons par le diagnostic.</h2>
+        <p style="margin-top:14px;color:rgba(255,255,255,.85);font-size:16px;line-height:1.55">30 minutes pour voir clair. La suite, seulement si elle a du sens pour vous.</p>
+      </div>
+      <a href="Contact.dc.html" style="background:#fff;color:var(--navy);font-size:15px;font-weight:700;padding:15px 26px;border-radius:10px;white-space:nowrap" style-hover="background:var(--cream)">Réserver un appel</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  renderVals(){
+    return {
+      phases:[
+        {n:'1',tag:'Base d\u2019analyse',t:'Diagnostic de votre situation',d:'On mesure où votre temps part et on identifie les tâches à faible valeur, chiffres à l\u2019appui.',items:['Audit des tâches et outils','Cartographie des flux de travail','Estimation du coût de temps réel']},
+        {n:'2',tag:'Stratégie',t:'Un plan clair, à votre rythme',d:'On définit ensemble ce qui doit être automatisé et ce qui doit être pris en charge par un assistant.',items:['Priorisation par impact','Ce qui s\u2019automatise vs. se délègue','Objectifs et indicateurs de suivi']},
+        {n:'3',tag:'Exécution',t:'L\u2019exécution, prise en main',d:'Un membre dédié de l\u2019équipe exécute au quotidien, avec un point régulier et des ajustements.',items:['Assistant formé à vos outils','Point hebdomadaire de suivi','Remplacement garanti si besoin']},
+      ],
+      principles:[
+        {k:'01',t:'Résultats mesurables',d:'Des heures rendues, pas des promesses. On suit les chiffres.'},
+        {k:'02',t:'Transparence',d:'Vous savez ce qui est fait, quand et par qui, en continu.'},
+        {k:'03',t:'Sans artifice',d:'Un langage clair, des livrables concrets, zéro jargon.'},
+        {k:'04',t:'Responsabilité',d:'Un interlocuteur qui répond de la mission de bout en bout.'},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

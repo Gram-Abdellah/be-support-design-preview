@@ -17,7 +17,7 @@ import {
 export const metadata: Metadata = {
   title: "Be-Stars — Classement hôtelier au Maroc",
   description:
-    "Audit de conformité loi 80-14 / décret 985-24 : sécurisez le classement en étoiles de votre établissement touristique au Maroc avant mai 2027.",
+    "Audit de conformité loi 80-14 / arrêté conjoint n° 985-24 : sécurisez le classement en étoiles de votre établissement touristique au Maroc avant mai 2027.",
 };
 
 export default function BeStarsPage() {
@@ -40,8 +40,8 @@ export default function BeStarsPage() {
             <span className="italic text-sand">sécurisé avant mai 2027.</span>
           </h1>
           <p className="mt-5 max-w-[60ch] text-[17.5px] leading-[1.6] text-white/72">
-            La nouvelle loi 80-14 et le décret 985-24 redéfinissent les règles de classement des
-            établissements touristiques au Maroc. Audit de conformité, plan d&apos;action et
+            La nouvelle loi 80-14 et l&apos;arrêté conjoint n° 985-24 redéfinissent les règles de classement
+            des établissements touristiques au Maroc. Audit de conformité, plan d&apos;action et
             accompagnement jusqu&apos;au classement officiel : hôtels, riads, maisons d&apos;hôtes,
             résidences, campings et bivouacs.
           </p>
@@ -89,11 +89,12 @@ export default function BeStarsPage() {
         <div className="container-page">
           <div className="text-label tracking-[.2em] uppercase text-sand font-bold mb-4">Cadre légal</div>
           <h2 className="text-section leading-[1.12] text-white max-w-[26ch]">
-            Loi 80-14 + décret 985-24 : ce qui change pour <span className="italic text-sand">vous.</span>
+            Loi 80-14 et arrêté 985-24. Ce qui change pour <span className="italic text-sand">vous.</span>
           </h2>
           <p className="mt-4 max-w-[60ch] text-white/70 text-base leading-[1.6]">
-            Le décret 985-24 (Bulletin officiel n° 7407 du 27 mai 2025) définit trois familles de
-            normes et un système de points qui détermine le nombre d&apos;étoiles attribuées.
+            L&apos;arrêté conjoint n° 985-24, publié au Bulletin officiel n° 7407 du 27 mai 2025,
+            définit trois familles de normes et un système de points qui détermine le nombre
+            d&apos;étoiles attribuées.
           </p>
           <div className="mt-9 grid [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))] gap-[18px]">
             {norms.map((n) => (
@@ -119,7 +120,7 @@ export default function BeStarsPage() {
         <div className="container-page">
           <div className="text-label tracking-[.2em] uppercase text-rust font-bold mb-4">Service principal</div>
           <h2 className="text-section leading-[1.12] max-w-[26ch]">
-            Audit de conformité : en 1 jour, vous savez où vous en <span className="italic text-rust">êtes.</span>
+            Audit de conformité. En un jour, vous savez où vous en <span className="italic text-rust">êtes.</span>
           </h2>
           <p className="mt-4 max-w-[60ch] text-muted text-body leading-[1.6]">
             Notre équipe visite votre établissement et l&apos;évalue selon les trois familles de
@@ -238,14 +239,15 @@ export default function BeStarsPage() {
       <section className="section-pad bg-white border-b border-line">
         <div className="container-page">
           <div className="text-label tracking-[.2em] uppercase text-rust font-bold mb-4">
-            Classement 5 étoiles et plus
+            Évaluation par client mystère
           </div>
           <h2 className="text-section leading-[1.12] max-w-[24ch]">
-            Visite mystère requise : on vous <span className="italic text-rust">y prépare.</span>
+            La visite mystère fait partie du classement. On vous <span className="italic text-rust">y prépare.</span>
           </h2>
           <p className="mt-4 max-w-[60ch] text-muted text-body leading-[1.6]">
-            À partir de 5 étoiles, le décret 985-24 impose une évaluation anonyme par un client
-            mystère. Cette visite pèse lourd dans la décision finale.
+            Le nouveau dispositif de classement s&apos;appuie sur des visites mystères, réalisées par
+            des évaluateurs professionnels dans le cadre du classement et du reclassement. Un
+            client mystère. Cette visite pèse lourd dans la décision finale.
           </p>
           <div className="mt-7 bg-cream border border-line rounded-[18px] p-[clamp(24px,3vw,36px)]">
             <p className="text-ink text-base leading-[1.7] max-w-[70ch]">
@@ -265,6 +267,32 @@ export default function BeStarsPage() {
               Le rapport de visite mystère pèse dans la décision finale. Be-Stars réalise une
               simulation préalable pour identifier les points faibles et vous préparer sereinement.
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CGV-CGU BE-STARS */}
+      <section className="pt-[clamp(48px,6vw,80px)]">
+        <div className="container-page">
+          <div className="bg-white border border-line rounded-2xl p-[clamp(24px,3.5vw,36px)] flex items-center justify-between gap-6 flex-wrap">
+            <div className="flex items-center gap-[18px] min-w-0">
+              <div className="flex-none w-[52px] h-[52px] rounded-xl bg-cream border border-line flex items-center justify-center text-rust font-serif font-semibold text-[13px]">
+                PDF
+              </div>
+              <div className="min-w-0">
+                <div className="text-[16.5px] font-bold text-ink">CGV-CGU Be-Stars</div>
+                <div className="mt-1 text-sm text-muted leading-[1.5]">
+                  Conditions générales spécifiques aux prestations d&apos;audit et de classement Be-Stars.
+                </div>
+              </div>
+            </div>
+            <Link
+              href="/cgv-cgu-be-stars"
+              target="_blank"
+              className="flex-none inline-flex items-center gap-2 bg-navy text-white text-[14.5px] font-semibold px-[22px] py-[13px] rounded-[9px] hover:bg-navy-2"
+            >
+              Consulter et télécharger <span className="text-xs">↗</span>
+            </Link>
           </div>
         </div>
       </section>

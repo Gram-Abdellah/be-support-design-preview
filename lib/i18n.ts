@@ -32,7 +32,7 @@ export const HEADER_DICT: Record<Lang, HeaderDict> = {
     groupB: "Création & visibilité",
     all: "Voir tous les services →",
     cta: "Réserver un appel",
-    bestarsSub: "Audit loi 80-14 / décret 985-24",
+    bestarsSub: "Audit loi 80-14 / arrêté conjoint n° 985-24",
     bestarsItem: "★ Be-Stars : Classement hôtelier",
     nav: ["Approche", "Tarifs", "Réalisations", "À propos", "Blog", "Contact"],
     sA: [
@@ -52,7 +52,7 @@ export const HEADER_DICT: Record<Lang, HeaderDict> = {
     groupB: "Creative & visibility",
     all: "See all services →",
     cta: "Book a call",
-    bestarsSub: "Audit law 80-14 / decree 985-24",
+    bestarsSub: "Audit law 80-14 / joint order no. 985-24",
     bestarsItem: "★ Be-Stars: Hotel classification",
     nav: ["Approach", "Pricing", "Case studies", "About", "Blog", "Contact"],
     sA: [
@@ -72,7 +72,7 @@ export const HEADER_DICT: Record<Lang, HeaderDict> = {
     groupB: "Creatie & zichtbaarheid",
     all: "Alle diensten →",
     cta: "Plan een gesprek",
-    bestarsSub: "Audit wet 80-14 / decreet 985-24",
+    bestarsSub: "Audit wet 80-14 / gezamenlijk besluit nr. 985-24",
     bestarsItem: "★ Be-Stars: Hotelclassificatie",
     nav: ["Aanpak", "Tarieven", "Realisaties", "Over ons", "Blog", "Contact"],
     sA: [

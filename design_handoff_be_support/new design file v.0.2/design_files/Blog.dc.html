@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1e2b48;--navy-2:#16203a;--rust:#bb6a35;--rust-dk:#a2582a;--cream:#f3ede2;--cream-2:#efe7d9;--sand:#c9b78e;--ink:#1e2b48;--muted:#6d7284;--line:#e6ded0;--line-2:#d8cfbe;--green:#4a6b52;--brand:var(--navy);--brand-2:var(--rust);--accent:var(--rust);--accent-hover:var(--rust-dk);--bg:var(--cream);--bg-alt:#fff;--surface:#fff;--surface-2:var(--cream-2);--text:var(--ink);--text-muted:var(--muted);--border:var(--line);--border-strong:var(--line-2);--cta:var(--rust);--cta-hover:var(--rust-dk);--cta-2:var(--navy);--focus:var(--rust);--success:var(--green);--warning:#b07d1e;--error:#a23b2e;--fs-hero:clamp(44px,5vw,68px);--fs-page:clamp(32px,4vw,52px);--fs-section:clamp(30px,3.2vw,44px);--fs-card:1.25rem;--fs-body:16.5px;--fs-label:11.5px;--serif:'Spectral',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+a{color:var(--rust);text-decoration:none}a:hover{color:var(--rust-dk)}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+::selection{background:var(--rust);color:#fff}
+</style>
+</helmet>
+<dc-import name="SiteHeader" active="blog" hint-size="100%,72px"></dc-import>
+
+<section style="background:var(--navy);color:#fff;padding:clamp(56px,6.5vw,96px) 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="font-size:var(--fs-label);letter-spacing:.2em;text-transform:uppercase;color:var(--sand);font-weight:700;margin-bottom:18px">Blog &amp; ressources</div>
+    <h1 style="font-size:var(--fs-page);line-height:1.06;color:#fff;max-width:20ch">Gagner du temps, <span style="font-style:italic;color:var(--sand)">mode d'emploi.</span></h1>
+    <p style="margin-top:22px;max-width:56ch;font-size:clamp(17px,1.25vw,20px);line-height:1.6;color:rgba(255,255,255,.72)">Méthodes, outils et retours de terrain pour déléguer, automatiser et mieux organiser votre PME.</p>
+  </div>
+</section>
+
+<!-- featured -->
+<section style="padding:clamp(40px,5vw,64px) 0 0">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <a href="Article.dc.html" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden" style-hover="border-color:var(--line-2);box-shadow:0 22px 50px -30px rgba(20,32,58,.3)">
+      <div style="min-height:280px;background:linear-gradient(135deg,#233457,#16203a);display:flex;align-items:flex-start;padding:24px">
+        <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#fff;background:rgba(255,255,255,.14);padding:6px 12px;border-radius:999px">À la une</span>
+      </div>
+      <div style="padding:clamp(28px,3.5vw,44px);display:flex;flex-direction:column;justify-content:center">
+        <div style="display:flex;gap:12px;align-items:center;font-size:13px;color:var(--muted);margin-bottom:14px"><span style="color:var(--rust);font-weight:600">Organisation</span><span>·</span><span>6 min de lecture</span></div>
+        <h2 style="font-size:clamp(24px,3vw,34px);line-height:1.15;max-width:22ch">Les 10 tâches qu'un dirigeant de PME devrait déléguer en premier</h2>
+        <p style="margin-top:14px;color:var(--muted);font-size:var(--fs-body);line-height:1.6;max-width:52ch">Toutes les heures ne se valent pas. Voici comment repérer celles à confier tout de suite, et l'ordre dans lequel s'y prendre.</p>
+        <span style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:15px;font-weight:600;color:var(--rust)">Lire l'article <span>→</span></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- filters + grid -->
+<section style="padding:clamp(36px,4vw,56px) 0 clamp(52px,7vw,88px)">
+  <div style="width:min(1200px,92vw);margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+        <button onClick="{{ f.set }}" style="font-family:var(--sans);font-size:13.5px;font-weight:600;padding:9px 16px;border-radius:999px;cursor:pointer;border:1px solid {{ f.bd }};background:{{ f.bg }};color:{{ f.fg }}">{{ f.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+      <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+        <a href="Article.dc.html" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden" style-hover="border-color:var(--line-2);box-shadow:0 18px 40px -24px rgba(20,32,58,.28)">
+          <div style="aspect-ratio:16/9;background:linear-gradient(135deg,{{ p.g1 }},{{ p.g2 }})"></div>
+          <div style="padding:22px;display:flex;flex-direction:column;flex:1">
+            <div style="display:flex;gap:10px;align-items:center;font-size:12.5px;color:var(--muted);margin-bottom:10px"><span style="color:var(--rust);font-weight:600">{{ p.cat }}</span><span>·</span><span>{{ p.read }}</span></div>
+            <h3 style="font-size:19px;line-height:1.25;flex:1">{{ p.title }}</h3>
+            <div style="margin-top:16px;font-size:13px;color:var(--muted)">{{ p.date }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+
+    <!-- newsletter -->
+    <div style="margin-top:44px;background:var(--navy);border-radius:20px;padding:clamp(30px,4vw,48px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+      <div style="max-width:44ch"><h2 style="font-size:clamp(22px,2.8vw,30px);line-height:1.15;color:#fff">Une ressource utile par mois, pas plus.</h2><p style="margin-top:12px;color:rgba(255,255,255,.7);font-size:15px;line-height:1.55">Rejoignez les dirigeants qui reçoivent nos méthodes concrètes.</p></div>
+      <form onSubmit="{{ onSubmit }}" style="display:flex;gap:10px;flex-wrap:wrap;flex:1;min-width:260px;max-width:420px">
+        <input type="email" placeholder="vous@entreprise.be" required="true" style="flex:1;min-width:180px;font-family:var(--sans);font-size:15px;padding:14px 16px;border:1px solid rgba(255,255,255,.2);border-radius:10px;background:rgba(255,255,255,.06);color:#fff;outline:none" style-focus="border-color:var(--sand)" />
+        <button type="submit" style="background:var(--rust);color:#fff;font-size:15px;font-weight:600;padding:14px 22px;border-radius:10px;border:0;cursor:pointer;font-family:var(--sans)" style-hover="background:var(--rust-dk)">S'inscrire</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,620px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  state = { filter:'Tous' };
+  renderVals(){
+    const cats=['Tous','Organisation','Automatisation','Comptabilité','RH','Web'];
+    const active=this.state.filter;
+    const filters=cats.map(label=>({label,set:()=>this.setState({filter:label}),
+      bg:label===active?'var(--navy)':'#fff',fg:label===active?'#fff':'var(--ink)',bd:label===active?'var(--navy)':'var(--line-2)'}));
+    const all=[
+      {cat:'Automatisation',read:'5 min',title:'5 automatisations simples qui font gagner une journée par mois',date:'12 juin 2026',g1:'#243b3a',g2:'#16211f'},
+      {cat:'Comptabilité',read:'4 min',title:'Relances clients : le script qui évite les impayés sans froisser',date:'28 mai 2026',g1:'#2a2c3f',g2:'#181a2c'},
+      {cat:'RH',read:'7 min',title:'Recruter sans y passer ses soirées : un process en 4 étapes',date:'14 mai 2026',g1:'#2b3350',g2:'#171f38'},
+      {cat:'Organisation',read:'6 min',title:'La boîte mail à zéro : méthode pour les dirigeants débordés',date:'30 avril 2026',g1:'#233457',g2:'#16203a'},
+      {cat:'Web',read:'5 min',title:'Réseaux sociaux : tenir un rythme sans y penser tous les jours',date:'16 avril 2026',g1:'#3a2f2a',g2:'#211a16'},
+      {cat:'Automatisation',read:'8 min',title:'Nearshore et IA : ce que ça change vraiment pour une PME',date:'2 avril 2026',g1:'#2c2540',g2:'#181428'},
+    ];
+    const posts = active==='Tous'?all:all.filter(p=>p.cat===active);
+    return { filters, posts, onSubmit:(e)=>{e.preventDefault&&e.preventDefault();} };
+  }
+}
+</script>
+</body>
+</html>
