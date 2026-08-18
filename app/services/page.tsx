@@ -7,7 +7,7 @@ import { groupA, groupB } from "@/content/services";
 export const metadata: Metadata = {
   title: "Nos services",
   description:
-    "Six expertises, une seule équipe dédiée : secrétariat, comptabilité, RH, automatisation IA, webdesign et infographie pour votre PME.",
+    "Six expertises, une seule équipe dédiée : secrétariat, comptabilité, RH, automatisation IA, webdesign et stratégie digitale pour votre PME.",
 };
 
 function ServiceCard({ s }: { s: (typeof groupA)[number] }) {

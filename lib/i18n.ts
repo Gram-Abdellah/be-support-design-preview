@@ -43,7 +43,7 @@ export const HEADER_DICT: Record<Lang, HeaderDict> = {
     ],
     sB: [
       ["Webdesign & webmarketing", "Site, SEO, réseaux"],
-      ["Infographie", "Identité & supports"],
+      ["Stratégie digitale", "Positionnement & pilotage"],
     ],
   },
   en: {
@@ -63,7 +63,7 @@ export const HEADER_DICT: Record<Lang, HeaderDict> = {
     ],
     sB: [
       ["Web design & marketing", "Site, SEO, social"],
-      ["Graphic design", "Identity & assets"],
+      ["Digital strategy", "Positioning & direction"],
     ],
   },
   nl: {
@@ -83,7 +83,7 @@ export const HEADER_DICT: Record<Lang, HeaderDict> = {
     ],
     sB: [
       ["Webdesign & marketing", "Site, SEO, social"],
-      ["Grafisch ontwerp", "Identiteit & materiaal"],
+      ["Digitale strategie", "Positionering & sturing"],
     ],
   },
 };
@@ -122,7 +122,7 @@ export const FOOTER_DICT: Record<Lang, FooterDict> = {
       "Gestion RH & recrutement",
       "Automatisation IA",
       "Webdesign & webmarketing",
-      "Infographie",
+      "Stratégie digitale",
     ],
     legalList: [
       "Mentions légales",
@@ -155,7 +155,7 @@ export const FOOTER_DICT: Record<Lang, FooterDict> = {
       "HR & recruitment",
       "AI automation",
       "Web design & marketing",
-      "Graphic design",
+      "Digital strategy",
     ],
     legalList: [
       "Legal notice",
@@ -188,7 +188,7 @@ export const FOOTER_DICT: Record<Lang, FooterDict> = {
       "HR & werving",
       "AI-automatisering",
       "Webdesign & marketing",
-      "Grafisch ontwerp",
+      "Digitale strategie",
     ],
     legalList: [
       "Wettelijke vermeldingen",

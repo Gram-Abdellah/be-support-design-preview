@@ -38,6 +38,13 @@ export default function SiteHeader() {
 
   const active = activeKeyFromPath(pathname);
   const t = HEADER_DICT[lang];
+  const desktopActiveClass = light
+    ? "text-rust"
+    : "text-white";
+  const mobileActiveClass = light
+    ? "text-rust border-line"
+    : "text-white border-white/[.08]";
+  const activeUnderlineClass = "underline decoration-current decoration-2 underline-offset-[10px]";
 
   const groupAServices = services.filter((s) => s.group === "A");
   const groupBServices = services.filter((s) => s.group === "B");
@@ -108,19 +115,21 @@ export default function SiteHeader() {
                 setServicesOpen((v) => !v);
                 setLangOpen(false);
               }}
-              className={`flex items-center gap-1.5 bg-transparent border-0 cursor-pointer font-sans text-[14.5px] font-medium rounded-[7px] px-3 py-2.5 ${
+              className={`flex items-center gap-1.5 border-0 cursor-pointer font-sans text-[14.5px] font-medium rounded-[7px] px-3 py-2.5 ${
                 light ? "hover:text-rust hover:bg-cream" : "hover:text-white hover:bg-white/[.06]"
               } ${
-                active === "services" || servicesOpen
-                  ? light
-                    ? "text-rust"
-                    : "text-white"
+                active === "services"
+                  ? desktopActiveClass
+                  : servicesOpen
+                    ? light
+                      ? "text-rust bg-cream"
+                      : "text-white bg-white/[.06]"
                   : light
-                    ? "text-ink"
-                    : "text-white/[.82]"
+                    ? "text-ink bg-transparent"
+                    : "text-white/[.82] bg-transparent"
               }`}
             >
-              {t.services}
+              <span className={active === "services" ? activeUnderlineClass : undefined}>{t.services}</span>
               <span
                 className="inline-block text-[9px] opacity-70 transition-transform duration-200"
                 style={{ transform: `rotate(${servicesOpen ? 180 : 0}deg)` }}
@@ -194,19 +203,18 @@ export default function SiteHeader() {
             <Link
               key={item.key}
               href={item.href}
+              aria-current={active === item.key ? "page" : undefined}
               className={`text-[14.5px] font-medium rounded-[7px] px-3 py-2.5 ${
                 light ? "hover:text-rust hover:bg-cream" : "hover:text-white hover:bg-white/[.06]"
               } ${
                 active === item.key
-                  ? light
-                    ? "text-rust"
-                    : "text-white"
+                  ? desktopActiveClass
                   : light
                     ? "text-ink"
                     : "text-white/[.82]"
               }`}
             >
-              {t.nav[i]}
+              <span className={active === item.key ? activeUnderlineClass : undefined}>{t.nav[i]}</span>
             </Link>
           ))}
 
@@ -280,11 +288,16 @@ export default function SiteHeader() {
           <div className="container-page flex flex-col">
             <button
               onClick={() => setMobServicesOpen((v) => !v)}
-              className={`flex items-center justify-between bg-transparent border-0 cursor-pointer font-sans text-base font-semibold py-[13px] px-1 border-b ${
-                light ? "text-ink border-line" : "text-white border-white/[.08]"
+              className={`flex items-center justify-between border-0 cursor-pointer font-sans text-base font-semibold py-[13px] px-1 border-b ${
+                active === "services"
+                  ? mobileActiveClass
+                  : light
+                    ? "text-ink border-line bg-transparent"
+                    : "text-white border-white/[.08] bg-transparent"
               }`}
             >
-              {t.services} <span className="text-rust">{mobServicesOpen ? "−" : "+"}</span>
+              <span className={active === "services" ? activeUnderlineClass : undefined}>{t.services}</span>
+              <span className="text-rust">{mobServicesOpen ? "−" : "+"}</span>
             </button>
             {mobServicesOpen && (
               <div className="pt-1.5 pb-3 px-1 flex flex-col gap-0.5">
@@ -313,11 +326,16 @@ export default function SiteHeader() {
               <Link
                 key={item.key}
                 href={item.href}
+                aria-current={active === item.key ? "page" : undefined}
                 className={`text-base font-semibold py-[13px] px-1 border-b ${
-                  light ? "text-ink border-line" : "text-white border-white/[.08]"
+                  active === item.key
+                    ? mobileActiveClass
+                    : light
+                      ? "text-ink border-line"
+                      : "text-white border-white/[.08]"
                 }`}
               >
-                {t.nav[i]}
+                <span className={active === item.key ? activeUnderlineClass : undefined}>{t.nav[i]}</span>
               </Link>
             ))}
             <div className="flex gap-2 pt-4 pb-1">

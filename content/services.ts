@@ -61,8 +61,8 @@ export const services: Service[] = [
     heroImageAlt: "Agenda, e-mails, checklist et appels pris en charge",
     heroImageWidth: 1536,
     heroImageHeight: 1024,
-    problemTitle: "Vous perdez du temps avec votre",
-    problemEmph: "administratif ?",
+    problemTitle: "Vos tâches administratives vous prennent trop de",
+    problemEmph: "temps ?",
     problemLead:
       "E-mails, rendez-vous, documents : ces tâches sont indispensables, mais rien n'oblige que ce soit vous qui les fassiez. Chaque heure passée dessus est une heure prise sur vos clients et votre croissance.",
     pains: [
@@ -198,6 +198,10 @@ export const services: Service[] = [
     heroEmph: "recrutement.",
     heroLead:
       "Un assistant dédié sourcing, présélectionne et organise vos entretiens pour que vous ne perdiez plus vos soirées à trier des CV.",
+    problemTitle: "Vos recrutements prennent-ils trop de",
+    problemEmph: "temps ?",
+    problemLead:
+      "Entre le sourcing, le tri des candidatures et la coordination des entretiens, recruter mobilise vite vos journées. Pendant ce temps, les bons profils n’attendent pas.",
     pains: [
       {
         k: "01",
@@ -247,6 +251,10 @@ export const services: Service[] = [
     heroEmph: "IA.",
     heroLead:
       "On cartographie vos tâches répétitives et on met en place les automatisations (Make, n8n, IA générative) qui vous rendent des heures, sans jargon technique.",
+    problemTitle: "Vos tâches répétitives freinent votre",
+    problemEmph: "équipe ?",
+    problemLead:
+      "Saisies, relances et rapports occupent encore vos équipes alors qu’ils peuvent être automatisés. Chaque processus manuel ralentit l’exécution et multiplie les risques d’erreur.",
     pains: [
       {
         k: "01",
@@ -378,49 +386,58 @@ export const services: Service[] = [
     n: "06",
     slug: "infographie",
     group: "B",
-    name: "Infographie",
+    name: "Stratégie digitale",
     tag: "Création & visibilité · 06",
-    desc: "Identité visuelle, supports print et digitaux, présentations soignées et cohérentes avec votre marque.",
-    chips: ["Identité", "Print", "Supports"],
-    heroTitle: "Infographie.",
-    heroEmph: "",
+    desc: "Positionnement, priorités, contenus et pilotage : un plan digital clair, aligné sur vos objectifs.",
+    chips: ["Positionnement", "Contenus", "Pilotage"],
+    heroTitle: "Stratégie",
+    heroEmph: "digitale.",
     heroLead:
-      "Une identité visuelle claire, des supports print et digitaux soignés, des présentations qui donnent envie de vous faire confiance.",
+      "Un cap clair pour votre présence en ligne, des priorités réalistes et un plan d’action qui relie chaque canal à vos objectifs commerciaux.",
+    problemTitle: "Vos actions digitales avancent-elles sans",
+    problemEmph: "cap clair ?",
+    problemLead:
+      "Site, réseaux, contenus, campagnes : sans priorités communes, les efforts se dispersent. Une stratégie claire aligne chaque action sur vos objectifs commerciaux.",
+    includedTitle: "Un plan digital clair, prêt à être",
+    includedEmph: "activé.",
+    includedLead:
+      "Nous transformons vos objectifs en priorités, messages et actions concrètes, avec des indicateurs simples pour piloter la suite.",
+    ctaTitle: "Prêt à structurer votre stratégie digitale ?",
     pains: [
       {
         k: "01",
-        t: "Une image dispersée",
-        d: "Des supports qui ne se ressemblent pas envoient un message d’amateurisme.",
+        t: "Des actions dispersées",
+        d: "Chaque canal avance séparément, sans message commun ni objectif partagé.",
       },
       {
         k: "02",
-        t: "Le temps perdu sur Canva",
-        d: "Bricoler ses propres visuels prend du temps et donne rarement un résultat professionnel.",
+        t: "Des priorités floues",
+        d: "Vous publiez et investissez sans savoir quelles actions servent vraiment votre croissance.",
       },
       {
         k: "03",
-        t: "Des présentations bâclées",
-        d: "Un devis ou une présentation mal mis en forme peut coûter un client.",
+        t: "Un pilotage à vue",
+        d: "Sans indicateurs simples, difficile de savoir ce qui fonctionne et où concentrer vos efforts.",
       },
     ],
     included: [
-      "Création ou refonte d’identité visuelle",
-      "Supports print (cartes, brochures, flyers)",
-      "Supports digitaux (réseaux sociaux, présentations)",
-      "Mise en page de documents commerciaux",
-      "Gabarits réutilisables pour votre équipe",
-      "Cohérence de marque sur tous les supports",
+      "Audit de votre présence digitale",
+      "Clarification des objectifs et des cibles",
+      "Positionnement et messages clés",
+      "Plan d’action priorisé par canal",
+      "Calendrier éditorial et feuille de route",
+      "Indicateurs de suivi et recommandations",
     ],
     steps: [
-      { n: "1", t: "Appel découverte", d: "On cadre vos besoins visuels et votre identité actuelle." },
-      { n: "2", t: "Plan & assistant dédié", d: "Un profil créatif formé à votre marque vous est présenté." },
-      { n: "3", t: "Mise en route", d: "Premiers gabarits livrés sous 48h." },
-      { n: "4", t: "Suivi continu", d: "Production régulière de supports. Remplacement garanti." },
+      { n: "1", t: "Diagnostic digital", d: "On analyse vos canaux, vos objectifs et vos actions actuelles." },
+      { n: "2", t: "Cap & priorités", d: "On clarifie vos cibles, votre positionnement et les actions à privilégier." },
+      { n: "3", t: "Plan d’action", d: "Vous recevez une feuille de route concrète, réaliste et séquencée." },
+      { n: "4", t: "Pilotage continu", d: "On suit les indicateurs et on ajuste les priorités selon les résultats." },
     ],
     stats: [
-      { v: "100%", t: "cohérence", d: "de vos supports, print comme digital." },
-      { v: "48h", t: "premier gabarit", d: "livré dès le lancement de la mission." },
-      { v: "FR / EN", t: "bilingue", d: "des supports adaptés à vos marchés." },
+      { v: "Clair", t: "des priorités partagées", d: "chaque action répond à un objectif précis." },
+      { v: "Cohérent", t: "sur chaque canal", d: "un même positionnement du site aux réseaux sociaux." },
+      { v: "Mesurable", t: "avec les bons indicateurs", d: "des décisions guidées par des résultats lisibles." },
     ],
   },
 ];
